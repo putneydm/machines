@@ -1,0 +1,40 @@
+@mixin mixin-button-pulse-level-four ($color_one, $color_two)
+	{
+      0%   {transform: scale(1.1,1.1);}
+			10%  {transform: scale(1.1,1.1);background-color: $color_one;}
+      90%  {transform: scale(1.2,1.2);background-color: $color_two;}
+      100% {transform: scale(1.1,1.1);background-color: $color_two;}
+	}
+@mixin mixin-button-pulse-level-three ($color_one, $color_two)
+		{
+			0%   {background-color: $color_one;}
+			10%  {;background-color: $color_one;}
+			90%  {background-color: $color_two;}
+			100% {background-color: $color_two;}
+		}
+@mixin aspect-ratio($width, $height) {
+    position: relative;
+    &:after{
+        display: block;
+        content: " ";
+        width: 100%;
+        padding-top: ($height / $width) * 100%;
+    }
+
+    > .content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+}
+@mixin card($depth) {
+  @if $depth < 1 {
+    box-shadow: none;
+  } @else if $depth > 5 {
+    @warn "Invalid $depth `#{$depth}` for mixin `card`.";
+  } @else {
+    box-shadow: bottom-shadow($depth), top-shadow($depth);
+  }
+}

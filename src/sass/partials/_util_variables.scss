@@ -1,0 +1,44 @@
+// colors
+$black: #444;
+$white: #fff;
+
+$negative: #B22222;
+$negative-dark:darken($negative, 15%);
+$negative-light:lighten($negative, 15%);
+$positive: #6B8E23;
+$positive-dark:darken($positive, 20%);
+$neutral: #e3cb25;
+$neutral-dark:darken($neutral, 20%);
+$neutral-dark:lighten($neutral, 20%);
+
+// grays
+$xxlight:#f5f5f5;
+$xlight:#e4e2e2;
+$light: #d0d0d0;
+$med: #999;
+$dark: #666;
+
+$red: #fc0f1c;
+$red-bg: #720207;
+
+//other
+$haze: #ece8e3;
+$button:#477dca;
+$orange:orange;
+
+// font family
+$primary: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+$primary-two: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
+
+// font sizes
+$font-base-size: 16px;
+$mega: rem(48);
+$alpha: rem(36);
+$beta: rem(24);
+$gamma: rem(20);
+$delta: rem(18);
+$epsilon: rem(16);
+$zeta: rem(14);
+$omega: rem(12);
+$mini: rem(10);
