@@ -38,3 +38,17 @@
     box-shadow: bottom-shadow($depth), top-shadow($depth);
   }
 }
+
+@mixin underscore-body ($color, $position)
+	{
+	// color:$color;
+	background-image: -moz-linear-gradient(top, transparent 75%, $color 75%);
+	background-image: -webkit-linear-gradient(top, transparent 75%, $color 75%);
+	background-image: -o-linear-gradient(top, transparent 75%, $color 75%);
+	background-image: linear-gradient(to bottom, transparent 75%, $color 75%);
+	background-size: 20px 20px;
+	background-origin: padding-box;
+	background-position: 0 $position;
+	background-repeat: repeat-x;
+//	text-shadow:1px 1px 0px white, -1px 1px 0px white ;
+	}
