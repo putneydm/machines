@@ -1,0 +1,19 @@
+<!doctype html>
+<html class="no-js" lang="">
+    {% include head.html %}
+    <body>
+        @@include('partials/nav.html')
+        {{ content }}
+        <section class="hidden">
+        @@include('../svg/svgsprite.svg')
+      </section>
+      @@include('partials/footer.html');
+    </body>
+    @@include('partials/js_links.html')
+    <script>
+    (function() {
+      "use strict";
+      // pageFunctions.intialize();
+    })();
+    </script>
+</html>
