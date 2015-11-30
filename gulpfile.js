@@ -83,7 +83,7 @@ var paths = {
    vendor: 'src/scripts/vendor/'
   },
   styles: {
-    input: 'src/sass/styles.scss',
+    input: 'src/sass/main_styles.scss',
     inputInline: 'src/sass/inline_styles/{blog_embedded_styles.scss,index_embeded_styles.scss,main_embedded_styles.scss}',
     outputInline: 'test/_includes',
     exclude: '!src/sass/partials/*.scss',
