@@ -1,0 +1,25 @@
+/*woff*/
+@font-face {
+    font-family: 'Coolvetica';
+    src: url(fonts_in/coolvetica_rg-webfont.woff);
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Pitch';
+    src: url(fonts_in/Pitch-Regular.woff);
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Pitch';
+    src: url(fonts_in/Pitch-RegularItalic_gdi.woff);
+    font-weight: 400;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Pitch';
+    src: url(fonts_in/Pitch-Bold.woff);
+    font-weight: 700;
+    font-style: normal;
+}
