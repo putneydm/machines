@@ -2,14 +2,10 @@
 $black: #444;
 $white: #fff;
 
-$negative: #B22222;
-$negative-dark:darken($negative, 15%);
-$negative-light:lighten($negative, 15%);
-$positive: #6B8E23;
-$positive-dark:darken($positive, 20%);
-$neutral: #e3cb25;
-$neutral-dark:darken($neutral, 20%);
-$neutral-dark:lighten($neutral, 20%);
+$brand:#6B8E23;
+$brand-light:#d7e1be;
+
+
 
 // grays
 $xxlight:#f5f5f5;
@@ -18,17 +14,10 @@ $light: #d0d0d0;
 $med: #999;
 $dark: #666;
 
-$red: #fc0f1c;
-$red-bg: #720207;
-
-//other
-$haze: #ece8e3;
-$button:#477dca;
-$orange:orange;
 
 // font family
-$primary: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-$primary-two: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+$primary: 'Pitch', "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif;
+$primary-two: "Coolvetica", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 
 
 // font sizes
