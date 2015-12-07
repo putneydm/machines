@@ -13,6 +13,7 @@ var pageFunctions = {
     },
     initializeIndex: function () {
         var self=this;
+        console.log('index');
         self.detectScroll();
     },
      detectScroll: function (viewportSize) {
@@ -23,16 +24,10 @@ var pageFunctions = {
           self.testHeaderImage(position, viewportSize);
           var header = document.getElementById('siteheader');
           var placeholder = document.getElementById('siteheader-placeholder');
-
-          var headerPosition = self.getHeaderPosition ();
-
-          // var placeholderPosition = placeholder.offsetTop - position;
-
+          var headerPosition = self.getHeaderPosition();
           var placeholderPosition = placeholder.getBoundingClientRect().top;
 
-          self.handleHeader( position, headerPosition, placeholderPosition )
-
-
+          self.handleHeader(position, headerPosition, placeholderPosition)
           self.handleReefer(position, headerPosition);
         }
         return position;
@@ -46,32 +41,20 @@ var pageFunctions = {
 
           if (position >= headerHeight * .6 && activeTest === false) {
             target.classList.add('header-image--active');
-            // target.classList.add('header-image--set');
             targetHead.classList.add('main-head--active');
             secondaryHead.classList.add('secondary-head--active');
-            self.handleText();
           }
           if (position <= headerHeight * .6 && activeTest) {
             target.classList.remove('header-image--active');
             targetHead.classList.remove('main-head--active');
             secondaryHead.classList.remove('secondary-head--active');
-            // targetHead.classList.remove('main-head--active');
           }
-          // if (position < 5) {
-          //   targetHead.classList.remove('main-head--active');
-          //   secondaryHead.classList.remove('secondary-head--active');
-          // }
      },
      handleHeader: function (position, headerPosition, placeholderPosition) {
         var self=this;
         var header = document.getElementById('siteheader');
         var placeholder = document.getElementById('siteheader-placeholder');
         var headerActive = header.classList.contains('siteheader--active');
-
-        // console.log('position', position);
-        console.log('headerPosition', headerPosition);
-        console.log('placeholderPosition', placeholderPosition);
-
 
        if (placeholderPosition <= headerPosition && headerActive === false) {
          header.classList.add('siteheader--active');
@@ -81,12 +64,6 @@ var pageFunctions = {
           header.classList.remove('siteheader--active');
           placeholder.classList.remove('siteheader-placeholder--active');
         }
-     },
-     handleText: function() {
-       var self=this;
-       var textBlock = document.getElementById('entry-wrapper');
-       textBlock.classList.add('entry-wrapper--active');
-
      },
      handleReefer: function(position, headerPosition) {
        var self=this;
@@ -99,17 +76,6 @@ var pageFunctions = {
         if (position <= headerPosition * .8 && activeState === true) {
           reefers.classList.remove('reefers-wrapper--active')
         }
-     },
-     getPosition: function (element) {
-         var xPosition = 0;
-         var yPosition = 0;
-
-         while(element) {
-             xPosition += (element.offsetLeft - element.scrollLeft + element.clientLeft);
-             yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
-             element = element.offsetParent;
-         }
-         return { x: xPosition, y: yPosition };
      },
      getHeaderPosition: function () {
        var self=this;
