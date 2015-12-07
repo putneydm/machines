@@ -60,6 +60,8 @@
   line-height:90%;
   margin:0 0 rem(20);
   color:white;
+  transition: color .2s ease-in;
+  // will-change:initial;
   @media screen and (max-width:rem(750))	{
     font-size:rem(70);
   }
@@ -73,11 +75,12 @@
     font-size:rem(42);
   }
     a {
-      color:white;
+      color:inherit;
+      cursor:pointer;
+      &:hover {color:inherit;}
     }
 }
 .main-head--active {
-  transition: color .2s ease-in;
   color:$brand;
     a {
       color:$brand;
@@ -86,9 +89,17 @@
 }
 .secondary-head {
   color:white;
+
+  // will-change:initial;
 }
 .secondary-head--active {
-  transition: color .2s ease-in;
+  color:black;
+}
+.main-head-vis {
+  color:$brand;
+  span {color:black;}
+}
+.secondary-head-vis {
   color:black;
 }
 .siteheader {
@@ -103,15 +114,6 @@
   @media screen and (max-width:rem(750))	{
     max-width:rem(500);
   }
-  // @media screen and (max-width:rem(550))	{
-  //   max-width:rem(450);
-  // }
-  // @media screen and (max-width:rem(500))	{
-  //   max-width:rem(350);
-  // }
-  // @media screen and (max-width:rem(400))	{
-  //   max-width:rem(250);
-  // }
   &:after {
     content:'-----';
     color:white;
@@ -121,11 +123,15 @@
    position:static;
    &:after {
      color:black;
-     transition: color .8s;
+     transition: color .2s;
    }
 }
+.siteheader-vis {
+  opacity:1;
+  position:static;
+}
 .siteheader-placeholder {
-  height:rem(233);
+  height:rem(255);
 }
 .siteheader-placeholder--active {
   height:0;
@@ -186,14 +192,9 @@ a {
 }
 .entry-wrapper {
   // transform: translateY(50px);
-  opacity: .33;
-  transition: opacity 1s;
+  // opacity: .33;
+  // transition: opacity 1s;
   padding-top:rem(40);
-}
-.entry-wrapper--active {
-  // transform: translateY(0);
-  opacity: 1;
-  transition: opacity 1s;
 }
 .main-nav-wrapper {
   position:fixed;
@@ -283,46 +284,35 @@ a {
     width:100vw;
     height:100vh;
     content:" ";
-    background-image:url('/siteart/robotsone.jpg');
-    background-size: cover;
-    position: fixed;
+    position: absolute;
     z-index:-2;
-    filter: blur(0);
-    background-position: top center;
-    opacity:1;
-    will-change:opacity;
-    transition: opacity .5s;
+    // opacity:1;
+    // will-change:opacity;
+    // transition: filter .2s ease-in, opacity .5s;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.30) 100%) no-repeat bottom center, url('/siteart/robotsone.jpg') no-repeat top center; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background-size: 100% 40%, cover;
+    // background-blend-mode: normal, multiply;
   }
   &::after {
-    position:absolute;
     width:100vw;
-    height:40vh;
+    height:100vh;
     content:" ";
-    display:block;
-    position: fixed;
-    z-index: -1;
-    bottom:0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.30) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    position: absolute;
+    z-index:-1;
+    will-change:opacity;
+    background-color: white;
+    opacity:0;
+    transition: opacity .5s;
   }
 }
 .header-image--active {
     &::before {
-      filter: blur(12px);
-      transition: filter .2s ease-in, opacity .5s;
-      opacity:0;
-      transition-delay: .2s;
     }
     &::after {
-      opacity:0;
+      opacity:1;
       transition: opacity .5s;
     }
 }
-// .header-image--set {
-//   &::after {
-//     opacity:0;
-//     transition: opacity .5s;
-//   }
-// }
 .entry-container {
   width:100%;
   position:relative;
@@ -353,6 +343,12 @@ a {
 }
 .footer-list {
   justify-content: center;
+  margin:0 0 rem(60) 0;
+}
+.agate {
+  font-size:rem(10);
+  color:$med;
+  text-align: center;
 }
 input[type=button] {
   border:1px solid $brand;
