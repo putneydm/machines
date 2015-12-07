@@ -17,22 +17,12 @@ array: []  #empty array
 tag_page_layout: tag_index
 tag_page_dir: tag
 
-paginate: 10
-paginate_path: "/blog/page:num/"
 
 collections:
-  projects:
-    output: true
-    permalink: /projects/:path/
-    layout: page_layout
   about:
     output: true
     permalink: /about/:path/
-    layout: page_layout
-  design:
-    output: true
-    permalink: /design/:path/
-    layout: page_layout
+    layout: main_layout
 
 sitemap:
     file: "/sitemap.xml"
@@ -42,8 +32,6 @@ sitemap:
         - "/feed/index.xml"
     include_posts:
         - "/index.html"
-        - "/blog/index.html"
-        - "/projects/shirtify/index.html"
         - "/about/index.html"
     change_frequency_name: "change_frequency"
     priority_name: "priority"
