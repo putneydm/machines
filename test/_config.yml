@@ -1,12 +1,12 @@
 
 # Site settings
-title: David Putney
+title: Inevitiable Rise of the Machines
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "https://www.davidputney.com" # the base hostname & protocol for your site
-disclaimer: This is the personal website of David M. Putney. It is not affiliated with any current or former employers.
-description: "I\'m David Putney, a web designer and developer living in the Boston, Mass. area. I specialize in UI/UX, and designing and building media and content-driven websites."
-tagLine: This is my site
-sitekeywords: ['David Putney', 'blogger', 'blog', 'writer', 'design', 'portfolio', 'web development', 'front-end developer', 'web design', 'mobile first', 'responsive design', 'HTML', 'CSS', 'JavaScript', 'jQuery']
+url: "https://www.invetiableriseofthemachines.com" # the base hostname & protocol for your site
+disclaimer: This is a personal website. It is not affiliated with any employer current or former of the owner / author.
+description: "The Robots are averywhere. They surround us. Eventually they will kill us and enslave the rest. This site tracks the progress to that inevitiable event."
+tagLine: The only website brave enough to tell the truth about The Robots
+sitekeywords: ['The Robots', 'blogger', 'blog', 'scary', 'evil', 'Robot logic', 'Inevitable', 'machines', 'artificial intelligence', 'Robot uprising', 'Robot rebellion', 'enslavement', 'overthrow', 'humans', 'robot hunter killers']
 permalink: /:year/:month/:title.html
 
 # Build settings
