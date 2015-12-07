@@ -1,0 +1,23 @@
+---
+layout: main_layout
+pagetype: about
+---
+
+<main class="blog-wrapper">
+
+@@include('../partials/about_header.html')
+
+<div id="entry-wrapper" class="entry-wrapper">
+
+
+  {% assign items = site.about | sort: 'order' %}
+  {% for item in items %}
+  <article class="entry-container">
+    <h2 class="basic-header">{{ item.title | markdownify | strip_html }}</h2>
+    <div class="entry-body">
+    {{ item.content }}
+    </div>
+  </article>
+  {% endfor %}
+</div>
+</main>
