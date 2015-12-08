@@ -386,3 +386,29 @@ input[type=button] {
     width:100%;
    }
 }
+.page-number {
+  text-align:center;
+}
+.pagination-wrapper {
+  padding:rem(40) 0 0 0;
+
+
+}
+.pagination {
+  display:flex;
+  flex-direction: row;
+  height:rem(30);
+}
+.pagination-direction {
+  flex-basis:50%;
+  flex-grow:0;
+  padding:0;
+  font-weight:700;
+}
+.back {
+  text-align:right;
+  padding:0 rem(10) 0;
+}
+.next {
+    padding:0 0 0 rem(10);
+}
