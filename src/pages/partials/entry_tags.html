@@ -1,0 +1,9 @@
+{% if post.tags %}
+<footer class="entry-tags">
+    <ul class="inline-list">
+      {% for tag in post.tags %}
+      <li><a href="/tag/{{ tag | replace:' ','-' | replace:'&','&amp;' | downcase }}.html" rel="tag">{{ tag }}</a></li>
+      {% endfor %}
+    </ul>
+</footer>
+{% endif %}
