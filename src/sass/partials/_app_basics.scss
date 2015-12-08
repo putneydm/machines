@@ -84,7 +84,8 @@
   color:$brand;
     a {
       color:$brand;
-      transition: color .2s ease-in;
+      transition: color .1s ease-in;
+      transition-delay: .4s;
     }
 }
 .secondary-head {
@@ -94,6 +95,8 @@
 }
 .secondary-head--active {
   color:black;
+  transition: color .1s ease-in;
+  transition-delay: .4s;
 }
 .main-head-vis {
   color:$brand;
