@@ -1,0 +1,12 @@
+<article class="entry-container">
+  <h2 class="basic-header"><a href="{{post.url}}" rel="canonical">{{ post.title | markdownify | strip_html }}</a></h2>
+  {% if post.date %}
+  <p><em>{{ post.date | date: "%A, %B %-d, %Y" }}</em></p>
+  {% endif %}
+  {% if post.content %}
+  <div class="entry-body">
+    {{ post.content }}
+  </div>
+  {% endif %}
+    @@include('entry_tags.html')
+</article>
