@@ -329,7 +329,7 @@ a {
     will-change:opacity;
     background-color: white;
     opacity:0;
-    transition: opacity .5s;
+    transition: opacity .3s;
   }
 }
 .header-image--active {
@@ -337,7 +337,7 @@ a {
     }
     &::after {
       opacity:1;
-      transition: opacity .5s;
+      transition: opacity .3s;
     }
 }
 .entry-container {
