@@ -1,7 +1,23 @@
 <aside id="reefers" class="reefers-wrapper">
+  {% assign offsetCount=paginator.per_page | times:paginator.page %}
+
+  {% assign nextCount=paginator.per_page | times:paginator.total_pages %}
+
+  {% if paginator.page != paginator.total_pages %}
+  <h2 class="basic-header">Additional reading &#8230;</h2>
+  {% endif %}
   <ul>
-    <li><a href="">This is one reefer that would go here it would be a reefer</a></li>
-    <li><a href="">This is one reefer that would go here it would be a reefer</a></li>
-    <li><a href="">This is one reefer that would go here it would be a reefer</a></li>
+  {% assign counter=0 %}
+  {% for post in site.posts offset:offsetCount %}
+  {% if post.link != 'true' and counter < 3 %}
+  {% assign counter=counter | plus:1 %}
+    <li><a href="{{post.url}}" rel="canonical">
+     {{post.title}}</a>
+         <svg class="inline-icn">
+           <use xlink:href="#arrow" />
+         </svg>
+     </li>
+   {% endif %}
+  {% endfor %}
   <ul>
 </aside>
