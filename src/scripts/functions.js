@@ -7,54 +7,56 @@ var pageFunctions = {
       this.intializeWatchers(); //listens for clicks
     },
     intializeWatchers: function () {
-      var self=this,
-          viewportSize = window.innerHeight;
-      self.detectScroll(viewportSize);
+      var self=this;
     },
     initializeIndex: function () {
         var self=this;
-        console.log('index');
-        self.detectScroll();
+        viewportSize = window.innerHeight;
+        self.detectScroll(viewportSize);
     },
      detectScroll: function (viewportSize) {
        var self=this,
            position;
         document.onscroll = function() {
-          var position = window.scrollY;
-          self.testHeaderImage(position, viewportSize);
-          var header = document.getElementById('siteheader');
-          var placeholder = document.getElementById('siteheader-placeholder');
-          var headerPosition = self.getHeaderPosition();
-          var placeholderPosition = placeholder.getBoundingClientRect().top;
+          var position = window.scrollY,
+              header = document.getElementById('siteheader'),
+              placeholder = document.getElementById('siteheader-placeholder'),
+              headerPosition = self.getHeaderPosition(),
+              placeholderPosition = placeholder.getBoundingClientRect().top;
 
-          self.handleHeader(position, headerPosition, placeholderPosition)
+          self.handleHeaderPinning(position, headerPosition, placeholderPosition)
           self.handleReefer(position, headerPosition);
+          self.handleHeaderImage(position, viewportSize);
         }
         return position;
      },
-     testHeaderImage: function (position, headerHeight) {
+     handleHeaderImage: function (position, headerHeight) {
         var self=this;
-        var target = document.getElementById('header-image');
-        var targetHead = document.getElementById('main-head');
-        var activeTest = target.classList.contains('header-image--active');
-        var secondaryHead = document.getElementById('secondary-head');
+        var target = document.getElementById('header-image'),
+            activeTest = target.classList.contains('header-image--active'),
+            targetHead = document.getElementById('main-head'),
+            secondaryHead = document.getElementById('secondary-head');
+            bodyText = document.getElementById('entry-wrapper');
 
-          if (position >= headerHeight * .6 && activeTest === false) {
+
+          if (position >= headerHeight * .5 && activeTest === false) {
             target.classList.add('header-image--active');
             targetHead.classList.add('main-head--active');
             secondaryHead.classList.add('secondary-head--active');
+            bodyText.classList.add('entry-wrapper--active')
           }
-          if (position <= headerHeight * .6 && activeTest) {
+          if (position <= headerHeight * .5 && activeTest) {
             target.classList.remove('header-image--active');
             targetHead.classList.remove('main-head--active');
             secondaryHead.classList.remove('secondary-head--active');
+            bodyText.classList.remove('entry-wrapper--active')
           }
      },
-     handleHeader: function (position, headerPosition, placeholderPosition) {
+     handleHeaderPinning: function (position, headerPosition, placeholderPosition) {
         var self=this;
-        var header = document.getElementById('siteheader');
-        var placeholder = document.getElementById('siteheader-placeholder');
-        var headerActive = header.classList.contains('siteheader--active');
+        var header = document.getElementById('siteheader'),
+            placeholder = document.getElementById('siteheader-placeholder'),
+            headerActive = header.classList.contains('siteheader--active');
 
        if (placeholderPosition <= headerPosition && headerActive === false) {
          header.classList.add('siteheader--active');
@@ -67,9 +69,9 @@ var pageFunctions = {
      },
      handleReefer: function(position, headerPosition) {
        var self=this;
+       var reefers = document.getElementById('reefers'),
+           activeState = reefers.classList.contains('reefers-wrapper--active');
 
-       var reefers = document.getElementById('reefers');
-       var activeState = reefers.classList.contains('reefers-wrapper--active');
         if (position >= headerPosition * .8 && activeState === false) {
           reefers.classList.add('reefers-wrapper--active')
         }
@@ -79,10 +81,8 @@ var pageFunctions = {
      },
      getHeaderPosition: function () {
        var self=this;
-       var viewportSize = window.innerHeight;
-       var headerHeight = document.getElementById('siteheader').offsetHeight;
-
+       var viewportSize = window.innerHeight,
+           headerHeight = document.getElementById('siteheader').offsetHeight;
        return headerPos = viewportSize - (viewportSize * .05) - headerHeight;
-
      }
   };
