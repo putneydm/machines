@@ -164,7 +164,7 @@
     line-height:150%;
     letter-spacing: -.03rem;
     @media screen and (max-width:rem(500))	{
-      font-size:rem(16);
+      font-size:rem(17);
      }
       a {
         @include underscore-body ($brand-light, 30)
