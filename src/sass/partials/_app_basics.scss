@@ -187,13 +187,44 @@ a {
   color:black;
     &:hover {
       color:$brand;
+      transition: color .1s ease-in;
     }
 }
 .entry-wrapper {
-  // transform: translateY(50px);
-  // opacity: .33;
-  // transition: opacity 1s;
   padding-top:rem(40);
+}
+.entry-wrapper--animated {
+  opacity: 0;
+  transition: opacity .5s;
+  transition-delay: .2s;
+  will-change:opacity;
+}
+.entry-wrapper--active {
+    opacity: 1;
+}
+.blog-wrapper-static {
+  .entry-wrapper--animated {
+    opacity: 1;
+  }
+  .siteheader {
+     position:static;
+     &:after {
+       color:black;
+       transition: color .2s;
+     }
+  }
+  .siteheader-placeholder {
+    display:none;    
+  }
+  .main-head {
+    color:$brand;
+      a {
+        color:$brand;
+      }
+  }
+  .secondary-head {
+    color:black;
+  }
 }
 .main-nav-wrapper {
   position:fixed;
