@@ -14,6 +14,29 @@ var pageFunctions = {
         viewportSize = window.innerHeight;
         self.detectScroll(viewportSize);
     },
+    initializeSinglePage: function () {
+        var self=this;
+
+        document.getElementById('share-button').addEventListener("click", function(){
+            self.handleCardFlip();
+            self.testCopy();
+        });
+        document.getElementById('cancel-button').addEventListener("click", function(){
+            self.handleCardFlip()
+        });
+
+
+        var copyButton = document.getElementById('copy-button');
+        copyButton.addEventListener("click", function(){
+          var embedCode = document.getElementById('embed-code');
+          self.handleCopy(copyButton, embedCode);
+        });
+        var URLcopyButton = document.getElementById('url-copy-button');
+        URLcopyButton.addEventListener("click", function(){
+          var URLembedCode = document.getElementById('url-embed-code');
+          self.handleCopy(URLcopyButton, URLembedCode);
+        });
+    },
      detectScroll: function (viewportSize) {
        var self=this,
            position;
