@@ -130,6 +130,28 @@ var pageFunctions = {
        }
        document.getElementById('embed-code').blur();
      },
+     handleCopy: function(button, embedCode) {
+      //  var embedCode = document.getElementById('embed-code');
+      //  var embedContainer = document.getElementsByClassName('form-container');
+      var embedContainer = button.parentNode;
+
+      console.log('embedCode', embedCode);
+
+       var inputActive = function(style) {
+        embedContainer.classList.add('form-container--active', style);
+         embedCode.blur();
+         setTimeout(function(){
+           embedContainer.classList.remove('form-container--active', style);
+         }, 2100);
+       };
+       try {
+         embedCode.select();
+          var successful = document.execCommand('copy');
+          successful ? inputActive('form-container--success') :inputActive('form-container--fail');
+        } catch (err) {
+            inputActive('form-container--fail');
+        }
+     },
      getHeaderPosition: function () {
        var self=this;
        var viewportSize = window.innerHeight,
