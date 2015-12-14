@@ -95,8 +95,10 @@
 }
 .secondary-head {
   color:white;
-
-  // will-change:initial;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0;
+  font-size:rem(20)
 }
 .secondary-head--active {
   color:black;
