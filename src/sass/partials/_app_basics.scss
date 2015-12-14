@@ -382,15 +382,7 @@ a {
   margin:0 0 rem(25);
   padding:0;
   font-style:italic;
-}
-.article-card {
-  box-shadow:1px 1px 12px $xlight;
-  border-radius: rem(5);
-  padding:em(25) rem(20) rem(30);
-  border:1px solid $xlight;
-    @media screen and (max-width:rem(500))	{
-        padding:em(15) rem(15) rem(20);
-     }
+  font-size:rem(15);
 }
 .site-footer {
   margin:rem(120) 0 0;
