@@ -187,9 +187,9 @@
   margin:0 0 rem(5);
 }
 .entry-body {
+  margin:0 0 rem(35);
   p {
     line-height:150%;
-    letter-spacing: -.03rem;
     @media screen and (max-width:rem(500))	{
       font-size:rem(17);
      }
@@ -218,7 +218,7 @@ a {
     }
 }
 .entry-wrapper {
-  padding-top:rem(40);
+  padding-top:rem(60);
 }
 .entry-wrapper--animated {
   opacity: 0;
