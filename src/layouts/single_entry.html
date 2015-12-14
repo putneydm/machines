@@ -4,26 +4,48 @@ pagetype: entry
 ---
 
 <main class="blog-wrapper">
-<article class="article-card">
-<a href="/">
-<header>
-  <p class="article-card-head"><a href="/" rel="prev">Inevitable Rise of the Machines</a></p>
-  <p class="basic-header">{{ site.tagLine }}</p>
-  <p> ---- </p>
-</header>
-</a>
-  <h1 class="basic-header">{{ page.title | markdownify | strip_html }}</h1>
-    <p><em>{{ page.date | date: "%A, %B %-d, %Y" }}</em></p>
-    <div class="entry-body">
-      {{content}}
-    </div>
-  <footer class="entry-tags">
-      <ul class="inline-list">
-        {% for tag in page.tags %}
-          <li><a href="/tag/{{tag | replace:' ','-' | replace:'&','&amp;' | downcase }}.html" rel="tag">{{ tag }}</a></li>
-        {% endfor %}
-      </ul>
-  </footer>
-  <input class="centered-object" type="button" value="Share This"></input>
-</article>
+
+<div class="flip-container">
+  <div id="flip-card" class="flip-card">
+    <section class="card-side card-front">
+        <header class="article-card-header">
+          <a href="/" rel="prev">
+            <h1 class="article-card-head">
+                Inevitable Rise of the Machines
+            </h1>
+          </a>
+          <h2 class="secondary-head secondary-head-vis">{{ site.tagLine }}</h2>
+          <p> ---- </p>
+        </header>
+        <article>
+        <p class="overline"><em>{{ page.date | date: "%m.%d.%y" }}</em></p>
+        <h1 class="basic-header basic-header-large">{{ page.title | markdownify | strip_html }}</h1>
+          <div class="entry-body">
+            {{content}}
+          </div>
+        <footer class="entry-tags">
+            <ul class="inline-list">
+              {% for tag in page.tags %}
+                <li><a href="/tag/{{tag | replace:' ','-' | replace:'&','&amp;' | downcase }}.html" rel="tag">{{ tag }}</a></li>
+              {% endfor %}
+            </ul>
+        </footer>
+      </article>
+          <input id="share-button" class="centered-object btn" type="button" value="Share this"></input>
+    </section>
+
+    <section class="card-side card-back">
+        <div class="article-card">
+          @@include('partials/twitter_button.html')
+          @@include('partials/site_url.html')
+          @@include('partials/embed_code.html')
+        <div class="button-container">
+          <div class="form-section">
+              <input id="cancel-button" class="centered-object btn" type="button" value="Show entry"></input>
+          </div>
+        </div>
+      </section>
+
+      </div>
+  </div>
 </main>
