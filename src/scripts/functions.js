@@ -8,6 +8,9 @@ var pageFunctions = {
     },
     intializeWatchers: function () {
       var self=this;
+      console.log('watchers');
+
+
     },
     initializeIndex: function () {
         var self=this;
@@ -158,4 +161,5 @@ var pageFunctions = {
            headerHeight = document.getElementById('siteheader').offsetHeight;
        return headerPos = viewportSize - (viewportSize * .05) - headerHeight;
      }
+
   };
