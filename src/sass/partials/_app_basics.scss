@@ -144,13 +144,15 @@
 .siteheader-placeholder--active {
   height:0;
 }
+.article-card-header {
+  user-select:none;
+}
 .article-card-head {
     font-family:$primary-two;
-    font-size:rem(42);
+    font-size:rem(48);
     line-height:90%;
-    margin-bottom:rem(20);
+    margin-bottom:rem(15);
     color:$brand;
-    letter-spacing: 0;
     margin:0 0 rem(10);
     @media screen and (max-width:rem(600))	{
       font-size: rem(36);
