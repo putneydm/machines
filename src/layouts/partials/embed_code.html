@@ -1,0 +1,8 @@
+<div class="form-section">
+  <h3 class="basic-header">Embed this news of humanity's grim future:</h3>
+  <div class="form-container">
+    <textarea id="embed-code" class="embed-code embed-code-large"><blockquote class="machines-embed"><p>{{ page.title | markdownify | strip_html | strip_newlines }}</p>{{ content | escape | strip_newlines }}</blockquote>
+    </textarea>
+    <input id="copy-button" class="centered-object btn btn-small" type="button" value="Copy code"></input>
+  </div>
+</div>

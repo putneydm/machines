@@ -1,0 +1,5 @@
+<div class="form-section">
+<h3 class="basic-header">Enlighten and terrify your Twitter followers:</h3>
+<a class="centered-object fake-btn btn-small" target="_blank" href="https://twitter.com/intent/tweet?text={{ page.title | strip_html | strip_newlines | replace: " ","%20" | replace:"…","..." | replace:"'", "%E2%80%99"}}&hashtags={% for tag in page.tags limit: 2 %}{{tag}},%20{% endfor %}{% for tag in page.tags limit: 1 offset: 2 %}{{tag offset: 2 }}{% endfor %}&via=the-machines&url={{ site.url | replace: ':','%3A' | replace: '/','%2F'}}{{ page.url | replace: ':','%3A' | replace: '/','%2F'}}">
+Tweet this</a>
+</div>
