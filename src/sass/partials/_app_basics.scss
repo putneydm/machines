@@ -397,14 +397,29 @@ a {
   color:$med;
   text-align: center;
 }
-input[type=button] {
+.btn, .fake-btn {
   border:1px solid $brand;
-  padding:rem(20) rem(90);
+  padding:rem(20);
   background-color:$white;
   display:block;
+  width:rem(220);
+  text-align:center;
   @media screen and (max-width:rem(550))	{
     width:100%;
    }
+   &:hover {
+     background-color: $brand;
+     color:white;
+     transition: background-color .2s, color .2s;
+   }
+}
+.btn-small {
+  padding:rem(10);
+  width:rem(150);
+}
+.btn-hidden {
+  display:none;
+  visibility: hidden;
 }
 .page-number {
   text-align:center;
