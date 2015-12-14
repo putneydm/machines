@@ -122,6 +122,14 @@ var pageFunctions = {
             }, 700);
         }
      },
+     testCopy: function () {
+       document.getElementById('embed-code').select();
+       if (!document.execCommand('copy') ) {
+         document.getElementById('url-copy-button').classList.add('btn-hidden');
+         document.getElementById('copy-button').classList.add('btn-hidden');
+       }
+       document.getElementById('embed-code').blur();
+     },
      getHeaderPosition: function () {
        var self=this;
        var viewportSize = window.innerHeight,
