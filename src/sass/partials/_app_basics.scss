@@ -460,3 +460,135 @@ a {
     }
     strong {font-style:normal;}
 }
+
+.flip-container {
+  width:100%;
+	perspective: 2500;
+  transform-perspective: 2500;
+  // height:100vh;
+}
+.flip-card {
+  // height:400px;
+  // position: relative;
+	transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  display: flex;
+  align-items: stretch;
+  box-shadow:1px 1px 12px $xlight;
+  border-radius: rem(5);
+  border:1px solid $xlight;
+  -moz-transform: perspective(2500px);
+  will-change:transform;
+  padding:em(25) rem(20) rem(30);
+  border:1px solid $xlight;
+    @media screen and (max-width:rem(500))	{
+        padding:em(15) rem(15) rem(20);
+     }
+}
+.flip-card--trans {
+  transition: 0.4s cubic-bezier(.55,.02,.45,1.5);
+  -moz-transform: perspective(2500px);
+}
+.flip-card--active {
+  transform: rotateY(180deg);
+}
+.flip-card--activeToo {
+  transform: rotateY(360deg);
+  -moz-transform: perspective(2500px);
+}
+.card-side {
+  // position: absolute;
+  width:100%;
+  backface-visibility: hidden;
+  flex-shrink: 0;
+}
+.card-front {
+  z-index: 2;
+	/* for firefox 31 */
+  transform: rotateY(0deg);
+}
+.card-back {
+  transform: rotateY(180deg);
+  // z-index:-1;
+  position: relative;
+  right:100%;
+}
+.form-section {
+  &::after {
+    content:'-----';
+    text-align:center;
+    display:block;
+    margin:rem(10) 0;
+  }
+  &:last-child {
+    &::after {
+      display: none;
+    }
+  }
+}
+.form-container {
+  width:100%;
+  height:auto;
+  position:relative;
+}
+.form-container--active {
+    &::before {
+      content: 'Copied';
+      height: calc(100% - 55px);
+      position: absolute;
+      top:0;
+      width:100%;
+      font-weight:700;
+      text-align:center;
+      color:white;
+      opacity:0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+}
+.form-container--success {
+  &::before {
+    content: 'Copied';
+    background-color: rgba($brand, .6);
+    text-shadow: 0 0 12px 12px rgba($brand, .6);
+    animation-name: copyResult;
+    animation-duration: 2s;
+  }
+}
+.form-container--fail {
+  &::before {
+    content: 'Whoops! Something went wrong.';
+    background-color: rgba($dark, .6);
+    text-shadow: 0 0 12px 12px rgba($med, .6);
+    animation-name: copyResult;
+    animation-duration: 2s;
+  }
+}
+.embed-code {
+  display:block;
+  width:100%;
+  font-size:rem(15);
+  border:1px solid $light;
+  padding:rem(10);
+  margin:0 0 rem(10);
+}
+.ebed-code-large {
+  height:rem(120);
+}
+.ebed-code-large {
+  height:rem(30);
+}
+.button-container {
+  position:absolute;
+  bottom:0;
+  width:100%;
+  display: flex;
+  justify-content: center;
+}
+@keyframes copyResult {
+    15%  {opacity:1;}
+    65%  {opacity:1}
+    100% {opacity:0;}
+}
