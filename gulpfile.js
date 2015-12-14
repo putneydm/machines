@@ -168,9 +168,9 @@ gulp.task('includes', function() {
 
 gulp.task('deploy', ['sitemap'], function() {
    gulp.src(paths.pages.site)
-   .pipe(htmltidy({doctype: 'html5',
-       hideComments: true,
-       indent: true}))
+  //  .pipe(htmltidy({doctype: 'html5',
+  //      hideComments: true,
+  //      indent: true}))
     .pipe(minifyHTML())
    .pipe(gulp.dest(paths.pages.deploy));
 });
