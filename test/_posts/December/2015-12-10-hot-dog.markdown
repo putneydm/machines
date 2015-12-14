@@ -1,0 +1,6 @@
+---
+layout: single_entry
+pagetype: blog-entry
+title: "Not every Robot gets to be a glistening, efficient killing machine like the T-1000. Someone has to grow up to be the family embarrassment."
+link: http://i.imgur.com/M9B75wo.gifv
+---
