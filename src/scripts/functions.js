@@ -102,6 +102,26 @@ var pageFunctions = {
           reefers.classList.remove('reefers-wrapper--active')
         }
      },
+     handleCardFlip: function () {
+       var self=this;
+      var card = document.getElementById('flip-card');
+      var active = card.classList.contains('flip-card--active');
+
+        if (active == false) {
+          card.classList.add('flip-card--active');
+          card.classList.add('flip-card--trans');
+        }
+        if (active == true) {
+          card.classList.remove('flip-card--active')
+          card.classList.add('flip-card--activeToo');
+
+            setTimeout(function(){
+              card.classList.remove('flip-card--trans');
+              card.classList.remove('flip-card--activeToo');
+
+            }, 700);
+        }
+     },
      getHeaderPosition: function () {
        var self=this;
        var viewportSize = window.innerHeight,
