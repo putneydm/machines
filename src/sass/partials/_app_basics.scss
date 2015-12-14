@@ -54,6 +54,11 @@
       }
   }
 }
+.inline-link {
+  display:inline-block;
+  background-image: none !important;
+  font-weight:700;
+}
 .main-head {
   font-family:$primary-two;
   font-size:rem(80);
