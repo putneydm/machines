@@ -127,6 +127,8 @@
   &:after {
     content:'-----';
     color:white;
+    margin:rem(20) 0 0 0;
+    display:block;
   }
 }
 .siteheader--active {
