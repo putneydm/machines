@@ -14,7 +14,12 @@
     (function() {
       "use strict";
       // pageFunctions.intialize();
+      {% if page.pagetype == 'index' %}
       pageFunctions.initializeIndex();
+      {% endif %}      
+      {% if page.pagetype == 'entry' %}
+      pageFunctions.initializeSinglePage();
+      {% endif %}
     })();
     </script>
 </html>
