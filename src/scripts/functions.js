@@ -155,6 +155,10 @@ var pageFunctions = {
             inputActive('form-container--fail');
         }
      },
+     handleFormAutoSelect: function (el) {
+       var self=pageFunctions;
+       el.select();
+     },
      getHeaderPosition: function () {
        var self=this;
        var viewportSize = window.innerHeight,
