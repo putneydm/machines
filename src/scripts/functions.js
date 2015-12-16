@@ -19,26 +19,43 @@ var pageFunctions = {
     },
     initializeSinglePage: function () {
         var self=this;
+        // document.getElementById('share-button').addEventListener("click", function(){
+        //     self.handleCardFlip();
+        //     self.testCopy();
+        // });
+        // document.getElementById('cancel-button').addEventListener("click", function(){
+        //     self.handleCardFlip()
+        // });
+        // var copyButton = document.getElementById('copy-button');
+        // copyButton.addEventListener("click", function(){
+        //   var embedCode = document.getElementById('embed-code');
+        //   self.handleCopy(copyButton, embedCode);
+        // });
+        // var URLcopyButton = document.getElementById('url-copy-button');
+        // URLcopyButton.addEventListener("click", function(){
+        //   var URLembedCode = document.getElementById('url-embed-code');
+        //   self.handleCopy(URLcopyButton, URLembedCode);
+        // });
+        // document.getElementById('url-embed-code').addEventListener('click', function (e) {
+        //
+        //     console.log('click');
+        //     e = e;
+        //
+        //     e.target.select();
+        //
+        //     var foo = e.target;
+        //
+        //     console.log('foo', foo);
+        //
+        //
+        // });
 
-        document.getElementById('share-button').addEventListener("click", function(){
-            self.handleCardFlip();
-            self.testCopy();
-        });
-        document.getElementById('cancel-button').addEventListener("click", function(){
-            self.handleCardFlip()
-        });
+
+        var container = document.querySelector(".flip-card");
+
+        container.addEventListener("click", self.detectClick, false);
 
 
-        var copyButton = document.getElementById('copy-button');
-        copyButton.addEventListener("click", function(){
-          var embedCode = document.getElementById('embed-code');
-          self.handleCopy(copyButton, embedCode);
-        });
-        var URLcopyButton = document.getElementById('url-copy-button');
-        URLcopyButton.addEventListener("click", function(){
-          var URLembedCode = document.getElementById('url-embed-code');
-          self.handleCopy(URLcopyButton, URLembedCode);
-        });
     },
      detectScroll: function (viewportSize) {
        var self=this,
@@ -55,6 +72,24 @@ var pageFunctions = {
           self.handleHeaderImage(position, viewportSize);
         }
         return position;
+     },
+     detectClick: function (event) {
+            var self=pageFunctions;
+            var element = event.target || event.srcElement;
+            if (element.classList.contains("btn-small") ) {
+                console.log(element.classList.contains("fake-btn"));
+                var embedCode = element.parentElement;
+                self.handleCopy(element, embedCode);
+            }
+            if (element.classList.contains("embed-code") ) {
+              console.log(element);
+                self.handleFormAutoSelect(element);
+                // return true;
+            }
+            if (element.classList.contains("btn-large")) {
+              console.log('show entry');
+              self.handleCardFlip()
+            }
      },
      handleHeaderImage: function (position, headerHeight) {
         var self=this;
@@ -106,22 +141,21 @@ var pageFunctions = {
         }
      },
      handleCardFlip: function () {
-       var self=this;
-      var card = document.getElementById('flip-card');
+      var self=this;
+      var card = document.getElementsByClassName('flip-card')[0];
       var active = card.classList.contains('flip-card--active');
 
         if (active == false) {
-          card.classList.add('flip-card--active');
-          card.classList.add('flip-card--trans');
+          self.testCopy();
+          card.classList.add('flip-card--active', 'flip-card--trans');
+          // card.classList.add('flip-card--trans');
         }
         if (active == true) {
           card.classList.remove('flip-card--active')
           card.classList.add('flip-card--activeToo');
-
             setTimeout(function(){
-              card.classList.remove('flip-card--trans');
-              card.classList.remove('flip-card--activeToo');
-
+              card.classList.remove('flip-card--trans', 'flip-card--activeToo');
+              // card.classList.remove('flip-card--activeToo');
             }, 700);
         }
      },
@@ -133,14 +167,9 @@ var pageFunctions = {
        }
        document.getElementById('embed-code').blur();
      },
-     handleCopy: function(button, embedCode) {
-      //  var embedCode = document.getElementById('embed-code');
-      //  var embedContainer = document.getElementsByClassName('form-container');
-      var embedContainer = button.parentNode;
-
-      console.log('embedCode', embedCode);
-
-       var inputActive = function(style) {
+     handleCopy: function(button, embedContainer) {
+      var embedCode = embedContainer.querySelectorAll(".embed-code")[0];
+      var inputActive = function(style) {
         embedContainer.classList.add('form-container--active', style);
          embedCode.blur();
          setTimeout(function(){
