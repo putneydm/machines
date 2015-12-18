@@ -95,7 +95,8 @@
   line-height:90%;
   margin:0 0 rem(20);
   color:white;
-  transition: color .2s ease-in;
+  transition: color .1s ease-in;
+  transition-delay: .3s;
   // will-change:initial;
   @media screen and (max-width:rem(750))	{
     font-size:rem(70);
@@ -120,7 +121,7 @@
     a {
       color:$brand;
       transition: color .1s ease-in;
-      transition-delay: .4s;
+      transition-delay: .3s;
     }
 }
 .secondary-head {
@@ -133,8 +134,15 @@
 .secondary-head--active {
   color:black;
   transition: color .1s ease-in;
-  transition-delay: .4s;
+  transition-delay: .3s;
 }
+.header-after--active {
+     &:after {
+       color:black;
+       transition: color .1s ease-in;
+       transition-delay: .3s;
+     }
+  }
 .main-head-vis {
   color:$brand;
   span {color:black;}
@@ -220,8 +228,8 @@ a {
 }
 .entry-wrapper--animated {
   opacity: 0;
-  transition: opacity .5s;
-  transition-delay: .2s;
+  transition: opacity .6s;
+  transition-delay: .4s;
   will-change:opacity;
 }
 .entry-wrapper--active {
@@ -235,7 +243,8 @@ a {
      position:static;
      &:after {
        color:black;
-       transition: color .2s;
+       transition: color .1s;
+       transition-delay: .2s;
      }
   }
   .siteheader-placeholder {
@@ -313,6 +322,7 @@ a {
   opacity:0;
   transition: opacity .3s;
   margin:0 0 rem(40);
+  will-change:opacity;
   @media screen and (max-width:rem(1180))	{
     left:calc(((100vw - 700px) / 2) - 150px);
   }
