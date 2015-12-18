@@ -96,21 +96,24 @@ var pageFunctions = {
         var target = document.getElementById('header-image'),
             activeTest = target.classList.contains('header-image--active'),
             targetHead = document.getElementById('main-head'),
-            secondaryHead = document.getElementById('secondary-head');
-            bodyText = document.getElementById('entry-wrapper');
+            secondaryHead = document.getElementById('secondary-head'),
+            bodyText = document.getElementById('entry-wrapper'),
+            header = document.getElementById('siteheader');
 
 
           if (position >= headerHeight * .5 && activeTest === false) {
             target.classList.add('header-image--active');
             targetHead.classList.add('main-head--active');
             secondaryHead.classList.add('secondary-head--active');
-            bodyText.classList.add('entry-wrapper--active')
+            bodyText.classList.add('entry-wrapper--active');
+            header.classList.add('header-after--active');
           }
           if (position <= headerHeight * .5 && activeTest) {
             target.classList.remove('header-image--active');
             targetHead.classList.remove('main-head--active');
             secondaryHead.classList.remove('secondary-head--active');
-            bodyText.classList.remove('entry-wrapper--active')
+            bodyText.classList.remove('entry-wrapper--active');
+            header.classList.remove('header-after--active');
           }
      },
      handleHeaderPinning: function (position, headerPosition, placeholderPosition) {
