@@ -91,6 +91,11 @@ var paths = {
     dist: 'dist/css',
     watch: 'src/sass/**/*.scss'
   },
+  stylesEmbed: {
+    input: 'src/styles_embed/irotm_embed_styles.scss',
+    testing: 'test/embed-css/',
+    dist: 'dist/embed-css/'
+  },
   remove: {
       input: 'test/css/*.css',
       exclude: '!test/css/styles.css'
@@ -232,6 +237,22 @@ gulp.task('css', function() {
       keepBreaks:false
     }))
     .pipe(gulp.dest(paths.styles.dist));
+});
+
+// lints and minifies embed css, moves to testing and dist
+gulp.task('css-embed', function() {
+  gulp.src(paths.stylesEmbed.input)
+  .pipe(scsslint())
+   .pipe(sass())
+   .pipe(autoprefixer({
+      browsers: ['last 2 versions'],
+      cascade: false
+   }))
+    .pipe(gulp.dest(paths.stylesEmbed.testing))
+    .pipe(minifyCSS({
+      keepBreaks:false
+    }))
+    .pipe(gulp.dest(paths.stylesEmbed.dist));
 });
 
 gulp.task('css-inline', function() {
@@ -804,6 +825,7 @@ gulp.task('refresh', ['compile', 'pages', 'images'], function () {
 gulp.task('default', [
   'css',
   'css-inline',
+  'css-embed',
   'pages',
   'layouts',
   'includes',
