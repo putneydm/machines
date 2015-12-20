@@ -833,11 +833,12 @@ gulp.task('default', [
   'includes',
   'collections',
   'concat',
+  'minifyScripts',
 	'svg',
 	'bower',
   // 'posts',
-  'sitemap',
+  'sitemap'
   // 'drafts',
-  'clean'
+  // 'clean'
 	// 'minifyScripts'
 ]);
