@@ -801,6 +801,10 @@ gulp.task('listen', function () {
     gulp.watch(paths.sitemap.input).on('change', function(file) {
       gulp.start('sitemap');
     });
+
+    gulp.watch(paths.stylesEmbed.input).on('change', function(file) {
+      gulp.start('css-embed');
+    });
     // gulp.watch(paths.posts.input).on('change', function(file) {
     //   gulp.start('posts');
     // });
