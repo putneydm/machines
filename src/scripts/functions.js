@@ -134,10 +134,12 @@ var pageFunctions = {
      handleReefer: function(position, headerPosition) {
        var self=this;
        var reefers = document.getElementById('reefers'),
-           activeState = reefers.classList.contains('reefers-wrapper--active');
+           activeState = reefers.classList.contains('reefers-wrapper--active'),
+           links = document.getElementById('main-nav-wrapper');
 
         if (position >= headerPosition * .8 && activeState === false) {
-          reefers.classList.add('reefers-wrapper--active')
+          reefers.classList.add('reefers-wrapper--active');
+          links.classList.add('main-nav-wrapper--active');
         }
         if (position <= headerPosition * .8 && activeState === true) {
           reefers.classList.remove('reefers-wrapper--active')

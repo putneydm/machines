@@ -91,6 +91,11 @@ var paths = {
     dist: 'dist/css',
     watch: 'src/sass/**/*.scss'
   },
+  stylesEmbed: {
+    input: 'src/styles_embed/irotm_embed_styles.scss',
+    testing: 'test/embed-css/',
+    dist: 'dist/embed-css/'
+  },
   remove: {
       input: 'test/css/*.css',
       exclude: '!test/css/styles.css'
@@ -174,8 +179,6 @@ gulp.task('deploy', ['sitemap'], function() {
     .pipe(minifyHTML())
    .pipe(gulp.dest(paths.pages.deploy));
 });
-
-
 gulp.task('sitemap', function() {
    gulp.src(paths.sitemap.input)
    .pipe(gulp.dest(paths.sitemap.output));
@@ -189,7 +192,7 @@ gulp.task('sitemap', function() {
 // concatenates scripts, but not items in exclude folder. includes vendor folder
 gulp.task('concat', function() {
    console.log(filename);
-   gulp.src(paths.scripts.input)
+   gulp.src([paths.scripts.input, '!' + paths.scripts.exclude])
    .pipe(concat(scriptname)) // renames to file w/ todays date for cachebusting
    .pipe(replace(/this\.loadCSS.*/g, 'this.loadCSS(\'/css/' + filename + '\');')) // adds cachebusted name of css to css lazyload
    .pipe(gulp.dest(paths.scripts.testing))
@@ -232,6 +235,22 @@ gulp.task('css', function() {
       keepBreaks:false
     }))
     .pipe(gulp.dest(paths.styles.dist));
+});
+
+// lints and minifies embed css, moves to testing and dist
+gulp.task('css-embed', function() {
+  gulp.src(paths.stylesEmbed.input)
+  .pipe(scsslint())
+   .pipe(sass())
+   .pipe(autoprefixer({
+      browsers: ['last 2 versions'],
+      cascade: false
+   }))
+    .pipe(gulp.dest(paths.stylesEmbed.testing))
+    .pipe(minifyCSS({
+      keepBreaks:false
+    }))
+    .pipe(gulp.dest(paths.stylesEmbed.dist));
 });
 
 gulp.task('css-inline', function() {
@@ -782,6 +801,10 @@ gulp.task('listen', function () {
     gulp.watch(paths.sitemap.input).on('change', function(file) {
       gulp.start('sitemap');
     });
+
+    gulp.watch(paths.stylesEmbed.input).on('change', function(file) {
+      gulp.start('css-embed');
+    });
     // gulp.watch(paths.posts.input).on('change', function(file) {
     //   gulp.start('posts');
     // });
@@ -804,16 +827,18 @@ gulp.task('refresh', ['compile', 'pages', 'images'], function () {
 gulp.task('default', [
   'css',
   'css-inline',
+  'css-embed',
   'pages',
   'layouts',
   'includes',
   'collections',
   'concat',
+  'minifyScripts',
 	'svg',
 	'bower',
   // 'posts',
-  'sitemap',
+  'sitemap'
   // 'drafts',
-  'clean'
+  // 'clean'
 	// 'minifyScripts'
 ]);
