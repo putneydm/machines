@@ -512,6 +512,7 @@ a {
   width:100%;
   backface-visibility: hidden;
   flex-shrink: 0;
+  padding-bottom: rem(65);
 }
 .card-front {
   z-index: 2;
