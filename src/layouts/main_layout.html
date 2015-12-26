@@ -16,9 +16,12 @@
       // pageFunctions.intialize();
       {% if page.pagetype == 'index' %}
       pageFunctions.initializeIndex();
-      {% endif %}      
+      {% endif %}
       {% if page.pagetype == 'entry' %}
       pageFunctions.initializeSinglePage();
+      {% endif %}
+      {% if page.pagetype == 'search' %}
+      pageFunctions.intializeSearch();
       {% endif %}
     })();
     </script>
