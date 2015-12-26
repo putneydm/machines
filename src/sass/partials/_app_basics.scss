@@ -600,3 +600,25 @@ a {
     65%  {opacity:1}
     100% {opacity:0;}
 }
+.search-wrapper {
+  position: fixed;
+  top:0;
+  right:0;
+  transform: scale(1%);
+  padding:rem(20);
+}
+.search-wrapper--active {
+  transform: scale(100%);
+  width:100vw;
+  min-height:100vh;
+  height:auto;
+  border:1px solid red;
+  background-color: white;
+  overflow-y: scroll;
+}
+.results-wrapper {
+  border:1px solid blue;
+  height:1000px;
+  position:relative;
+  overflow-y: scroll;
+}
