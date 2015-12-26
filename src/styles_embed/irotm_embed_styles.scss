@@ -1,11 +1,56 @@
+@import '../sass/bourbon/bourbon';
+@import '../sass/partials/util_variables';
+@import '../sass/partials/util_mixins';
 
+%font-stack {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
 .machines-embed {
   border:1px solid green;
-
-
 }
-.machines-wrapper {
-  border:1px solid blue;
-
-
+article.machines-wrapper {
+  padding:rem(20);
+  box-shadow:1px 1px 12px $xlight;
+  border-radius:rem(5);
+  border:1px solid $xlight;
+  @extend %font-stack;
+    figure.machines-embed-branding {
+      margin:0
+    }
+    img.machines-embed-image {
+      width:100%;
+      max-width:rem(480);
+      margin:0 0 .75rem 0;
+      background-color:transparent;
+      border:0;
+      padding:0;
+    }
+    h3, h3.machines-embed-headline {
+      @extend %font-stack;
+      font-weight:700;
+      margin:0 0 rem(15);
+      font-size:rem(18);
+    }
+    p.machines-embed-text {
+      @extend %font-stack;
+      font-weight:300;
+      line-height:150%;
+      font-size:1rem;
+      letter-spacing:.02rem;
+    }
+    blockquote.machines-embed-blockquote {
+        @extend %font-stack;
+        font-weight:300;
+        line-height:140%;
+        font-size:1rem;
+        font-weight:300;
+        letter-spacing:.02rem;
+        border-left:4px solid $brand-light;
+        margin:rem(15) rem(15) rem(15) 0;
+        padding-left:rem(20);
+    }
+    a.machines-embed-link {
+      @include underscore-body ($brand-light, 30);
+      text-decoration: none;
+    }
 }
