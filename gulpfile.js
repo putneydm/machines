@@ -808,6 +808,10 @@ gulp.task('listen', function () {
     // gulp.watch(paths.posts.input).on('change', function(file) {
     //   gulp.start('posts');
     // });
+    gulp.watch(paths.scripts.exclude).on('change', function(file) {
+      gulp.start('minifyScripts');
+        // gulp.start('browserSync');
+    });
     gulp.watch(paths.collections.input).on('change', function(file) {
       gulp.start('collections');
         // gulp.start('browserSync');
@@ -840,5 +844,4 @@ gulp.task('default', [
   'sitemap'
   // 'drafts',
   // 'clean'
-	// 'minifyScripts'
 ]);
