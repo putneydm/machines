@@ -9,8 +9,6 @@ var pageFunctions = {
     intializeWatchers: function () {
       var self=this;
       console.log('watchers');
-
-
     },
     initializeIndex: function () {
         var self=this;
@@ -19,44 +17,94 @@ var pageFunctions = {
     },
     initializeSinglePage: function () {
         var self=this;
-        // document.getElementById('share-button').addEventListener("click", function(){
-        //     self.handleCardFlip();
-        //     self.testCopy();
-        // });
-        // document.getElementById('cancel-button').addEventListener("click", function(){
-        //     self.handleCardFlip()
-        // });
-        // var copyButton = document.getElementById('copy-button');
-        // copyButton.addEventListener("click", function(){
-        //   var embedCode = document.getElementById('embed-code');
-        //   self.handleCopy(copyButton, embedCode);
-        // });
-        // var URLcopyButton = document.getElementById('url-copy-button');
-        // URLcopyButton.addEventListener("click", function(){
-        //   var URLembedCode = document.getElementById('url-embed-code');
-        //   self.handleCopy(URLcopyButton, URLembedCode);
-        // });
-        // document.getElementById('url-embed-code').addEventListener('click', function (e) {
-        //
-        //     console.log('click');
-        //     e = e;
-        //
-        //     e.target.select();
-        //
-        //     var foo = e.target;
-        //
-        //     console.log('foo', foo);
-        //
-        //
-        // });
-
-
         var container = document.querySelector(".flip-card");
 
         container.addEventListener("click", self.detectClick, false);
-
-
     },
+    intializeSearch: function () {
+      var self=this;
+      console.log('search');
+
+      self.getJSON();
+
+      var searchField = document.getElementById('search-field');
+
+      var resultsContainer = document.getElementById('results-wrapper');
+
+      searchField.onkeydown = function() {
+        var searchResults = Array.prototype.slice.call(document.getElementsByClassName('element-link'));
+
+          searchResults.forEach(function (item) {
+            resultsContainer.removeChild(item);
+          });
+
+        };
+      searchField.addEventListener("keyup", function () {
+        var userInput = searchField.value;
+        // console.log(foo);
+        if (userInput && userInput.length >2 ){
+          var searchTerm = new RegExp('\\b' + userInput + '\\b','gi');
+          console.log('searchTerm', searchTerm);
+          self.doSearch(searchTerm, userInput);
+      }
+      });
+    },
+    doSearch: function (text, raw){
+      var self=this;
+      var array = self.searchArray;
+
+      array.forEach(logArrayElements);
+
+      function logArrayElements (element, index, array) {
+        if (element.title.match(text)) {
+        }
+        if (element.post.match(text)) {
+          var toArray = element.post.split(' ');
+
+          function reIndexOf (rx, array) {
+            for (var i in array) {
+              if (array[i].toString().match(rx)) {
+                return i;
+              }
+            }
+          return -1;
+          };
+
+          var space = raw.match(/\s/g);
+          // find the locatuon of search item
+          if (space) {
+            var multiWord = raw.split(' ');
+            var textToo = new RegExp(multiWord[0],'gi');
+            var foo = (reIndexOf(textToo, toArray)) * 1;
+          }
+          if (!space) {
+            var foo = (reIndexOf(text, toArray)) * 1;
+          }
+          if (foo > 13) {
+            arrayTrim = foo - 13;
+            var toArray = toArray.slice(arrayTrim, toArray.length);
+          }
+          var multiWord = (element.post.match(text));
+          if (multiWord.length === 1) {
+              var toArray = toArray.slice(0, 25);
+          }
+
+          var resultsWrapper = document.getElementById('results-wrapper');
+          var singleResultWrapper = document.createElement("DIV");
+          singleResultWrapper.classList.add('search-result');
+          var singleResultText = document.createElement('P');
+          var singleResultLink = document.createElement('A');
+          singleResultLink.setAttribute('HREF', element.link);
+          singleResultLink.setAttribute('CLASS', 'element-link');
+
+          singleResultText.innerHTML = toArray.join(' ').replace(text, "<strong>" + raw + '</strong>') + ' &#8230;';
+
+          singleResultWrapper.appendChild(singleResultText);
+          singleResultLink.appendChild(singleResultWrapper);
+          resultsWrapper.appendChild(singleResultLink);
+        }
+      };
+},
      detectScroll: function (viewportSize) {
        var self=this,
            position;
@@ -198,6 +246,25 @@ var pageFunctions = {
        var viewportSize = window.innerHeight,
            headerHeight = document.getElementById('siteheader').offsetHeight;
        return headerPos = viewportSize - (viewportSize * .05) - headerHeight;
-     }
+     },
+     searchArray: {},
+     getJSON: function () {
+       var self=this;
 
+       var xmlhttp = new XMLHttpRequest();
+       var url = "/site-feed.json";
+
+       xmlhttp.onreadystatechange = function() {
+           if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+               var myArr = JSON.parse(xmlhttp.responseText);
+              myFunc (myArr);
+           }
+       };
+       xmlhttp.open("GET", url, true);
+       xmlhttp.send();
+
+       function myFunc(arr) {
+         self.searchArray = arr;
+       }
+     }
   };
