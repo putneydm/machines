@@ -367,8 +367,9 @@ a {
     content:" ";
     position: absolute;
     z-index:-1;
-    background-color: transparent;
-    transition: color .3s;
+    opacity:0;
+    transition: opacity .3s;
+    will-change:opacity;
   }
 }
 .header-image--active {
@@ -376,7 +377,8 @@ a {
     }
     &::after {
       background-color: white;
-      transition: color .3s;
+      transition: opacity .3s;
+      opacity:1;
     }
 }
 .entry-container {
