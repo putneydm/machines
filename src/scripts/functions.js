@@ -32,80 +32,148 @@ var pageFunctions = {
       var resultsContainer = document.getElementById('results-wrapper');
 
       searchField.onkeydown = function() {
-        var searchResults = Array.prototype.slice.call(document.getElementsByClassName('element-link'));
-
-          searchResults.forEach(function (item) {
-            resultsContainer.removeChild(item);
-          });
-
+          self.clearSearchResults();
         };
       searchField.addEventListener("keyup", function () {
         var userInput = searchField.value;
         // console.log(foo);
         if (userInput && userInput.length >2 ){
-          var searchTerm = new RegExp('\\b' + userInput + '\\b','gi');
-          console.log('searchTerm', searchTerm);
-          self.doSearch(searchTerm, userInput);
+          // var searchTerm = new RegExp('\\b' + userInput + '\\b','gi');
+          self.doSearch(userInput);
+          self.quantifyResults();
       }
       });
     },
-    doSearch: function (text, raw){
-      var self=this;
-      var array = self.searchArray;
+doSearch: function (userInput){
+  var self=this;
+  var array = self.searchArray;
+  var searchTerm = new RegExp('\\b' + userInput + '\\b','gi');
 
-      array.forEach(logArrayElements);
+  array.forEach(logArrayElements);
 
-      function logArrayElements (element, index, array) {
-        if (element.title.match(text)) {
-        }
-        if (element.post.match(text)) {
-          var toArray = element.post.split(' ');
+  function logArrayElements (element, index, array) {
 
-          function reIndexOf (rx, array) {
-            for (var i in array) {
-              if (array[i].toString().match(rx)) {
-                return i;
-              }
-            }
-          return -1;
-          };
+    var toArrayHead = element.title.split(' ');
+    var toArrayBody = element.post.split(' ');
+    var entryTextTruncate = self.handleResultText(toArrayBody, userInput, searchTerm, element.post);
 
-          var space = raw.match(/\s/g);
-          // find the locatuon of search item
-          if (space) {
-            var multiWord = raw.split(' ');
-            var textToo = new RegExp(multiWord[0],'gi');
-            var foo = (reIndexOf(textToo, toArray)) * 1;
-          }
-          if (!space) {
-            var foo = (reIndexOf(text, toArray)) * 1;
-          }
-          if (foo > 13) {
-            arrayTrim = foo - 13;
-            var toArray = toArray.slice(arrayTrim, toArray.length);
-          }
-          var multiWord = (element.post.match(text));
-          if (multiWord.length === 1) {
-              var toArray = toArray.slice(0, 25);
-          }
+    // console.log(element.title);
 
-          var resultsWrapper = document.getElementById('results-wrapper');
-          var singleResultWrapper = document.createElement("DIV");
-          singleResultWrapper.classList.add('search-result');
-          var singleResultText = document.createElement('P');
-          var singleResultLink = document.createElement('A');
-          singleResultLink.setAttribute('HREF', element.link);
-          singleResultLink.setAttribute('CLASS', 'element-link');
-
-          singleResultText.innerHTML = toArray.join(' ').replace(text, "<strong>" + raw + '</strong>') + ' &#8230;';
-
-          singleResultWrapper.appendChild(singleResultText);
-          singleResultLink.appendChild(singleResultWrapper);
-          resultsWrapper.appendChild(singleResultLink);
-        }
-      };
+    if (element.post.match(searchTerm) && element.title.match(searchTerm) ) {
+      var entryHead = self.highlightSearchKeyword(toArrayHead, userInput);
+      var entryText = self.highlightSearchKeyword(entryTextTruncate, userInput);
+    }
+    else if (element.title.match(searchTerm) && !element.post.match(searchTerm)) {
+      var entryHead = self.highlightSearchKeyword(toArrayHead, userInput);
+      var entryText = entryTextTruncate.join(' ');
+    }
+    else if (element.post.match(searchTerm) && !element.title.match(searchTerm) ) {
+      var entryText = self.highlightSearchKeyword(entryTextTruncate, userInput);
+      var entryHead = element.title;
+    }
+    if (entryHead) {
+      self.buildSearchResults(entryHead, entryText, element.link);
+    }
+  };
 },
-     detectScroll: function (viewportSize) {
+findLocationOfMatch: function (rx, array) {
+  var self=this;
+  for (var i in array) {
+    if (array[i].toString().match(rx)) {
+      return i;
+    }
+  }
+  return -1;
+},
+handleResultText: function (toArray, raw, text, element) {
+  var self=this;
+  var space = raw.match(/\s/g);
+  // find the locatuon of search item
+  if (space) {
+    var multiWord = raw.split(' ');
+    var multiWordFirstWord = new RegExp(multiWord[0],'gi');
+    var matchLocation = (self.findLocationOfMatch(multiWordFirstWord, toArray)) * 1;
+  }
+  if (!space) {
+    var matchLocation = (self.findLocationOfMatch(text,toArray)) * 1;
+  }
+  if (matchLocation > 13) {
+    arrayTrim = matchLocation - 13;
+    var toArray = toArray.slice(arrayTrim, toArray.length);
+  }
+  var multiMatch = (element.match(text));
+  if (!multiMatch || multiMatch.length === 1) {
+      var toArray = toArray.slice(0, 25);
+  }
+  return toArray;
+},
+highlightSearchKeyword:  function (array, term) {
+  var self=this;
+    var text = new RegExp('\\b' + term + '\\b','gi');
+    var match = array.join(' ').match(text);
+
+    if (match && match.length === 1) {
+    return array.join(' ').replace(text, "<strong>" + match[0] + '</strong>');
+    }
+    else if (match && match.length > 1) {
+
+      // array.forEach (function (el) {
+      //   // var fooBar = array.indexOf(term);
+      //   // console.log('location', fooBar, el);
+      //   console.log(el);
+      // });
+
+      return array.join(' ').replace(text, "<strong>" + term + '</strong>');
+    }
+},
+buildSearchResults: function (head, text, link) {
+  var self=this;
+
+  var resultsWrapper = document.getElementById('results-wrapper');
+
+  var singleResultWrapper = document.createElement("DIV");
+  singleResultWrapper.classList.add('search-result');
+
+  var singleResultHed = document.createElement('H2');
+  singleResultHed.classList.add("basic-header");
+  singleResultHed.classList.add('basic-header-large');
+  singleResultHed.innerHTML = head;
+
+  var singleResultText = document.createElement('P');
+  singleResultText.innerHTML = text;
+
+  var singleResultLink = document.createElement('A');
+  singleResultLink.setAttribute('HREF', link);
+  singleResultLink.setAttribute('CLASS', 'element-link');
+
+  singleResultWrapper.appendChild(singleResultHed);
+  singleResultWrapper.appendChild(singleResultText);
+  singleResultLink.appendChild(singleResultWrapper);
+  resultsWrapper.appendChild(singleResultLink);
+
+},
+clearSearchResults: function () {
+  var self=this;
+  var display = document.getElementById('results-count');
+  display.innerHTML = '';
+  var resultsContainer = document.getElementById('results-wrapper');
+  var searchResults = Array.prototype.slice.call(document.getElementsByClassName('element-link'));
+  searchResults.forEach(function (item) {
+    resultsContainer.removeChild(item);
+  });
+},
+quantifyResults: function () {
+  var self=this;
+  var display = document.getElementById('results-count');
+  var resultCount = document.getElementsByClassName('search-result').length;
+  if (resultCount === 1) {
+    display.innerHTML = "We found " + resultCount + "  entry";
+  }
+  else {
+    display.innerHTML = "We found " + resultCount + " entries";
+  }
+},
+detectScroll: function (viewportSize) {
        var self=this,
            position;
         document.onscroll = function() {
@@ -248,6 +316,7 @@ var pageFunctions = {
        return headerPos = viewportSize - (viewportSize * .05) - headerHeight;
      },
      searchArray: {},
+     matchArray: [ ],
      getJSON: function () {
        var self=this;
 
