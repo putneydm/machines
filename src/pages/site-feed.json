@@ -4,7 +4,8 @@ layout: null
 [{% for post in site.posts %}
     {
       "title": "{{ post.title | strip_html | xml_escape  }}",
-      "post": "{{post.content | strip_html | xml_escape | strip_newlines | remove: '&lt;p&gt;' | replace: '&lt;/p&gt;', ' ' | &lt;/blockquote&gt; }}",
-      "link": "{{post.url | xml_escape}}"
+      "post": "{{post.content | strip_html |  newline_to_br | xml_escape | replace: '&lt;br /&gt;', ' ' | remove: '&lt;p&gt;' | replace: '&lt;/p&gt;', ' ' | replace: '&lt;/blockquote&gt;', ' ' | strip_newlines }}",
+      "link": "{{post.url | xml_escape}}",
+      "id": "{{post.title | truncate: '20', '-' | downcase | replace:' ', '-' | remove:',' | remove:'"' | remove: '\''}}{{post.date | date: '%m-%d-%y'}}"
     }{% unless forloop.last %},{% endunless %}
   {% endfor %}]
