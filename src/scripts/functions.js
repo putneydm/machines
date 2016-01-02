@@ -41,7 +41,6 @@ var pageFunctions = {
     initializeSinglePage: function () {
         var self=this;
         var container = document.querySelector(".flip-card");
-
         container.addEventListener("click", self.detectClick, false);
     },
     initializeBlogPage: function () {
@@ -52,10 +51,9 @@ var pageFunctions = {
     },
     intializeSearch: function () {
       var self=this;
-      console.log('search');
-
       self.getJSON();
-
+      self.intializeSearchField();
+    },
     intializeSearchField: function () {
       var self=this;
       var searchField = document.getElementById('search-field');
@@ -130,19 +128,14 @@ var pageFunctions = {
   },
 doSearch: function (userInput){
   var self=this;
+  var array;
   var array = self.searchArray;
   var searchTerm = new RegExp('\\b' + userInput + '\\b','gi');
-
   array.forEach(logArrayElements);
-
-  function logArrayElements (element, index, array) {
-
+  function logArrayElements (element) {
     var toArrayHead = element.title.split(' ');
     var toArrayBody = element.post.split(' ');
     var entryTextTruncate = self.handleResultText(toArrayBody, userInput, searchTerm, element.post);
-
-    // console.log(element.title);
-
     if (element.post.match(searchTerm) && element.title.match(searchTerm) ) {
       var entryHead = self.highlightSearchKeyword(toArrayHead, userInput);
       var entryText = self.highlightSearchKeyword(entryTextTruncate, userInput);
@@ -196,17 +189,10 @@ highlightSearchKeyword:  function (array, term) {
     var text = new RegExp('\\b' + term + '\\b','gi');
     var match = array.join(' ').match(text);
 
-    if (match && match.length === 1) {
-    return array.join(' ').replace(text, "<strong>" + match[0] + '</strong>');
+    if (match != undefined && match.length === 1) {
+      return array.join(' ').replace(text, "<strong>" + match[0] + '</strong>');
     }
-    else if (match && match.length > 1) {
-
-      // array.forEach (function (el) {
-      //   // var fooBar = array.indexOf(term);
-      //   // console.log('location', fooBar, el);
-      //   console.log(el);
-      // });
-
+    else if (match != undefined && match.length > 1) {
       return array.join(' ').replace(text, "<strong>" + term + '</strong>');
     }
 },
@@ -234,10 +220,10 @@ buildSearchResults: function (head, text, link) {
   singleResultWrapper.appendChild(singleResultText);
   singleResultLink.appendChild(singleResultWrapper);
   resultsWrapper.appendChild(singleResultLink);
-
 },
 clearSearchResults: function () {
   var self=this;
+  var searchField = document.getElementById('search-field');
   var display = document.getElementById('results-count');
   display.innerHTML = '';
   var resultsContainer = document.getElementById('results-wrapper');
@@ -245,6 +231,7 @@ clearSearchResults: function () {
   searchResults.forEach(function (item) {
     resultsContainer.removeChild(item);
   });
+  searchField.focus();
 },
 quantifyResults: function () {
   var self=this;
@@ -290,17 +277,13 @@ detectScrollIndex: function (viewportSize) {
             var self=pageFunctions;
             var element = event.target || event.srcElement;
             if (element.classList.contains("btn-small") ) {
-                console.log(element.classList.contains("fake-btn"));
                 var embedCode = element.parentElement;
                 self.handleCopy(element, embedCode);
             }
             if (element.classList.contains("embed-code") ) {
-              console.log(element);
                 self.handleFormAutoSelect(element);
-                // return true;
             }
             if (element.classList.contains("btn-large")) {
-              console.log('show entry');
               self.handleCardFlip()
             }
      },
@@ -348,14 +331,21 @@ detectScrollIndex: function (viewportSize) {
        var self=this;
        var reefers = document.getElementById('reefers'),
            activeState = reefers.classList.contains('reefers-wrapper--active'),
-           links = document.getElementById('main-nav-wrapper');
+           links =
+           document.getElementById('main-nav-wrapper');
+           var linksTest = links.classList.contains('main-nav-wrapper--animatible');
 
         if (position >= headerPosition * .8 && activeState === false) {
           reefers.classList.add('reefers-wrapper--active');
-          links.classList.add('main-nav-wrapper--active');
+          if (linksTest) {
+          links.classList.toggle('main-nav-wrapper--active');
+        }
         }
         if (position <= headerPosition * .8 && activeState === true) {
-          reefers.classList.remove('reefers-wrapper--active')
+          reefers.classList.remove('reefers-wrapper--active');
+          if (linksTest) {
+          links.classList.toggle('main-nav-wrapper--active');
+          }
         }
      },
      handleCardFlip: function () {
@@ -366,14 +356,12 @@ detectScrollIndex: function (viewportSize) {
         if (active == false) {
           self.testCopy();
           card.classList.add('flip-card--active', 'flip-card--trans');
-          // card.classList.add('flip-card--trans');
         }
         if (active == true) {
           card.classList.remove('flip-card--active')
           card.classList.add('flip-card--activeToo');
             setTimeout(function(){
               card.classList.remove('flip-card--trans', 'flip-card--activeToo');
-              // card.classList.remove('flip-card--activeToo');
             }, 700);
         }
      },
@@ -432,7 +420,6 @@ detectScrollIndex: function (viewportSize) {
        };
        xmlhttp.open("GET", url, true);
        xmlhttp.send();
-
        function myFunc(arr) {
          self.searchArray = arr;
        }
