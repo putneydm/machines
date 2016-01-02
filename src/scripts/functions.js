@@ -89,6 +89,14 @@ var pageFunctions = {
         navWrapper.classList.toggle('main-nav-wrapper--static');
       }
     },
+  handleKeyDown: function () {
+    var self=this;
+    var keyPress=event.keyCode? event.keyCode : event.charCode;
+    if (keyPress === 27) {
+      self.handleSearchDisplay();
+    }
+    self.clearSearchResults();
+  },
 doSearch: function (userInput){
   var self=this;
   var array = self.searchArray;
