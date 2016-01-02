@@ -1,4 +1,8 @@
+{% if paginator.page == 1 %}
+<nav id="main-nav-wrapper" class="main-nav-wrapper main-nav-wrapper--animatible">
+{% else %}
 <nav id="main-nav-wrapper" class="main-nav-wrapper">
+{% endif %}
   <a id="search-button" class="main-nav" href="/search/" rel="next">
     <svg class="menu-icn active-state">
       <use xlink:href="#search" />
