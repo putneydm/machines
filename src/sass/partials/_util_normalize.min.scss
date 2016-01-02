@@ -12,41 +12,43 @@ body {
     font-family:$primary;
     font-size:rem(18);
     font-weight:400;
+    background-color:$white;
 }
 
 article,
 aside,
-details,
-figcaption,
+// details,
+// figcaption,
 figure,
 footer,
 header,
 hgroup,
 main,
-menu,
+// menu,
 nav,
 section,
-summary {
+// summary
+{
     display: block
 }
 
-audio,
-canvas,
-progress,
-video {
-    display: inline-block;
-    vertical-align: baseline
-}
+// audio,
+// canvas,
+// progress,
+// video {
+//     display: inline-block;
+//     vertical-align: baseline
+// }
 
-audio:not([controls]) {
-    display: none;
-    height: 0
-}
-
-[hidden],
-template {
-    display: none
-}
+// audio:not([controls]) {
+//     display: none;
+//     height: 0
+// }
+//
+// [hidden],
+// template {
+//     display: none
+// }
 
 a {
     background-color: transparent;
@@ -57,67 +59,63 @@ a:active,
 a:hover {
     outline: 0
 }
-
-abbr[title] {
-    border-bottom: 1px dotted
-}
-
+// abbr[title] {
+//     border-bottom: 1px dotted
+// }
 b,
 strong {
     font-weight: 700
 }
-
-dfn {
-    font-style: italic
-}
+//
+// dfn {
+//     font-style: italic
+// }
 
 h1 {
     font-size: 2em;
     margin: .67em 0
 }
-
-mark {
-    background: #ff0;
-    color: #000
-}
-
-small {
-    font-size: 80%
-}
-
-sub,
-sup {
-    font-size: 75%;
-    line-height: 0;
-    position: relative;
-    vertical-align: baseline
-}
-
-sup {
-    top: -.5em
-}
-
-sub {
-    bottom: -.25em
-}
+//
+// mark {
+//     background: #ff0;
+//     color: #000
+// }
+//
+// small {
+//     font-size: 80%
+// }
+//
+// sub,
+// sup {
+//     font-size: 75%;
+//     line-height: 0;
+//     position: relative;
+//     vertical-align: baseline
+// }
+//
+// sup {
+//     top: -.5em
+// }
+//
+// sub {
+//     bottom: -.25em
+// }
 
 img {
     border: 0
 }
 
 svg:not(:root) {
-    overflow: hidden
+    overflow: hidden;
 }
-
 figure {
-    margin: 1em 40px
+    margin: 0;
 }
-
-hr {
-    -moz-box-sizing: content-box;
-    box-sizing: content-box;
-    height: 0
-}
+// hr {
+//     -moz-box-sizing: content-box;
+//     box-sizing: content-box;
+//     height: 0
+// }
 
 pre {
     overflow: auto
@@ -173,59 +171,65 @@ input {
     line-height: normal
 }
 
-input[type=checkbox],
-input[type=radio] {
-    box-sizing: border-box;
-    padding: 0
-}
-
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    height: auto
-}
-
-input[type=search] {
-    -webkit-appearance: textfield;
-    -moz-box-sizing: content-box;
-    -webkit-box-sizing: content-box;
-    box-sizing: content-box
-}
-
-input[type=search]::-webkit-search-cancel-button,
-input[type=search]::-webkit-search-decoration {
-    -webkit-appearance: none
-}
-
-fieldset {
-    border: 1px solid silver;
-    margin: 0 2px;
-    padding: .35em .625em .75em
-}
-
-legend {
-    border: 0;
-    padding: 0
-}
-
-textarea {
-    overflow: auto
-}
-
-optgroup {
-    font-weight: 700
-}
-
-table {
-    border-collapse: collapse;
-    border-spacing: 0
-}
-
-td,
-th {
-    padding: 0
-}
+// input[type=checkbox],
+// input[type=radio] {
+//     box-sizing: border-box;
+//     padding: 0
+// }
+//
+// input[type=number]::-webkit-inner-spin-button,
+// input[type=number]::-webkit-outer-spin-button {
+//     height: auto
+// }
+//
+// input[type=search] {
+//     -webkit-appearance: textfield;
+//     -moz-box-sizing: content-box;
+//     -webkit-box-sizing: content-box;
+//     box-sizing: content-box
+// }
+//
+// input[type=search]::-webkit-search-cancel-button,
+// input[type=search]::-webkit-search-decoration {
+//     -webkit-appearance: none
+// }
+//
+// fieldset {
+//     border: 1px solid silver;
+//     margin: 0 2px;
+//     padding: .35em .625em .75em
+// }
+//
+// legend {
+//     border: 0;
+//     padding: 0
+// }
+//
+// textarea {
+//     overflow: auto
+// }
+//
+// optgroup {
+//     font-weight: 700
+// }
+//
+// table {
+//     border-collapse: collapse;
+//     border-spacing: 0
+// }
+//
+// td,
+// th {
+//     padding: 0
+// }
 ul {
   list-style-type:none;
   margin:0;
   padding:0;
+}
+blockquote {
+  margin:rem(25);
+  @media screen and (max-width:rem(600))	{
+    margin:rem(15);
+  }
 }
