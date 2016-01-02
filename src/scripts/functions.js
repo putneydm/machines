@@ -16,8 +16,11 @@ var pageFunctions = {
     },
     initializeIndex: function () {
         var self=this;
+        console.log('index');
         viewportSize = window.innerHeight;
-        self.detectScroll(viewportSize);
+        self.detectScrollIndex(viewportSize);
+        self.setBackground();
+    },
     setBackground: function () {
       var self=this;
       viewportSize = window.innerWidth;
