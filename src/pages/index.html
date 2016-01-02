@@ -5,7 +5,7 @@ pagetype: index
 {% if paginator.page == 1 %}
 @@include('partials/header_image.html')
 <main class="blog-wrapper">
-  {% else %}
+{% else %}
 <main class="blog-wrapper blog-wrapper-static">
 {% endif %}
   @@include('partials/site_header.html')
