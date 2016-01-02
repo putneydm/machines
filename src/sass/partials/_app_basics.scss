@@ -9,9 +9,6 @@
   width:0px;
   overflow:hidden;
 }
-.spacer-4 {
-  height:rem(40);
-  width:100%;
 .no-scroll {
   overflow:hidden;
   height:100vh;
@@ -61,6 +58,8 @@
   position: fixed;
   bottom:5vh;
   max-width:rem(750);
+  transform:translateZ(0);
+
   @media screen and (max-width:rem(1080))	{
     max-width:rem(600);
   }
@@ -125,7 +124,12 @@
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 500;
   letter-spacing: 0;
-  font-size:rem(20)
+  font-size:rem(20);
+  @media screen and (max-width:rem(600))	{
+    margin:rem(5) 0;
+    font-size:rem(18);
+
+  }
 }
 .secondary-head--active {
   color:black;
@@ -148,6 +152,12 @@
 }
 .article-card-header {
   user-select:none;
+    p {
+      @media screen and (max-width:rem(600))	{
+        margin:rem(5) 0 rem(8);
+      }
+
+    }
 }
 .article-card-head {
     font-family:$primary-two;
@@ -158,6 +168,7 @@
     margin:0 0 rem(10);
     @media screen and (max-width:rem(600))	{
       font-size: rem(36);
+      margin-bottom:rem(5);
      }
     @media screen and (max-width:rem(400))	{
       font-size: rem(30);
@@ -181,8 +192,9 @@
 .basic-header-large {
   font-size:rem(22);
   margin: 0 0 rem(10);
-    @media screen and (max-width:rem(500))	{
+    @media screen and (max-width:rem(600))	{
       font-size:rem(20);
+      line-height: 120%;
      }
 }
 .overline {
@@ -190,10 +202,14 @@
 }
 .entry-body {
   margin:0 0 rem(35);
+  @media screen and (max-width:rem(600))	{
+  margin:0 0 rem(20);
+  }
   p {
     line-height:150%;
-    @media screen and (max-width:rem(500))	{
+    @media screen and (max-width:rem(600))	{
       font-size:rem(17);
+      line-height:130%;
      }
       a {
         @include underscore-body ($brand-light, 30)
@@ -210,6 +226,10 @@
   }
   @media screen and (max-width:rem(700))	{
     padding:0 rem(10);
+  }
+  @media screen and (max-width:rem(600))	{
+    margin:rem(20) auto;
+
   }
 }
 a {
@@ -232,6 +252,9 @@ a {
     opacity: 1;
 }
 .blog-wrapper-static {
+  @media screen and (max-width:rem(600))	{
+    margin-top:rem(20);
+  }
   .entry-wrapper--animated {
     opacity: 1;
   }
@@ -360,12 +383,21 @@ a {
   top:7px;
   left:7px;
 }
+.menu-icn-small {
+  width:rem(18);
+  height:rem(18);
+  fill:white;
+  position:absolute;
+  top:1px;
+  left:1px;
+}
 .inline-icn {
   fill:$brand;
   height:12px;
   width:24px;
   display:inline-block;
   vertical-align: -1px;
+  margin:0 rem(5);
 }
 .reefers-wrapper {
   width:160px;
@@ -436,13 +468,11 @@ a {
     opacity:0;
     transition: opacity .3s;
     will-change:opacity;
+    background-color: white;
   }
 }
 .header-image--active {
-    &::before {
-    }
     &::after {
-      background-color: white;
       transition: opacity .3s;
       opacity:1;
     }
@@ -455,6 +485,9 @@ a {
       display:block;
       margin:rem(30) 0 rem(40);
       user-select:none;
+      @media screen and (max-width:rem(600))	{
+        margin:rem(20) 0 rem(20);
+      }
     }
 }
 .entry-tags {
@@ -462,10 +495,17 @@ a {
   padding:0;
   font-style:italic;
   font-size:rem(15);
+     @media screen and (max-width:rem(700))	{
+       position: absolute;
+       left:-1000000px;
+     }
 }
 .site-footer {
   margin:rem(120) 0 0;
   padding:0 0 rem(40);
+  @media screen and (max-width:rem(700))	{
+    padding:0 0 rem(100);
+  }
 }
 .footer-list {
   justify-content: center;
@@ -558,8 +598,8 @@ a {
   // will-change:transform;
   padding:em(25) rem(20) rem(30);
   border:1px solid $xlight;
-    @media screen and (max-width:rem(500))	{
-        padding:em(15) rem(15) rem(20);
+    @media screen and (max-width:rem(600))	{
+        padding:em(15) rem(15) rem(15);
      }
 }
 .flip-card--trans {
@@ -743,8 +783,5 @@ a {
   }
   strong {
     background-color:$brand-light;
-
   }
-
-
 }
