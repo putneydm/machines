@@ -273,6 +273,19 @@ detectScroll: function (viewportSize) {
         }
         return position;
      },
+ detectScrollBlog: function (viewportSize) {
+    var self=this,
+        position;
+     document.onscroll = function() {
+       console.log('scroll');
+       var position = window.scrollY,
+           header = document.getElementById('siteheader'),
+           headerPosition = self.getHeaderPosition();
+
+           self.handleReefer(position, headerPosition);
+     }
+     return position;
+  },
      detectClick: function (event) {
             var self=pageFunctions;
             var element = event.target || event.srcElement;
