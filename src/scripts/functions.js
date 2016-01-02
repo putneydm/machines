@@ -14,6 +14,22 @@ var pageFunctions = {
         var self=this;
         viewportSize = window.innerHeight;
         self.detectScroll(viewportSize);
+    setBackground: function () {
+      var self=this;
+      viewportSize = window.innerWidth;
+      var header = document.getElementById('header-image');
+      if (viewportSize && viewportSize > 800) {
+        imageURL = '/siteart/robotsone.jpg';
+      }
+      else {
+        imageURL = '/siteart/sm_robotsone.jpg';
+      }
+       var img = new Image();
+       img.src = imageURL;
+       img.onload = function(){
+       header.style.backgroundImage = 'url('+imageURL+')';
+       console.log('loaded');
+       };
     },
     initializeSinglePage: function () {
         var self=this;
