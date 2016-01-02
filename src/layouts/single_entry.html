@@ -3,27 +3,27 @@ layout: main_layout
 pagetype: entry
 ---
 
-<main class="blog-wrapper">
-
+<main class="blog-wrapper blog-wrapper-static">
+  <!-- <header class="article-card-header">
+    <a href="/" rel="prev">
+      <h1 class="article-card-head">
+          Inevitable Rise of the Machines
+      </h1>
+    </a>
+    <h2 class="secondary-head secondary-head-vis">{{ site.tagLine }}</h2>
+    <p> ---- </p>
+  </header> -->
+    @@include('../pages/partials/site_header.html')
 <div class="flip-container">
   <div id="flip-card" class="flip-card">
     <section class="card-side card-front">
-        <header class="article-card-header">
-          <a href="/" rel="prev">
-            <h1 class="article-card-head">
-                Inevitable Rise of the Machines
-            </h1>
-          </a>
-          <h2 class="secondary-head secondary-head-vis">{{ site.tagLine }}</h2>
-          <p> ---- </p>
-        </header>
         <article>
         <p class="overline"><em>{{ page.date | date: "%m.%d.%y" }}</em></p>
         <h1 class="basic-header basic-header-large">{{ page.title | markdownify | strip_html }}</h1>
           <div class="entry-body">
             {{content}}
           </div>
-        <footer class="entry-tags off-page">
+        <footer class="entry-tags">
             <ul class="inline-list">
               {% for tag in page.tags %}
                 <li><a href="/tag/{{tag | replace:' ','-' | replace:'&','&amp;' | downcase }}.html" rel="tag">{{ tag }}</a></li>
