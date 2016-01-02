@@ -16,7 +16,7 @@
       "use strict";
       pageFunctions.intialize();
       // pageFunctions.intialize();
-      {% if page.pagetype == 'index' %}
+      {% if page.pagetype == 'index' and  paginator.page == 1 %}
       pageFunctions.initializeIndex();
       {% endif %}
       {% if page.pagetype == 'entry' %}
