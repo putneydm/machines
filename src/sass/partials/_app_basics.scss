@@ -259,23 +259,39 @@ a {
 .main-nav-wrapper {
   position:fixed;
   right:30px;
-  bottom:-150px;
+  bottom:30px;
   border:1px;
   display:flex;
   flex-direction: column;
   width:rem(45);
-  height:rem(100);
   justify-content: space-between;
-
+  z-index: 10;
   @media screen and (max-width:rem(600))	{
-    right:10px;
-    top:30px;
+    width:100%;
+    height:rem(50);
+    right:0;
+    bottom:rem(30);
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.main-nav-wrapper--animatible {
+  transform:translateY(200px);
+  @media screen and (max-width:rem(600))	{
+    transform:translateY(80px);
+    transition: transform .3s cubic-bezier(.73,.16,.52,1.42);
   }
 }
 .main-nav-wrapper--active {
-  bottom:20px;
-  transition: bottom .4s;
+  transition: transform .3s cubic-bezier(.73,.16,.52,1.42);
   transition-delay: .5s;
+  transform: translateY(0);
+}
+.main-nav-wrapper--static {
+  transition: none;
+  transition-delay: none;
+  transform: translateY(0);
 }
 .main-nav {
   list-style-type: none;
