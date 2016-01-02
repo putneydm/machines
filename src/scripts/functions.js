@@ -397,10 +397,15 @@ detectScroll: function (viewportSize) {
        var self=this;
        var viewportSize = window.innerHeight,
            headerHeight = document.getElementById('siteheader').offsetHeight;
-       return headerPos = viewportSize - (viewportSize * .05) - headerHeight;
+      if (headerHeight) {
+       return viewportSize - (viewportSize * .05) - headerHeight;
+     }
+     else {
+      return viewportSize * .50;
+    }
+
      },
      searchArray: {},
-     matchArray: [ ],
      getJSON: function () {
        var self=this;
 
