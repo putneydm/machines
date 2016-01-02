@@ -97,6 +97,16 @@ var pageFunctions = {
     }
     self.clearSearchResults();
   },
+  handleKeyUp: function(searchField, resultsContainer) {
+    var self=this;
+    console.log('keyup');
+    var userInput = searchField.value;
+    if (userInput && userInput.length >2 ){
+      self.doSearch(userInput);
+      self.quantifyResults();
+      }
+    self.handleSearchClearButton(userInput);
+  },
 doSearch: function (userInput){
   var self=this;
   var array = self.searchArray;
