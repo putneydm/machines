@@ -56,20 +56,19 @@ var pageFunctions = {
 
       self.getJSON();
 
+    intializeSearchField: function () {
+      var self=this;
       var searchField = document.getElementById('search-field');
-
       var resultsContainer = document.getElementById('results-wrapper');
+      self.handleSearchFieldClear();
 
       searchField.onkeydown = function() {
-          self.clearSearchResults();
+          self.handleKeyDown();
         };
-      searchField.addEventListener("keyup", function () {
-        var userInput = searchField.value;
-        // console.log(foo);
-        if (userInput && userInput.length >2 ){
-          // var searchTerm = new RegExp('\\b' + userInput + '\\b','gi');
-          self.doSearch(userInput);
-          self.quantifyResults();
+      searchField.onkeyup = function () {
+          self.handleKeyUp(searchField, resultsContainer);
+      };
+    },
       }
       });
     },
