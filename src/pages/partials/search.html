@@ -1,11 +1,13 @@
-<div class="search-wrapper search-wrapper--active">
-  <div class="search-btn-close">   close  </div>
+<section id="search-wrapper" class="search-wrapper">
   <div class="search-tools-wrapper">
     <div class="input-wrapper">
-      <input id="search-field" class="embed-code embed-code-small url-code" type="text" placeholder="search"></input>  
-    </div>
+    <div id="search-field-clear" class="search-field-clear">
+        <svg class="menu-icn-small inactive-state">
+          <use xlink:href="#close" />
+        </svg>
+      </div>
+  </div>
     <p id="results-count"></p>
+    <div id="results-wrapper" class="results-wrapper">  </div>
   </div>
-    <div id="results-wrapper" class="results-wrapper">
-  </div>
-</div>
+</section>
