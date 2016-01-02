@@ -117,6 +117,17 @@ var pageFunctions = {
       searchField.focus();
     });
   },
+  handleSearchClearButton: function (userInput) {
+    var self=this;
+    var clear =  document.getElementById('search-field-clear');
+    var active = clear.classList.contains('search-field-clear--active');
+    if (userInput.length >1 && !active) {
+        clear.classList.add('search-field-clear--active');
+      }
+    if (userInput.length <1 && active) {
+      clear.classList.remove('search-field-clear--active');
+    }
+  },
 doSearch: function (userInput){
   var self=this;
   var array = self.searchArray;
