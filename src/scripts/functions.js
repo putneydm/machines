@@ -266,6 +266,7 @@ detectScroll: function (viewportSize) {
               placeholder = document.getElementById('siteheader-placeholder'),
               headerPosition = self.getHeaderPosition(),
               placeholderPosition = placeholder.getBoundingClientRect().top;
+detectScrollIndex: function (viewportSize) {
 
           self.handleHeaderPinning(position, headerPosition, placeholderPosition)
           self.handleReefer(position, headerPosition);
