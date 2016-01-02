@@ -69,8 +69,25 @@ var pageFunctions = {
           self.handleKeyUp(searchField, resultsContainer);
       };
     },
+    handleSearchDisplay: function () {
+      var self=this;
+      var searchButton = document.getElementById('search-button');
+      var searchWrapper = document.getElementById('search-wrapper');
+      var navWrapper = document.getElementById('main-nav-wrapper');
+
+      if (!self.searchArray.length) {
+        self.intializeSearch();
       }
-      });
+      searchButton.classList.toggle('main-nav--active');
+      var body = document.getElementsByTagName('BODY');
+      body[0].classList.toggle('no-scroll');
+      searchWrapper.classList.toggle('search-wrapper--active')
+      if (searchWrapper.classList.contains('search-wrapper--active')) {
+        self.clearSearchResults();
+      }
+      if (navWrapper.classList.contains('main-nav-wrapper--animatible')) {
+        navWrapper.classList.toggle('main-nav-wrapper--static');
+      }
     },
 doSearch: function (userInput){
   var self=this;
