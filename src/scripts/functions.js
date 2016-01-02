@@ -8,7 +8,11 @@ var pageFunctions = {
     },
     intializeWatchers: function () {
       var self=this;
-      console.log('watchers');
+      var searchButton = document.getElementById('search-button');
+      searchButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        self.handleSearchDisplay();
+      });
     },
     initializeIndex: function () {
         var self=this;
