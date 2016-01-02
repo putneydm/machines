@@ -11,10 +11,7 @@ var remoteLoader = {
     intializeWatchers: function () {
     },
     findEntry: function () {
-
-
       var entries = Array.prototype.slice.call(document.getElementsByClassName('machines-embed'));
-
       entries.forEach (function (entries) {
         console.log(entries.innerHTML);
         var container = document.createElement('article');
@@ -37,8 +34,9 @@ var remoteLoader = {
 
           var brandingImage = document.createElement('IMG');
           brandingImage.setAttribute('src', '/siteart/embed-branding.svg');
+          brandingImage.setAttribute('src', 'https://machines.firebaseapp.com/siteart/embed-branding.svg');
           brandingImage.setAttribute('ALT', 'Inevitableriseofthemachines.com logo');
-          brandingImage.setAttribute('CLASS', 'machines-embed-image')
+          brandingImage.setAttribute('CLASS', 'machines-embed-image');
 
           var brandingLink = document.createElement('A');
           brandingLink.setAttribute('HREF', 'https://www.inevtiableriseofthemachines.com');
@@ -46,9 +44,6 @@ var remoteLoader = {
 
           brandingLink.appendChild(brandingImage);
           branding.appendChild(brandingLink);
-
-          console.log('branding', branding);
-
 
           container.insertBefore(branding, headline);
 
@@ -76,13 +71,13 @@ var remoteLoader = {
           parent.insertBefore(container, entries);
           entries.remove();
       });
-
     },
     addStyleToHead: function () {
       var style = document.createElement('link');
         style.setAttribute("rel", "stylesheet");
-        style.setAttribute("type", "text/css")
-        style.setAttribute("href", '/embed-css/irotm_embed_styles.css')
+        style.setAttribute("type", "text/css");
+        style.setAttribute("href", '/embed-css/irotm_embed_styles.css');
+        // style.setAttribute("href", 'https://machines.firebaseapp.com/embed-css/irotm_embed_styles.css');
         document.head.appendChild(style);
     }
   };
