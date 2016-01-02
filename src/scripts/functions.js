@@ -257,23 +257,22 @@ quantifyResults: function () {
     display.innerHTML = "We found " + resultCount + " entries";
   }
 },
-detectScroll: function (viewportSize) {
-       var self=this,
-           position;
-        document.onscroll = function() {
-          var position = window.scrollY,
-              header = document.getElementById('siteheader'),
-              placeholder = document.getElementById('siteheader-placeholder'),
-              headerPosition = self.getHeaderPosition(),
-              placeholderPosition = placeholder.getBoundingClientRect().top;
 detectScrollIndex: function (viewportSize) {
+   var self=this,
+       position;
+    document.onscroll = function() {
+      var position = window.scrollY,
+          header = document.getElementById('siteheader'),
+          placeholder = document.getElementById('siteheader-placeholder'),
+          headerPosition = self.getHeaderPosition(),
+          placeholderPosition = placeholder.getBoundingClientRect().top;
 
           self.handleHeaderPinning(position, headerPosition, placeholderPosition)
           self.handleReefer(position, headerPosition);
           self.handleHeaderImage(position, viewportSize);
-        }
-        return position;
-     },
+    }
+    return position;
+ },
  detectScrollBlog: function (viewportSize) {
     var self=this,
         position;
