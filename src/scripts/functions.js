@@ -107,6 +107,16 @@ var pageFunctions = {
       }
     self.handleSearchClearButton(userInput);
   },
+  handleSearchFieldClear: function() {
+    var self=this;
+    var clear = document.getElementById('search-field-clear');
+    clear.addEventListener('click', function () {
+      var searchField = document.getElementById('search-field');
+      self.clearSearchResults();
+      searchField.value = '';
+      searchField.focus();
+    });
+  },
 doSearch: function (userInput){
   var self=this;
   var array = self.searchArray;
