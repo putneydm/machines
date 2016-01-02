@@ -365,12 +365,11 @@ detectScroll: function (viewportSize) {
         }
      },
      testCopy: function () {
-       document.getElementById('embed-code').select();
-       if (!document.execCommand('copy') ) {
+       var copyTest = document.queryCommandSupported('copy');
+       if (!copyTest) {
          document.getElementById('url-copy-button').classList.add('btn-hidden');
          document.getElementById('copy-button').classList.add('btn-hidden');
        }
-       document.getElementById('embed-code').blur();
      },
      handleCopy: function(button, embedContainer) {
       var embedCode = embedContainer.querySelectorAll(".embed-code")[0];
