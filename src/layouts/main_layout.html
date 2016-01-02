@@ -19,6 +19,9 @@
       {% if page.pagetype == 'index' and  paginator.page == 1 %}
       pageFunctions.initializeIndex();
       {% endif %}
+      {% if page.pagetype == 'index' and  paginator.page > 1 %}
+      pageFunctions.initializeBlogPage();
+      {% endif %}
       {% if page.pagetype == 'entry' %}
       pageFunctions.initializeSinglePage();
       {% endif %}
