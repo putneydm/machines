@@ -23,7 +23,7 @@ pagetype: entry
           <div class="entry-body">
             {{content}}
           </div>
-        <footer class="entry-tags">
+        <footer class="entry-tags off-page">
             <ul class="inline-list">
               {% for tag in page.tags %}
                 <li><a href="/tag/{{tag | replace:' ','-' | replace:'&','&amp;' | downcase }}.html" rel="tag">{{ tag }}</a></li>
