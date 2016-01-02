@@ -44,6 +44,12 @@ var pageFunctions = {
 
         container.addEventListener("click", self.detectClick, false);
     },
+    initializeBlogPage: function () {
+        var self=this;
+        console.log('blog');
+        viewportSize = window.innerHeight;
+        self.detectScrollBlog(viewportSize);
+    },
     intializeSearch: function () {
       var self=this;
       console.log('search');
