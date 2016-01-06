@@ -231,6 +231,12 @@
     color:black;
   }
 }
+.entry-body {
+  margin:0 0 rem(35);
+  @media screen and (max-width:rem(600))	{
+  margin:0 0 rem(20);
+  }
+}
 .main-nav-wrapper {
   position:fixed;
   right:30px;
