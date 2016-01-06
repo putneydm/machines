@@ -663,18 +663,14 @@
     100% {opacity:0;}
 }
 .search-wrapper {
-  position: fixed;
+  position: absolute;
   top:0;
-  right:0;
-  left:0;
-  padding:rem(20);
-  display:none;
+  width:0px;
+  height:0px;
+  overflow:hidden;
   margin:0 auto;
   opacity:0;
   background-color: white;
-  width:100vw;
-  min-height:100vh;
-  height:auto;
   transition: opacity .3s;
   &::after {
     display:block;
@@ -688,7 +684,13 @@
   }
 }
 .search-wrapper--active {
-  display:block;
+  padding:rem(20);
+  width:100vw;
+  min-height:100vh;
+  height:auto;
+  position: fixed;
+  right:0;
+  left:0;
   opacity:1;
   transition: opacity .3s;
   z-index:5;
