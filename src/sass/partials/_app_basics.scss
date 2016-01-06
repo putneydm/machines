@@ -183,23 +183,6 @@
 .overline {
   margin:0 0 rem(5);
 }
-.entry-body {
-  margin:0 0 rem(35);
-  @media screen and (max-width:rem(600))	{
-  margin:0 0 rem(20);
-  }
-  p {
-    line-height:150%;
-    @media screen and (max-width:rem(600))	{
-      font-size:rem(17);
-      line-height:130%;
-     }
-      a {
-        @include underscore-body ($brand-light, 30)
-      }
-  }
-}
-
 .blog-wrapper {
   max-width:rem(750);
   width:100%;
