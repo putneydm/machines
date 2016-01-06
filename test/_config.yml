@@ -17,7 +17,7 @@ array: []  #empty array
 tag_page_layout: tag_index
 tag_page_dir: tag
 
-paginate: 10
+paginate: 15
 paginate_path: "/blog/page:num/"
 
 
