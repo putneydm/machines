@@ -331,21 +331,13 @@ detectScrollIndex: function (viewportSize) {
      handleReefer: function(position, headerPosition) {
        var self=this;
        var reefers = document.getElementById('reefers'),
-           activeState = reefers.classList.contains('reefers-wrapper--active'),
-           links =
-           document.getElementById('main-nav-wrapper');
-           var linksTest = links.classList.contains('main-nav-wrapper--animatible');
+           activeState = reefers.classList.contains('reefers-wrapper--active');
 
         if (position >= headerPosition * .8 && activeState === false) {
           reefers.classList.add('reefers-wrapper--active');
-          if (linksTest) {
-          links.classList.toggle('main-nav-wrapper--active');
-        }
         }
         if (position <= headerPosition * .8 && activeState === true) {
           reefers.classList.remove('reefers-wrapper--active');
-          if (linksTest) {
-          links.classList.toggle('main-nav-wrapper--active');
           }
      },
      handleNavAnimate: function (position, headerPosition) {
