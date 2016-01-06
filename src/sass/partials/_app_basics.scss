@@ -182,17 +182,13 @@
 }
 .blog-wrapper {
   max-width:rem(750);
-  width:100%;
   margin:rem(40) auto;
   @media screen and (max-width:rem(1180))	{
     max-width:rem(600);
   }
   @media screen and (max-width:rem(700))	{
     padding:0 rem(10);
-  }
-  @media screen and (max-width:rem(600))	{
     margin:rem(20) auto;
-
   }
 }
 .entry-wrapper {
