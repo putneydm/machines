@@ -198,13 +198,6 @@
 
   }
 }
-a {
-  color:black;
-    &:hover {
-      color:$brand;
-      transition: color .1s ease-in;
-    }
-}
 .entry-wrapper {
   padding-top:rem(60);
 }
