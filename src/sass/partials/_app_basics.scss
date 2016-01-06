@@ -339,27 +339,27 @@
   height:rem(30);
   fill:white;
   position:absolute;
-  top:7px;
-  left:7px;
+  top:rem(7);
+  left:rem(7);
 }
 .menu-icn-small {
   width:rem(18);
   height:rem(18);
   fill:white;
   position:absolute;
-  top:1px;
-  left:1px;
+  top:rem(1);
+  left:rem(1);
 }
 .inline-icn {
   fill:$brand;
-  height:12px;
-  width:24px;
+  height:rem(12);
+  width:rem(24);
   display:inline-block;
   vertical-align: -1px;
   margin:0 rem(5);
 }
 .reefers-wrapper {
-  width:160px;
+  width:rem(160);
   position:fixed;
   bottom:10vh;
   left:calc(((100vw - 850px) / 2) - 150px);
