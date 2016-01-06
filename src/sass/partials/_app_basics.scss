@@ -367,13 +367,13 @@
   transition: opacity .3s;
   margin:0 0 rem(40);
   will-change:opacity;
-  @media screen and (max-width:rem(1180))	{
-    left:calc(((100vw - 700px) / 2) - 150px);
-  }
-  @media screen and (max-width:rem(1035))	{
-    position:static;
-    width:100%;
-  }
+    @media screen and (max-width:rem(1180))	{
+      left:calc(((100vw - 700px) / 2) - 150px);
+    }
+    @media screen and (max-width:rem(1035))	{
+      position:static;
+      width:100%;
+    }
     li {
       margin:0 0 rem(18);
       font-style:italic;
