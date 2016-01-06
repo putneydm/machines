@@ -6,7 +6,7 @@ var fontLoad = {
       // var woff = this.initFontsWoff(pageType);
       // var woff2 = this.initFontsWoffTwo(pageType);
       var woff = '/fonts/fonts_woff.css';
-      var woff2 = '/fonts/fonts_woff2.css';
+      var woff2 = '/fonts/fonts_woff.css';
       this.loadFont('font-file', woff, woff2)
     // loadFont
    },
