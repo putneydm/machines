@@ -257,6 +257,7 @@ detectScrollIndex: function (viewportSize) {
           self.handleHeaderPinning(position, headerPosition, placeholderPosition)
           self.handleReefer(position, headerPosition);
           self.handleHeaderImage(position, viewportSize);
+          self.handleNavAnimate(position, viewportSize);
     }
     return position;
  },
@@ -346,6 +347,23 @@ detectScrollIndex: function (viewportSize) {
           if (linksTest) {
           links.classList.toggle('main-nav-wrapper--active');
           }
+     },
+     handleNavAnimate: function (position, headerPosition) {
+       var self=this;
+           var links =
+           document.getElementById('main-nav-wrapper');
+           var linksTest = links.classList.contains('main-nav-wrapper--animatible');
+          var linksActive = links.classList.contains('main-nav-wrapper--active');
+
+        if (!linksActive && linksTest && position >= headerPosition * .8) {
+          links.classList.add('main-nav-wrapper--active');
+          links.classList.add('main-nav-wrapper--trans');
+          setTimeout(function(){
+            links.classList.remove('main-nav-wrapper--trans');
+          }, 850);
+        }
+        if (linksActive && linksTest && position <= headerPosition * .5) {
+          links.classList.remove('main-nav-wrapper--active');
         }
      },
      handleCardFlip: function () {
