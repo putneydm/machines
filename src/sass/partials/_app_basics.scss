@@ -699,9 +699,9 @@
   max-width:rem(750);
   margin:0 auto;
   margin:60px auto 0;
-  max-height:calc(100vh - 100px);
+  max-height:calc(100vh - 140px);
   @media screen and (max-width:rem(600))	{
-    margin:60px 0 0;
+    margin:rem(70) 0 0;
   }
 }
 .input-wrapper {
