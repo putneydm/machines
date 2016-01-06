@@ -161,25 +161,6 @@
 
     }
 }
-.article-card-head {
-    font-family:$primary-two;
-    font-size:rem(48);
-    line-height:90%;
-    margin-bottom:rem(15);
-    color:$brand;
-    margin:0 0 rem(10);
-    @media screen and (max-width:rem(600))	{
-      font-size: rem(36);
-      margin-bottom:rem(5);
-     }
-    @media screen and (max-width:rem(400))	{
-      font-size: rem(30);
-     }
-      a {
-        color:$brand;
-
-      }
-  }
 .basic-header {
   font-weight:700;
   font-size:rem(18);
