@@ -491,9 +491,10 @@
   padding:rem(10);
   width:rem(150);
 }
-.btn-hidden {
+.btn-hide {
+  @media screen and (max-width:rem(700))	{
   display:none;
-  visibility: hidden;
+  }
 }
 .page-number {
   text-align:center;
