@@ -377,9 +377,9 @@ detectScrollIndex: function (viewportSize) {
      },
      testCopy: function () {
        var copyTest = document.queryCommandSupported('copy');
-       if (!copyTest) {
-         document.getElementById('url-copy-button').classList.add('btn-hidden');
-         document.getElementById('copy-button').classList.add('btn-hidden');
+       if (copyTest) {
+         document.getElementById('url-copy-button').classList.remove('btn-hide');
+         document.getElementById('copy-button').classList.remove('btn-hide');
        }
      },
      handleCopy: function(button, embedContainer) {
