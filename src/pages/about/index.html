@@ -4,9 +4,7 @@ pagetype: about
 ---
 
 <main class="blog-wrapper blog-wrapper-static">
-
-@@include('../partials/about_header.html')
-
+@@include('../partials/site_header.html')
 <div class="entry-wrapper">
   {% assign items = site.about | sort: 'order' %}
   {% for item in items %}
