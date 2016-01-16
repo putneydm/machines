@@ -414,23 +414,28 @@ detectScrollIndex: function (viewportSize) {
     }
 
      },
-     searchArray: {},
+    searchArray: {},
      getJSON: function () {
        var self=this;
-
-       var xmlhttp = new XMLHttpRequest();
-       var url = "/site-feed.json";
-
-       xmlhttp.onreadystatechange = function() {
-           if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-               var myArr = JSON.parse(xmlhttp.responseText);
-              myFunc (myArr);
-           }
+       var promise = new Promise(function(resolve, reject) {
+       var request = new XMLHttpRequest();
+       var url = '/site-feed.json';
+       request.open('GET', url);
+       request.send();
+       request.onload = function() {
+         if (request.status == 200) {
+           resolve(request.response);
+         } else {
+           reject(Error(request.statusText));
+         }
        };
-       xmlhttp.open("GET", url, true);
-       xmlhttp.send();
-       function myFunc(arr) {
-         self.searchArray = arr;
-       }
-     }
-  };
+     });
+     promise.then(function(data) {
+       console.log('Worked');
+       self.searchArray = JSON.parse(data);
+     }, function(error) {
+       console.log('Failed');
+       console.log(error.message);
+     });
+   }
+};
