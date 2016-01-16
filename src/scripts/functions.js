@@ -291,21 +291,21 @@ detectScrollIndex: function (viewportSize) {
      handleHeaderImage: function (position, headerHeight) {
         var self=this;
         var target = document.getElementById('header-image'),
-            activeTest = target.classList.contains('header-image--active'),
+            active = target.classList.contains('header-image--active'),
             targetHead = document.getElementById('main-head'),
             secondaryHead = document.getElementById('secondary-head'),
             bodyText = document.getElementById('entry-wrapper'),
             header = document.getElementById('siteheader');
 
 
-          if (position >= headerHeight * .5 && activeTest === false) {
+          if (position >= headerHeight * .5 && !active) {
             target.classList.add('header-image--active');
             targetHead.classList.add('main-head--active');
             secondaryHead.classList.add('secondary-head--active');
             bodyText.classList.add('entry-wrapper--active');
             header.classList.add('header-after--active');
           }
-          if (position <= headerHeight * .5 && activeTest) {
+          if (position <= headerHeight * .5 && active) {
             target.classList.remove('header-image--active');
             targetHead.classList.remove('main-head--active');
             secondaryHead.classList.remove('secondary-head--active');
@@ -319,11 +319,11 @@ detectScrollIndex: function (viewportSize) {
             placeholder = document.getElementById('siteheader-placeholder'),
             headerActive = header.classList.contains('siteheader--active');
 
-       if (placeholderPosition <= headerPosition && headerActive === false) {
+       if (placeholderPosition <= headerPosition && !headerActive) {
          header.classList.add('siteheader--active');
          placeholder.classList.add('siteheader-placeholder--active');
        }
-        if (placeholderPosition >= headerPosition && headerActive === true) {
+        if (placeholderPosition >= headerPosition && headerActive) {
           header.classList.remove('siteheader--active');
           placeholder.classList.remove('siteheader-placeholder--active');
         }
@@ -333,10 +333,10 @@ detectScrollIndex: function (viewportSize) {
        var reefers = document.getElementById('reefers'),
            activeState = reefers.classList.contains('reefers-wrapper--active');
 
-        if (position >= headerPosition * .8 && activeState === false) {
+        if (position >= headerPosition * .8 && !activeState) {
           reefers.classList.add('reefers-wrapper--active');
         }
-        if (position <= headerPosition * .8 && activeState === true) {
+        if (position <= headerPosition * .8 && activeState) {
           reefers.classList.remove('reefers-wrapper--active');
           }
      },
