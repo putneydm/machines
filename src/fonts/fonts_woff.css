@@ -1,11 +1,5 @@
 /*woff*/
 @font-face {
-    font-family: 'Coolvetica';
-    src: url(fonts_in/coolvetica rg.woff);
-    font-weight: bold;
-    font-style: normal;
-}
-@font-face {
     font-family: 'Pitch';
     src: url(fonts_in/Pitch-Regular.woff);
     font-weight: 400;
