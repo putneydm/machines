@@ -2,9 +2,9 @@
 # Site settings
 title: Inevitiable Rise of the Machines
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "https://www.inevitableriseofthemachines.com" # the base hostname & protocol for your site
+url: "https://inevitableriseofthemachines.com" # the base hostname & protocol for your site
 disclaimer: This is a personal website. It is not affiliated with any employer current or former of the owner / author.
-description: "The Robots are averywhere. They surround us. Eventually they will kill us and enslave the rest. This site tracks the progress to that inevitiable event."
+description: "The Robots are everywhere. They surround us. This will make the eventual Robot Uprising so much easier for them. This site tracks the progress to that inevitiable event."
 tagLine: The only website brave enough to tell the truth about The Robots
 sitekeywords: ['The Robots', 'blogger', 'blog', 'scary', 'evil', 'Robot logic', 'Inevitable', 'machines', 'artificial intelligence', 'Robot uprising', 'Robot rebellion', 'enslavement', 'overthrow', 'humans', 'robot hunter killers']
 permalink: /:year/:month/:title.html
