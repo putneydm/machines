@@ -2,7 +2,7 @@
 
 var pageFunctions = {
     intialize: function () {
-      console.log('works');
+      // console.log('works');
       var self=this;
       this.intializeWatchers(); //listens for clicks
     },
@@ -16,7 +16,6 @@ var pageFunctions = {
     },
     initializeIndex: function () {
         var self=this;
-        console.log('index');
         viewportSize = window.innerHeight;
         self.detectScrollIndex(viewportSize);
         self.setBackground();
@@ -35,7 +34,6 @@ var pageFunctions = {
        img.src = imageURL;
        img.onload = function(){
        header.style.backgroundImage = 'url('+imageURL+')';
-       console.log('loaded');
        };
     },
     initializeSinglePage: function () {
@@ -45,7 +43,6 @@ var pageFunctions = {
     },
     initializeBlogPage: function () {
         var self=this;
-        console.log('blog');
         viewportSize = window.innerHeight;
         self.detectScrollBlog(viewportSize);
     },
@@ -97,7 +94,6 @@ var pageFunctions = {
   },
   handleKeyUp: function(searchField, resultsContainer) {
     var self=this;
-    console.log('keyup');
     var userInput = searchField.value;
     if (userInput && userInput.length >2 ){
       self.doSearch(userInput);
@@ -265,7 +261,6 @@ detectScrollIndex: function (viewportSize) {
     var self=this,
         position;
      document.onscroll = function() {
-       console.log('scroll');
        var position = window.scrollY,
            header = document.getElementById('siteheader'),
            headerPosition = self.getHeaderPosition();
@@ -431,10 +426,8 @@ detectScrollIndex: function (viewportSize) {
        };
      });
      promise.then(function(data) {
-       console.log('Worked');
        self.searchArray = JSON.parse(data);
      }, function(error) {
-       console.log('Failed');
        console.log(error.message);
      });
    }
