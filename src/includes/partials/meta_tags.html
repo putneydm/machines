@@ -38,6 +38,12 @@ minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
+<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" />
+<meta name="news_keywords" content="{{ogKeywords}}" />
+<meta name="geo.placename" content="Boston, Massachusetts">
+<meta name="author" content="David Putney">
+<link rel="shortcut icon" href="http://www.davidputney.com/favicon.ico" />
+<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
 <!-- facebook -->
 <meta property="og:title" content="{{ogTitle}}" />
 <meta property="og:site_name" content="Inevitable Rise of the Machines"/>
@@ -57,9 +63,3 @@ minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <!-- other -->
 <meta name="description" itemprop="description" content="{{ogDescription}}" />
 <meta name="keywords" itemprop="keywords" content="{% if ogKeywords %}{{ogKeywords}}, {% endif %}{{ogSiteKeywords}}" />
-<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" />
-<meta name="news_keywords" content="{{ogKeywords}}" />
-<meta name="geo.placename" content="Boston, Massachusetts">
-<meta name="author" content="David Putney">
-<link rel="shortcut icon" href="http://www.davidputney.com/favicon.ico" />
-<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
