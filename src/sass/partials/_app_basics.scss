@@ -351,13 +351,13 @@
   width:rem(160);
   position:fixed;
   bottom:10vh;
-  left:calc(((100vw - 850px) / 2) - 150px);
+  left:5%;
   opacity:0;
   transition: opacity .3s;
   margin:0 0 rem(40);
   will-change:opacity;
     @media screen and (max-width:rem(1180))	{
-      left:calc(((100vw - 700px) / 2) - 150px);
+     left:5%;
     }
     @media screen and (max-width:rem(1035))	{
       position:static;
@@ -525,7 +525,6 @@
     }
     strong {font-style:normal;}
 }
-
 .flip-container {
   width:100%;
 	perspective: 2500;
