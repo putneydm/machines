@@ -80,9 +80,7 @@ var pageFunctions = {
       if (searchWrapper.classList.contains('search-wrapper--active')) {
         self.clearSearchResults();
       }
-      // if (navWrapper.classList.contains('main-nav-wrapper--animatible')) {
-        navWrapper.classList.toggle('main-nav-wrapper--static');
-      // }
+      navWrapper.classList.toggle('main-nav-wrapper--static');
     },
   handleKeyDown: function () {
     var self=this;
