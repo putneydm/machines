@@ -1,0 +1,6 @@
+---
+layout: single_entry
+pagetype: blog-entry
+title: "My friends, the unthinkable has happened."
+link: https://www.facebook.com/Jamrockvybz/videos/984798134919538/
+---  

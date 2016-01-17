@@ -1,0 +1,6 @@
+---
+layout: single_entry
+pagetype: blog-entry
+title: "So, it begins."
+link: http://www.cnbc.com/2016/01/15/why-the-correction-machines-have-taken-over.html
+---  
