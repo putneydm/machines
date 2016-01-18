@@ -267,166 +267,165 @@ detectScrollIndex: function (viewportSize) {
      }
      return position;
   },
-     detectClick: function (event) {
-            var self=pageFunctions;
-            var element = event.target || event.srcElement;
-            if (element.classList.contains("btn-small") ) {
-                var embedCode = element.parentElement;
-                self.handleCopy(element, embedCode);
-            }
-            if (element.classList.contains("embed-code") ) {
-                self.handleFormAutoSelect(element);
-            }
-            if (element.classList.contains("btn-large")) {
-              self.handleCardFlip()
-            }
-     },
-     handleHeaderImage: function (position, headerHeight) {
-        var self=this;
-        var target = document.getElementById('header-image'),
-            active = target.classList.contains('header-image--active'),
-            targetHead = document.getElementById('main-head'),
-            secondaryHead = document.getElementById('secondary-head'),
-            bodyText = document.getElementById('entry-wrapper'),
-            header = document.getElementById('siteheader');
-
-
-          if (position >= headerHeight * .5 && !active) {
-            target.classList.add('header-image--active');
-            targetHead.classList.add('main-head--active');
-            secondaryHead.classList.add('secondary-head--active');
-            bodyText.classList.add('entry-wrapper--active');
-            header.classList.add('header-after--active');
-          }
-          if (position <= headerHeight * .5 && active) {
-            target.classList.remove('header-image--active');
-            targetHead.classList.remove('main-head--active');
-            secondaryHead.classList.remove('secondary-head--active');
-            bodyText.classList.remove('entry-wrapper--active');
-            header.classList.remove('header-after--active');
-          }
-     },
-     handleHeaderPinning: function (position, headerPosition, placeholderPosition) {
-        var self=this;
-        var header = document.getElementById('siteheader'),
-            placeholder = document.getElementById('siteheader-placeholder'),
-            headerActive = header.classList.contains('siteheader--active');
-
-       if (placeholderPosition <= headerPosition && !headerActive) {
-         header.classList.add('siteheader--active');
-         placeholder.classList.add('siteheader-placeholder--active');
-       }
-        if (placeholderPosition >= headerPosition && headerActive) {
-          header.classList.remove('siteheader--active');
-          placeholder.classList.remove('siteheader-placeholder--active');
-        }
-     },
-     handleReefer: function(position, headerPosition) {
-       var self=this;
-       var reefers = document.getElementById('reefers'),
-           activeState = reefers.classList.contains('reefers-wrapper--active');
-
-        if (position >= headerPosition * .8 && !activeState) {
-          reefers.classList.add('reefers-wrapper--active');
-        }
-        if (position <= headerPosition * .8 && activeState) {
-          reefers.classList.remove('reefers-wrapper--active');
-          }
-     },
-     handleNavAnimate: function (position, headerPosition) {
-       var self=this;
-           var links =
-           document.getElementById('main-nav-wrapper');
-           var linksTest = links.classList.contains('main-nav-wrapper--animatible');
-          var linksActive = links.classList.contains('main-nav-wrapper--active');
-
-        if (!linksActive && linksTest && position >= headerPosition * .8) {
-          links.classList.add('main-nav-wrapper--active');
-          links.classList.add('main-nav-wrapper--trans');
-          setTimeout(function(){
-            links.classList.remove('main-nav-wrapper--trans');
-          }, 850);
-        }
-        if (linksActive && linksTest && position <= headerPosition * .5) {
-          links.classList.remove('main-nav-wrapper--active');
-        }
-     },
-     handleCardFlip: function () {
-      var self=this;
-      var card = document.getElementsByClassName('flip-card')[0];
-      var active = card.classList.contains('flip-card--active');
-        if (active == false) {
-          self.testCopy();
-          card.classList.add('flip-card--active', 'flip-card--trans');
-        }
-        if (active == true) {
-          card.classList.remove('flip-card--active')
-          card.classList.add('flip-card--activeToo');
-            setTimeout(function(){
-              card.classList.remove('flip-card--trans', 'flip-card--activeToo');
-            }, 750);
-        }
-     },
-     testCopy: function () {
-       var copyTest = document.queryCommandSupported('copy');
-       if (copyTest) {
-         document.getElementById('url-copy-button').classList.remove('btn-hide');
-         document.getElementById('copy-button').classList.remove('btn-hide');
-       }
-     },
-     handleCopy: function(button, embedContainer) {
-      var embedCode = embedContainer.querySelectorAll(".embed-code")[0];
-      var inputActive = function(style) {
-        embedContainer.classList.add('form-container--active', style);
-         embedCode.blur();
-         setTimeout(function(){
-           embedContainer.classList.remove('form-container--active', style);
-         }, 2100);
-       };
-       try {
-         embedCode.select();
-          var successful = document.execCommand('copy');
-          successful ? inputActive('form-container--success') :inputActive('form-container--fail');
-        } catch (err) {
-            inputActive('form-container--fail');
-        }
-     },
-     handleFormAutoSelect: function (el) {
-       var self=pageFunctions;
-       el.select();
-     },
-     getHeaderPosition: function () {
-       var self=this;
-       var viewportSize = window.innerHeight,
-           headerHeight = document.getElementById('siteheader').offsetHeight;
-      if (headerHeight) {
-       return viewportSize - (viewportSize * .05) - headerHeight;
-     }
-     else {
-      return viewportSize * .50;
+detectClick: function (event) {
+    var self=pageFunctions;
+    var element = event.target || event.srcElement;
+    if (element.classList.contains("btn-small") ) {
+        var embedCode = element.parentElement;
+        self.handleCopy(element, embedCode);
     }
+    if (element.classList.contains("embed-code") ) {
+        self.handleFormAutoSelect(element);
+    }
+    if (element.classList.contains("btn-large")) {
+      self.handleCardFlip()
+    }
+ },
+ handleHeaderImage: function (position, headerHeight) {
+    var self=this;
+    var target = document.getElementById('header-image'),
+        active = target.classList.contains('header-image--active'),
+        targetHead = document.getElementById('main-head'),
+        secondaryHead = document.getElementById('secondary-head'),
+        bodyText = document.getElementById('entry-wrapper'),
+        header = document.getElementById('siteheader');
 
-     },
-    searchArray: {},
-     getJSON: function () {
-       var self=this;
-       var promise = new Promise(function(resolve, reject) {
-       var request = new XMLHttpRequest();
-       var url = '/site-feed.json';
-       request.open('GET', url);
-       request.send();
-       request.onload = function() {
-         if (request.status == 200) {
-           resolve(request.response);
-         } else {
-           reject(Error(request.statusText));
-         }
-       };
-     });
-     promise.then(function(data) {
-       self.searchArray = JSON.parse(data);
-     }, function(error) {
-       console.log(error.message);
-     });
+
+      if (position >= headerHeight * .5 && !active) {
+        target.classList.add('header-image--active');
+        targetHead.classList.add('main-head--active');
+        secondaryHead.classList.add('secondary-head--active');
+        bodyText.classList.add('entry-wrapper--active');
+        header.classList.add('header-after--active');
+      }
+      if (position <= headerHeight * .5 && active) {
+        target.classList.remove('header-image--active');
+        targetHead.classList.remove('main-head--active');
+        secondaryHead.classList.remove('secondary-head--active');
+        bodyText.classList.remove('entry-wrapper--active');
+        header.classList.remove('header-after--active');
+      }
+ },
+ handleHeaderPinning: function (position, headerPosition, placeholderPosition) {
+    var self=this;
+    var header = document.getElementById('siteheader'),
+        placeholder = document.getElementById('siteheader-placeholder'),
+        headerActive = header.classList.contains('siteheader--active');
+
+   if (placeholderPosition <= headerPosition && !headerActive) {
+     header.classList.add('siteheader--active');
+     placeholder.classList.add('siteheader-placeholder--active');
    }
+    if (placeholderPosition >= headerPosition && headerActive) {
+      header.classList.remove('siteheader--active');
+      placeholder.classList.remove('siteheader-placeholder--active');
+    }
+ },
+ handleReefer: function(position, headerPosition) {
+   var self=this;
+   var reefers = document.getElementById('reefers'),
+       activeState = reefers.classList.contains('reefers-wrapper--active');
+
+    if (position >= headerPosition * .8 && !activeState) {
+      reefers.classList.add('reefers-wrapper--active');
+    }
+    if (position <= headerPosition * .8 && activeState) {
+      reefers.classList.remove('reefers-wrapper--active');
+      }
+ },
+ handleNavAnimate: function (position, headerPosition) {
+   var self=this;
+       var links =
+       document.getElementById('main-nav-wrapper');
+       var linksTest = links.classList.contains('main-nav-wrapper--animatible');
+      var linksActive = links.classList.contains('main-nav-wrapper--active');
+
+    if (!linksActive && linksTest && position >= headerPosition * .8) {
+      links.classList.add('main-nav-wrapper--active');
+      links.classList.add('main-nav-wrapper--trans');
+      setTimeout(function(){
+        links.classList.remove('main-nav-wrapper--trans');
+      }, 850);
+    }
+    if (linksActive && linksTest && position <= headerPosition * .5) {
+      links.classList.remove('main-nav-wrapper--active');
+    }
+ },
+ handleCardFlip: function () {
+  var self=this;
+  var card = document.getElementsByClassName('flip-card')[0];
+  var active = card.classList.contains('flip-card--active');
+    if (active == false) {
+      self.testCopy();
+      card.classList.add('flip-card--active', 'flip-card--trans');
+    }
+    if (active == true) {
+      card.classList.remove('flip-card--active')
+      card.classList.add('flip-card--activeToo');
+        setTimeout(function(){
+          card.classList.remove('flip-card--trans', 'flip-card--activeToo');
+        }, 750);
+    }
+ },
+ testCopy: function () {
+   var copyTest = document.queryCommandSupported('copy');
+   if (copyTest) {
+     document.getElementById('url-copy-button').classList.remove('btn-hide');
+     document.getElementById('copy-button').classList.remove('btn-hide');
+   }
+ },
+ handleCopy: function(button, embedContainer) {
+  var embedCode = embedContainer.querySelectorAll(".embed-code")[0];
+  var inputActive = function(style) {
+    embedContainer.classList.add('form-container--active', style);
+     embedCode.blur();
+     setTimeout(function(){
+       embedContainer.classList.remove('form-container--active', style);
+     }, 2100);
+   };
+   try {
+     embedCode.select();
+      var successful = document.execCommand('copy');
+      successful ? inputActive('form-container--success') :inputActive('form-container--fail');
+    } catch (err) {
+        inputActive('form-container--fail');
+    }
+ },
+ handleFormAutoSelect: function (el) {
+   var self=pageFunctions;
+   el.select();
+ },
+ getHeaderPosition: function () {
+   var self=this;
+   var viewportSize = window.innerHeight,
+       headerHeight = document.getElementById('siteheader').offsetHeight;
+  if (headerHeight) {
+   return viewportSize - (viewportSize * .05) - headerHeight;
+ }
+ else {
+  return viewportSize * .50;
+}
+ },
+  searchArray: {},
+   getJSON: function () {
+     var self=this;
+     var promise = new Promise(function(resolve, reject) {
+     var request = new XMLHttpRequest();
+     var url = '/site-feed.json';
+     request.open('GET', url);
+     request.send();
+     request.onload = function() {
+       if (request.status == 200) {
+         resolve(request.response);
+       } else {
+         reject(Error(request.statusText));
+       }
+     };
+   });
+   promise.then(function(data) {
+     self.searchArray = JSON.parse(data);
+   }, function(error) {
+     console.log(error.message);
+   });
+  }
 };
