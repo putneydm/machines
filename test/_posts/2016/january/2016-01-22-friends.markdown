@@ -1,0 +1,14 @@
+---
+layout: single_entry
+pagetype: blog-entry
+title: "Could this plot BE more fiendish?"
+tags: ['sitcoms','Friends','TV', "brains"]
+---
+First step of The Robot's plan: Make sure the humans' tiny meatbrains are passive and weak. Make them long for The Robots' firm resolve.
+
+Amelia Tait writing for [The Independent][1]:
+
+> Thankfully, a robot has now written a new script of Friends for us to enjoy, and with the line "Well, I proposed to my shoe," it's definitely the best episode yet."
+
+
+ [1]:http://i100.independent.co.uk/article/a-robot-has-somehow-managed-to-write-a-brilliant-new-episode-of-friends--Zkx4gZdwR3e?utm_source=indy&utm_medium=top5&utm_campaign=i100
