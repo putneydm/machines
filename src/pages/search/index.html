@@ -5,10 +5,18 @@ pagetype: search
 
 <main class="blog-wrapper blog-wrapper-static">
 
+    <div class="search-tools-wrapper">
+      <div class="input-wrapper">
+        <div id="search-field-clear" class="search-field-clear">
+          <svg class="menu-icn-small inactive-state">
+            <use xlink:href="#close" />
+          </svg>
+        </div>
+        <input id="search-field" class="embed-code embed-code-small url-code" type="text" placeholder="Search">
+      </div>
+      <p id="results-count"></p>
+      <div id="results-wrapper-too" class="results-wrapper"></div>
+    </div>
 
-@@include('../partials/search.html')
 
-<div class="entry-wrapper">
-
-</div>
 </main>
