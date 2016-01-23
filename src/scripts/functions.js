@@ -46,6 +46,10 @@ var pageFunctions = {
         viewportSize = window.innerHeight;
         self.detectScrollBlog(viewportSize);
     },
+    initializeSearchPage: function() {
+      var self=this;
+      self.doSearchToo();
+    },
     intializeSearch: function () {
       var self=this;
       self.getJSON();
@@ -146,6 +150,103 @@ doSearch: function (userInput){
       self.buildSearchResults(entryHead, entryText, element.link);
     }
   };
+},
+doSearchToo: function() {
+  var self=this;
+  var arr = self.searchArrayToo;
+
+  var search = new RegExp('\\b' + 'the' + '\\b', 'gi');
+
+  var match = arr.filter(function(element) {
+    if (search.test(element.title) || search.test(element.post)) {
+    return element;
+    }
+  });
+
+
+  var bar = match.forEach(function(element, i) {
+      var post = match[i].post.toLowerCase().split(' ');
+      var index = getIndex(post);
+      var foo = getIndexToo(match[i].post, search)
+      var truncated = truncatePost(match[i].post, index);
+      // var highlightedPost = highlight(truncated, 'the');
+      // var highlightedHead = highlight(match[i].title, 'the');
+      // self.buildSearchResultsToo(highlightedHead, highlightedPost, match[i].link);
+    });
+
+  function getIndex(post) {
+    var search = 'the'.split(' ');
+    var matches = []
+    post.forEach(function (el, i) {
+      if (el === search[0] || el === search[search.length - 1]) {
+        matches.push(i);
+      }
+    });
+    return matches;
+  }
+
+  function getIndexToo(post) {
+    // var post = "this is the thing that they want the"
+    var foo = post.search(/the/gi);
+    console.log('-----');
+    console.log('foo', foo);
+    console.log(post);
+    console.log('-----');
+  }
+
+
+  function truncatePost(post, loc) {
+    var postArray = post.split(' ');
+    var truncateBeg = loc[0] - 20;
+    var truncateEnd = loc[loc.length - 1] + 20;
+
+    if (postArray.length > truncateEnd) {
+      var postArray = postArray.slice(0, truncateEnd);
+      postArray.push('&#8230');
+    }
+    if (truncateBeg > 0) {
+      var postArray = postArray.slice(truncateBeg, postArray.length);
+      postArray.unshift('&#8230');
+    }
+    else if (loc.length === 0) {
+        var postArray = postArray.slice(0, 41);
+        postArray.push('&#8230');
+    }
+    return postArray.join(' ');
+  }
+
+  function highlight(el, term) {
+  var search = new RegExp('\\b' + term + '\\b', 'gi');
+  var text = el.match(search);
+  var highlight = el.replace(search, '<strong>' + text + '</strong>')
+      return highlight;
+  }
+},
+buildSearchResultsToo: function (head, text, link) {
+  var self=this;
+
+
+  var resultsWrapper = document.getElementById('results-wrapper-too');
+
+  var singleResultWrapper = document.createElement("DIV");
+  singleResultWrapper.classList.add('search-result');
+
+  var singleResultHed = document.createElement('H2');
+  singleResultHed.classList.add("basic-header");
+  singleResultHed.classList.add('basic-header-large');
+  singleResultHed.innerHTML = head;
+
+  var singleResultText = document.createElement('P');
+  singleResultText.innerHTML = text;
+
+  var singleResultLink = document.createElement('A');
+  singleResultLink.setAttribute('HREF', link);
+  singleResultLink.setAttribute('CLASS', 'element-link');
+
+  singleResultWrapper.appendChild(singleResultHed);
+  singleResultWrapper.appendChild(singleResultText);
+  singleResultLink.appendChild(singleResultWrapper);
+  resultsWrapper.appendChild(singleResultLink);
 },
 findLocationOfMatch: function (rx, array) {
   var self=this;
@@ -407,8 +508,9 @@ detectClick: function (event) {
 }
  },
   searchArray: {},
-   getJSON: function () {
+   getJSON: function() {
      var self=this;
+     console.log('getJSON');
      var promise = new Promise(function(resolve, reject) {
      var request = new XMLHttpRequest();
      var url = '/site-feed.json';
@@ -427,5 +529,25 @@ detectClick: function (event) {
    }, function(error) {
      console.log(error.message);
    });
+ },
+searchArrayToo: [
+      {
+      "title": "Witness the power of this fully armed and operational singing Robot",
+      "post": "one Robots’ newest creation is a miniature Death Star with Mickey ears – for kids. Adults find it “terrifying”, but children are inexorably drawn to its shiny, black, unknowable visage.  John Brownlee writing for fastcodesign     “What makes Mickeyphon so fun for kids is that it actually incorporates  sounds they make into its songs. When Mickeyphon picks up a noise around it—a cough, a giggle,  sound of someone talking—it automatically records it, then uses it to replace a sample in  song.”   Perhaps it’s best they learn at an early age that Robots are always listening.  ",
+      "link": "/2016/01/robotic-mickey.html",
+      "id": "witness-the-power-o-01-16-16"
+    },
+      {
+      "title": "Witness power of this fully armed and operational singing Robot",
+      "post": "two The Robots’ newest the creation is a miniature Death Star with Mickey Mouse ears – for kids. Adults find it “terrifying”, but children are inexorably drawn to its shiny, black, unknowable visage.  John Brownlee writing for fastcodesign  “What makes Mickeyphon so fun for kids is that it actually incorporates the sounds they make into its songs. When Mickeyphon picks up a noise around it—a cough, a giggle, the sound of someone talking—it automatically records it, then uses it to replace a sample in the song.”   Perhaps it’s best they learn at an early age that The Robots are always listening.  ",
+      "link": "/2016/01/robotic-mickey.html",
+      "id": "witness-the-power-o-01-16-16"
+    },
+    {
+    "title": "Witness power of this fully armed and operational singing Robot",
+    "post": "three Robots’ newest creation is a miniature Death Star with Mickey ears – for kids. Adults find it “terrifying”, but children are inexorably drawn to its shiny, black, unknowable visage.  John Brownlee writing for fastcodesign  “What makes Mickeyphon so fun for kids is that it Actually Incorporates sounds they make into its songs. When Mickeyphon picks up a noise around it—a cough, a giggle, sound of someone talking—it automatically records it, then uses it to replace a sample in song.”   Perhaps it’s best they learn at an early age that Robots are always listening. thre",
+    "link": "/2016/01/robotic-mickey.html",
+    "id": "witness--power-o-01-16-16"
   }
+]
 };
