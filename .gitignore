@@ -4,6 +4,8 @@ test/*
 !test/_config.yml
 !test/_posts
 !test/_about
+!test/_plugins
+!test/Gemfile
 source/scripts/vendor/
 src/scripts/bower_components/
 src/photos_out/
@@ -14,7 +16,7 @@ src/svg/svgsprite.svg
 src/scripts/nge
 node_modules/
 src/sass/bourbon/
+src/sass/base/
 bower_components/
 npm-debug.log
-src/fonts/fonts_in/
 _site/
