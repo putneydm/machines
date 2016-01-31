@@ -1,0 +1,15 @@
+source 'https://rubygems.org'
+
+gem 'jekyll'
+
+# gem 'jekyll-watch'
+gem 'jekyll-paginate'
+gem 'jekyll-tagging'
+gem 'jekyll-sitemap'
+# gem 'jekyll-gist'
+# gem 'html-proofer'
+# gem 'typhoeus'
+# gem 's3_website'
+#
+# gem 'redcarpet'
+# gem 'rouge'
