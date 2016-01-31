@@ -1,7 +1,7 @@
 <div id="siteheader-placeholder" class="siteheader-placeholder"></div>
 <header id ="siteheader" class="siteheader">
   <a href="/">
-      {% if page.pagetype == 'index' or page.pagetype == 'entry'%}
+      {% if page.pagetype == 'index' or page.pagetype == 'blog-entry'%}
       <div class="main-head-wrapper">
         <svg id="main-head" class="main-head">
           <use xlink:href="#header" />
@@ -9,8 +9,8 @@
       </div>
         <h1 class="off-page">Inevitable Rise <br>of the Machines</h1>
         <h2 id="secondary-head" class="secondary-head">The only website brave enough to tell the truth about The Robots</h2>
-
-      {% elsif page.pagetype == 'tag-archive' %}
+      {% endif %}
+      {% if pagetype == 'tag-archive' %}
       <div class="main-head-wrapper">
         <svg id="main-head" class="main-head main-head-alt">
           <use xlink:href="#header_archive" />
@@ -18,8 +18,8 @@
       </div>
         <h1 class="off-page">Inevitable Rise <br>of the Machines: Archive</h1>
         <h2 id="secondary-head" class="secondary-head">The only archive page brave enough to tell the truth about The Robots</h2>
-
-      {% elsif page.pagetype == 'about' %}
+      {% endif %}
+      {% if page.pagetype == 'about' %}
       <div class="main-head-wrapper">
         <svg id="main-head" class="main-head main-head-alt">
           <use xlink:href="#header_about" />

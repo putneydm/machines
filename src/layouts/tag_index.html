@@ -2,10 +2,12 @@
 layout: main_layout
 pagetype: tag-archive
 ---
+
 <h2 class="post_title">{{page.title}}</h2>
 
 <main class="blog-wrapper blog-wrapper-static">
-
+<!-- hack sets variable to make sure that header is assigned to this page -->
+{% assign pagetype = 'tag-archive' %}
 @@include('../pages/partials/site_header.html')
 
 <section>
