@@ -1,6 +1,6 @@
 
 # Site settings
-title: Inevitiable Rise of the Machines
+title: Inevitable Rise of the Machines
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://inevitableriseofthemachines.com" # the base hostname & protocol for your site
 disclaimer: This is a personal website. It is not affiliated with any employer current or former of the owner / author.
@@ -11,6 +11,10 @@ permalink: /:year/:month/:title.html
 
 # Build settings
 markdown: kramdown
+
+gems:
+  - jekyll-paginate
+  - jekyll-sitemap
 
 array: []  #empty array
 
