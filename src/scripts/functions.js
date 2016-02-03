@@ -172,7 +172,7 @@ doSearch: function (userInput){
     if (entryHead) {
       self.buildSearchResults(entryHead, entryText, element.link);
     }
-  };
+  }
 },
 findLocationOfMatch: function (rx, array) {
   var self=this;
