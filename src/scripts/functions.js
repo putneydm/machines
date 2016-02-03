@@ -106,10 +106,11 @@ var pageFunctions = {
   handleKeyUp: function(searchField, resultsContainer) {
     var self=this;
     var userInput = searchField.value;
-    if (userInput && userInput.length >2 ){
+    var excludeWord = self.testSearchInput(userInput);
+    if (!excludeWord && userInput && userInput.length >2 ){
       self.doSearch(userInput);
       self.quantifyResults();
-      }
+    }
     self.handleSearchClearButton(userInput);
   },
   handleSearchFieldClear: function() {
@@ -133,6 +134,19 @@ var pageFunctions = {
       clear.classList.remove('search-field-clear--active');
     }
   },
+testSearchInput: function (userInput) {
+  var self=this;
+  var searchClean= userInput.replace(/[\'.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").replace(/\s+$/g,"");
+
+  var searchTerm = new RegExp('\\b' + searchClean + '\\b','gi');
+  var exclude = self.stopwordsArray;
+  var test = exclude.some(function(el) {
+    if (el.match(searchTerm)) {
+      return true;
+    };
+  });
+  return test;
+},
 doSearch: function (userInput){
   var self=this;
   var array;
