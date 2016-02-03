@@ -48,7 +48,20 @@ var pageFunctions = {
     },
     intializeSearch: function () {
       var self=this;
-      self.getJSON();
+      var array = 'fooBar';
+      var siteContentPromise = self.getJSON('/site-feed.json');
+      siteContentPromise.then(function(siteContent) {
+       self.searchArray = siteContent;
+     })
+     .catch(function(error) {
+       console.log(error);
+     });
+      var stopwordsPromise =
+      self.getJSON('/scripts/stopwords.json');
+      stopwordsPromise.then(function(stopwords) {
+      // console.log(stopwords);
+      self.stopwordsArray = stopwords;
+     })
       self.intializeSearchField();
     },
     intializeSearchField: function () {
