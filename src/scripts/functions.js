@@ -208,12 +208,11 @@ handleResultText: function (toArray, raw, text, element) {
 highlightSearchKeyword:  function (array, term) {
   var self=this;
     var text = new RegExp('\\b' + term + '\\b','gi');
-    var match = array.join(' ').match(text);
-
-    if (match != undefined && match.length === 1) {
-      return array.join(' ').replace(text, "<strong>" + match[0] + '</strong>');
+    var matchTerm = array.join(' ').match(text);
+    if (matchTerm && matchTerm.length === 1) {
+      return array.join(' ').replace(text, "<strong>" + matchTerm[0] + '</strong>');
     }
-    else if (match != undefined && match.length > 1) {
+    else if (matchTerm && matchTerm.length > 1) {
       return array.join(' ').replace(text, "<strong>" + term + '</strong>');
     }
 },
