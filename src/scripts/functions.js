@@ -274,11 +274,11 @@ detectScrollIndex: function (viewportSize) {
           headerPosition = self.getHeaderPosition(),
           placeholderPosition = placeholder.getBoundingClientRect().top;
 
-          self.handleHeaderPinning(position, headerPosition, placeholderPosition)
+          self.handleHeaderPinning(position, headerPosition, placeholderPosition);
           self.handleReefer(position, headerPosition);
           self.handleHeaderImage(position, viewportSize);
           self.handleNavAnimate(position, viewportSize);
-    }
+    };
     return position;
  },
  detectScrollBlog: function (viewportSize) {
@@ -290,7 +290,7 @@ detectScrollIndex: function (viewportSize) {
            headerPosition = self.getHeaderPosition();
 
            self.handleReefer(position, headerPosition);
-     }
+     };
      return position;
   },
      detectClick: function (event) {
@@ -304,7 +304,7 @@ detectScrollIndex: function (viewportSize) {
                 self.handleFormAutoSelect(element);
             }
             if (element.classList.contains("btn-large")) {
-              self.handleCardFlip()
+              self.handleCardFlip();
             }
      },
      handleHeaderImage: function (position, headerHeight) {
@@ -317,14 +317,14 @@ detectScrollIndex: function (viewportSize) {
             header = document.getElementById('siteheader');
 
 
-          if (position >= headerHeight * .5 && !active) {
+          if (position >= headerHeight * 0.5 && !active) {
             target.classList.add('header-image--active');
             targetHead.classList.add('main-head--active');
             secondaryHead.classList.add('secondary-head--active');
             bodyText.classList.add('entry-wrapper--active');
             header.classList.add('header-after--active');
           }
-          if (position <= headerHeight * .5 && active) {
+          if (position <= headerHeight * 0.5 && active) {
             target.classList.remove('header-image--active');
             targetHead.classList.remove('main-head--active');
             secondaryHead.classList.remove('secondary-head--active');
@@ -352,10 +352,10 @@ detectScrollIndex: function (viewportSize) {
        var reefers = document.getElementById('reefers'),
            activeState = reefers.classList.contains('reefers-wrapper--active');
 
-        if (position >= headerPosition * .8 && !activeState) {
+        if (position >= headerPosition * 0.8 && !activeState) {
           reefers.classList.add('reefers-wrapper--active');
         }
-        if (position <= headerPosition * .8 && activeState) {
+        if (position <= headerPosition * 0.8 && activeState) {
           reefers.classList.remove('reefers-wrapper--active');
           }
      },
@@ -366,14 +366,14 @@ detectScrollIndex: function (viewportSize) {
            var linksTest = links.classList.contains('main-nav-wrapper--animatible');
           var linksActive = links.classList.contains('main-nav-wrapper--active');
 
-        if (!linksActive && linksTest && position >= headerPosition * .8) {
+        if (!linksActive && linksTest && position >= headerPosition * 0.8) {
           links.classList.add('main-nav-wrapper--active');
           links.classList.add('main-nav-wrapper--trans');
           setTimeout(function(){
             links.classList.remove('main-nav-wrapper--trans');
           }, 850);
         }
-        if (linksActive && linksTest && position <= headerPosition * .5) {
+        if (linksActive && linksTest && position <= headerPosition * 0.5) {
           links.classList.remove('main-nav-wrapper--active');
         }
      },
@@ -381,12 +381,12 @@ detectScrollIndex: function (viewportSize) {
       var self=this;
       var card = document.getElementsByClassName('flip-card')[0];
       var active = card.classList.contains('flip-card--active');
-        if (active == false) {
+        if (!active) {
           self.testCopy();
           card.classList.add('flip-card--active', 'flip-card--trans');
         }
-        if (active == true) {
-          card.classList.remove('flip-card--active')
+        if (active) {
+          card.classList.remove('flip-card--active');
           card.classList.add('flip-card--activeToo');
             setTimeout(function(){
               card.classList.remove('flip-card--trans', 'flip-card--activeToo');
@@ -426,10 +426,10 @@ detectScrollIndex: function (viewportSize) {
        var viewportSize = window.innerHeight,
            headerHeight = document.getElementById('siteheader').offsetHeight;
       if (headerHeight) {
-       return viewportSize - (viewportSize * .05) - headerHeight;
+       return viewportSize - (viewportSize * 0.05) - headerHeight;
      }
      else {
-      return viewportSize * .50;
+      return viewportSize * 0.50;
     }
      },
     // searchArray: {},
