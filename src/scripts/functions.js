@@ -83,13 +83,13 @@ var pageFunctions = {
       var searchWrapper = document.getElementById('search-wrapper');
       var navWrapper = document.getElementById('main-nav-wrapper');
 
-      if (!self.searchArray.length) {
+      if (!self.searchArray) {
         self.intializeSearch();
       }
       searchButton.classList.toggle('main-nav--active');
       var body = document.getElementsByTagName('BODY');
       body[0].classList.toggle('no-scroll');
-      searchWrapper.classList.toggle('search-wrapper--active')
+      searchWrapper.classList.toggle('search-wrapper--active');
       if (searchWrapper.classList.contains('search-wrapper--active')) {
         self.clearSearchResults();
       }
