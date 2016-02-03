@@ -71,7 +71,7 @@ var paths = {
   },
   scripts: {
     input: 'src/scripts/**/*.js',
-    exclude: 'src/scripts/exclude/*.js',
+    exclude: 'src/scripts/exclude/*{.js,.json}',
     bower: 'src/scripts/bower_components/**/*.js',
     vendor: 'src/scripts/vendor/*.js',
     testing: 'test/scripts/',
