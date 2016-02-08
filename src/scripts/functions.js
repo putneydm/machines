@@ -286,6 +286,46 @@ highlightSearchKeyword:  function (array, term) {
       return array.join(' ').replace(text, "<strong>" + term + '</strong>');
     }
 },
+buildSearchResultsToo: function(matchedEntries, sortedEntries) {
+  var self=this;
+  var resultsWrapper = document.getElementById('results-wrapper');
+
+  sortedEntries.forEach(function (el, i) {
+    var entryNumber = sortedEntries[i].index;
+
+    var entryHead = matchedEntries[entryNumber].title;
+    var entryLink = matchedEntries[entryNumber].link;
+    var entryRank = sortedEntries[i].count;
+
+    entryMarkup (entryHead, entryLink, entryRank);
+  });
+
+  function entryMarkup (entryHead, entryLink, entryRank) {
+    var singleResultWrapper = document.createElement("DIV");
+    singleResultWrapper.classList.add('search-result');
+
+    var singleResultLink = document.createElement('A');
+    singleResultLink.setAttribute('HREF', entryLink);
+    singleResultLink.setAttribute('CLASS', 'element-link');
+
+    var singleResultHed = document.createElement('H2');
+    singleResultHed.classList.add("basic-header");
+    singleResultHed.innerHTML = entryHead;
+
+    var singleResultCounter = document.createElement('P');
+    singleResultCounter.classList.add("result-rank");
+    singleResultCounter.innerHTML = 'rank ' + entryRank;
+
+    singleResultWrapper.appendChild(singleResultHed);
+    singleResultWrapper.appendChild(singleResultCounter);
+    singleResultLink.appendChild(singleResultWrapper);
+    resultsWrapper.appendChild(singleResultLink);
+
+    console.log(singleResultWrapper);
+
+  };
+
+},
 buildSearchResults: function (head, text, link) {
   var self=this;
 
