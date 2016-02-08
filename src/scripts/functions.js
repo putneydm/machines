@@ -108,6 +108,7 @@ var pageFunctions = {
     var userInput = searchField.value;
     var excludeWord = self.testSearchInput(userInput);
     if (!excludeWord && userInput && userInput.length >2 ){
+      self.doSearchToo(userInput);
       self.doSearch(userInput);
       self.quantifyResults();
     }
@@ -146,6 +147,75 @@ testSearchInput: function (userInput) {
     };
   });
   return test;
+},
+doSearchToo: function(userInput) {
+  var self=this;
+  console.log('userInput', userInput);
+  var arr = self.searchArray;
+  var searchTerm = new RegExp('\\b' + userInput + '\\b','gi');
+
+  var matches = []
+
+  var matchedEntries = arr.filter(function(el) {
+    if (searchTerm.test(el.post) || searchTerm.test(el.title)) {
+      return true;
+    }
+  });
+  matchedEntries.forEach(function (el, i) {
+      var bar = el.post.match(searchTerm);
+      var foo = el.title.match(searchTerm);
+
+      var resultsArr = new Object();
+        resultsArr.index = i;
+
+      if (!bar && foo) {
+          resultsArr.count = foo.length;
+      } else if (bar && !foo) {
+          resultsArr.count = bar.length;
+      } else if (bar && foo) {
+          resultsArr.count = foo.concat(bar).length;
+      }
+      matches.push(resultsArr);
+    });
+
+    var matchesSort = matches.sort(function(a, b){
+      return b.count-a.count
+    })
+
+    // set start
+    var counter = 0;
+    var begin = matchesSort[0].count;
+    var sortedEntries = [];
+
+    while (begin > 0) {
+      // give me an array of everything with a count that matches the current count.
+      var indexSort = matchesSort.filter(function(el) {
+        if (el.count === begin) {
+          return true;
+        }
+      })
+      // sorts subset by index -- chained to preceding function
+      .sort(function(a, b){
+        return a.index-b.index;
+      })
+      //  push to sortedEntries array
+      var sortedEntries = sortedEntries.length ?  sortedEntries.concat(indexSort) : indexSort;
+
+      // deincrement counter
+      begin --;
+      };
+
+      console.log('sortedEntries', sortedEntries);
+      console.log('matchedEntries', matchedEntries);
+
+      // sortedEntries.forEach(function (el, i) {
+      //  var entryNumber = sortedEntries[i].index;
+      //   console.log('entry', matchedEntries[entryNumber]);
+      //   console.log('count', sortedEntries[i].count);
+      //   console.log('index', sortedEntries[i].index);
+      // });
+
+      self.buildSearchResultsToo(matchedEntries, sortedEntries);
 },
 doSearch: function (userInput){
   var self=this;
