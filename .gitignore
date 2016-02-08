@@ -6,6 +6,7 @@ test/*
 !test/_about
 !test/_plugins
 !test/Gemfile
+test/_plugins/.DS_Store
 source/scripts/vendor/
 src/scripts/bower_components/
 src/photos_out/
