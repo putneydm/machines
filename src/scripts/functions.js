@@ -349,7 +349,7 @@ buildSearchResults: function (head, text, link) {
   singleResultWrapper.appendChild(singleResultHed);
   singleResultWrapper.appendChild(singleResultText);
   singleResultLink.appendChild(singleResultWrapper);
-  resultsWrapper.appendChild(singleResultLink);
+  // resultsWrapper.appendChild(singleResultLink);
 },
 clearSearchResults: function () {
   var self=this;
