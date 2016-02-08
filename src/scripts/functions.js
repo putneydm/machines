@@ -524,7 +524,7 @@ detectScrollIndex: function (viewportSize) {
           var successful = document.execCommand('copy');
           successful ? inputActive('form-container--success') :inputActive('form-container--fail');
         } catch (err) {
-            inputActive('form-container--fail');
+          inputActive('form-container--fail');
         }
      },
      handleFormAutoSelect: function (el) {
