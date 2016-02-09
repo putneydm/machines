@@ -205,16 +205,6 @@ doSearchToo: function(userInput) {
       begin --;
       };
 
-      console.log('sortedEntries', sortedEntries);
-      console.log('matchedEntries', matchedEntries);
-
-      // sortedEntries.forEach(function (el, i) {
-      //  var entryNumber = sortedEntries[i].index;
-      //   console.log('entry', matchedEntries[entryNumber]);
-      //   console.log('count', sortedEntries[i].count);
-      //   console.log('index', sortedEntries[i].index);
-      // });
-
       self.buildSearchResultsToo(matchedEntries, sortedEntries);
 },
 doSearch: function (userInput){
