@@ -204,7 +204,9 @@ doSearchToo: function(userInput) {
       begin --;
       };
 
+      //
       self.buildSearchResultsToo(matchedEntries, sortedEntries);
+      self.quantifyResultsToo(matchedEntries.length, userInput);
 },
 doSearch: function (userInput){
   var self=this;
@@ -351,6 +353,21 @@ clearSearchResults: function () {
     resultsContainer.removeChild(item);
   });
   searchField.focus();
+},
+quantifyResultsToo: function (length, userInput) {
+  var self=this;
+  var countContainer =  document.getElementById('results-count');
+
+  countContainer.innerHTML = length !== 1
+  ? "We found " + length + " entries with  \"" + userInput + "\'"
+  : "We found " + length + " entry with \"" + userInput + "\"";
+
+},
+truncateText: function(text, length) {
+  var self=this;
+  var textTruncate = text.split(' ').splice(0, length).join(' ') + ' &#8230;';
+
+  return textTruncate;
 },
 quantifyResults: function () {
   var self=this;
