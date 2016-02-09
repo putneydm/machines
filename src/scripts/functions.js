@@ -283,15 +283,26 @@ buildSearchResultsToo: function(matchedEntries, sortedEntries) {
 
   sortedEntries.forEach(function (el, i) {
     var entryNumber = sortedEntries[i].index;
-
     var entryHead = matchedEntries[entryNumber].title;
     var entryLink = matchedEntries[entryNumber].link;
     var entryRank = sortedEntries[i].count;
 
-    entryMarkup (entryHead, entryLink, entryRank);
+    var post = matchedEntries[entryNumber].post;
+
+    var entryBody = post.length >= 50
+    ? self.truncateText(post, 25)
+    : false
+
+    console.log(entryBody);
+
+    entryMarkup (entryHead, entryLink, entryRank, entryBody);
   });
 
-  function entryMarkup (entryHead, entryLink, entryRank) {
+  function entryMarkup (entryHead, entryLink, entryRank, entryBody) {
+
+    var arrow = "<svg class=\"inline-icn\"><use xmlns:xlink=\"http:\/\/www.w3.org/1999/xlink\" xlink:href=\"#arrow\"></use></svg>"
+
+
     var singleResultWrapper = document.createElement("DIV");
     singleResultWrapper.classList.add('search-result');
 
