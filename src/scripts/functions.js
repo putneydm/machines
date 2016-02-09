@@ -311,19 +311,29 @@ buildSearchResultsToo: function(matchedEntries, sortedEntries) {
     singleResultLink.setAttribute('CLASS', 'element-link');
 
     var singleResultHed = document.createElement('H2');
-    singleResultHed.classList.add("basic-header");
+    singleResultHed.classList.add("basic-header", 'basic-header-large');
     singleResultHed.innerHTML = entryHead;
 
-    var singleResultCounter = document.createElement('P');
-    singleResultCounter.classList.add("result-rank");
-    singleResultCounter.innerHTML = 'rank ' + entryRank;
+    if (entryBody) {
+      var singleResultBody = document.createElement('P');
+      singleResultBody.innerHTML = entryBody + arrow;
+    }
 
-    singleResultWrapper.appendChild(singleResultHed);
+    var singleResultCounter = document.createElement('P');
+    singleResultCounter.classList.add("overline");
+    singleResultCounter.innerHTML = entryRank > 1
+    ? '<em>' + entryRank + ' matches in entry </em>'
+    : '<em>' + entryRank + ' match in entry </em>'
+
     singleResultWrapper.appendChild(singleResultCounter);
+    singleResultWrapper.appendChild(singleResultHed);
+    if (entryBody) {
+      singleResultWrapper.appendChild(singleResultBody)
+    }
     singleResultLink.appendChild(singleResultWrapper);
     resultsWrapper.appendChild(singleResultLink);
 
-    console.log(singleResultWrapper);
+    // console.log(singleResultWrapper);
 
   };
 
