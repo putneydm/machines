@@ -160,6 +160,8 @@ doSearchToo: function(userInput) {
       return true;
     }
   });
+
+  // find out how each item that matches ranks and rank them by how many matches they have
   matchedEntries.forEach(function (el, i) {
       var bar = el.post.match(searchTerm);
       var foo = el.title.match(searchTerm);
@@ -180,6 +182,8 @@ doSearchToo: function(userInput) {
     var matchesSort = matches.sort(function(a, b){
       return b.count-a.count
     })
+
+    // resort each subsection of the rank so that they are in proper index order
 
     // set start
     var counter = 0;
