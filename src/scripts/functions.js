@@ -110,7 +110,7 @@ var pageFunctions = {
     if (!excludeWord && userInput && userInput.length >2 ){
       self.doSearchToo(userInput);
       self.doSearch(userInput);
-      self.quantifyResults();
+      // self.quantifyResults();
     }
     self.handleSearchClearButton(userInput);
   },
