@@ -150,7 +150,6 @@ testSearchInput: function (userInput) {
 },
 doSearchToo: function(userInput) {
   var self=this;
-  console.log('userInput', userInput);
   var arr = self.searchArray;
   var searchTerm = new RegExp('\\b' + userInput + '\\b','gi');
 
