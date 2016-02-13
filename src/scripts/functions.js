@@ -74,15 +74,9 @@ var pageFunctions = {
           self.handleKeyDown(searchField);
         };
       searchField.onkeyup = function () {
-          self.handleKeyUp(searchField, resultsContainer);
           self.handleKeyUp(searchField);
       };
     },
-    handleSearchDisplay: function () {
-      var self=this;
-      var searchButton = document.getElementById('search-button');
-      var searchWrapper = document.getElementById('search-wrapper');
-      var navWrapper = document.getElementById('main-nav-wrapper');
   intializeSearchButton: function() {
     var self=this;
     console.log('initsearch');
@@ -110,8 +104,29 @@ var pageFunctions = {
       console.log('click');
     });
   },
+  handleSearchDisplay: function () {
     var self=this;
-    var keyPress=event.keyCode? event.keyCode : event.charCode;
+    var searchButton = document.getElementById('search-button');
+    var searchWrapper = document.getElementById('search-wrapper');
+    var navWrapper = document.getElementById('main-nav-wrapper');
+
+    if (!self.searchArray) {
+      self.intializeSearch();
+    }
+    searchButton.classList.toggle('main-nav--active');
+    var body = document.getElementsByTagName('BODY');
+    body[0].classList.toggle('no-scroll');
+    searchWrapper.classList.toggle('search-wrapper--active');
+    if (searchWrapper.classList.contains('search-wrapper--active')) {
+      self.clearSearchResults();
+    }
+    navWrapper.classList.toggle('main-nav-wrapper--static');
+  },
+  handleKeyDown: function (searchField) {
+    var self=this;
+    var keyPress=event.keyCode
+    ? event.keyCode
+    : event.charCode;
     if (keyPress === 27) {
       self.handleSearchDisplay();
     }
