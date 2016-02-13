@@ -97,6 +97,12 @@ var pageFunctions = {
       navWrapper.classList.toggle('main-nav-wrapper--static');
     },
   handleKeyDown: function () {
+    searchButton.addEventListener('click', function() {
+      self.doSearchToo(searchField.value);
+      return false;
+      console.log('click');
+    });
+  },
     var self=this;
     var keyPress=event.keyCode? event.keyCode : event.charCode;
     if (keyPress === 27) {
