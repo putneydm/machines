@@ -83,6 +83,13 @@ var pageFunctions = {
       var searchButton = document.getElementById('search-button');
       var searchWrapper = document.getElementById('search-wrapper');
       var navWrapper = document.getElementById('main-nav-wrapper');
+  intializeSearchButton: function() {
+    var self=this;
+    console.log('initsearch');
+    var searchButton = document.getElementById('search-btn');
+    var searchField = document.getElementById('search-field');
+
+    console.log(searchButton);
 
       if (!self.searchArray) {
         self.intializeSearch();
