@@ -117,7 +117,12 @@ var pageFunctions = {
     if (keyPress === 27) {
       self.handleSearchDisplay();
     }
-    self.clearSearchResults();
+    if (keyPress === 13) {
+      var userInput = searchField.value;
+      self.clearSearchResults();
+      self.doSearchToo(userInput);
+    }
+
   },
   handleKeyUp: function(searchField, resultsContainer) {
     var self=this;
