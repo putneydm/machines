@@ -127,11 +127,9 @@ var pageFunctions = {
   handleKeyUp: function(searchField, resultsContainer) {
     var self=this;
     var userInput = searchField.value;
-    var excludeWord = self.testSearchInput(userInput);
-    if (!excludeWord && userInput && userInput.length >2 ){
-      self.doSearchToo(userInput);
-      self.doSearch(userInput);
-      // self.quantifyResults();
+    // var excludeWord = self.testSearchInput(userInput);
+    if (userInput.length === 0 ){
+      self.clearSearchResults();
     }
     self.handleSearchClearButton(userInput);
   },
