@@ -312,7 +312,7 @@ buildSearchResultsToo: function(matchedEntries, sortedEntries) {
 
     var singleResultLink = document.createElement('A');
     singleResultLink.setAttribute('HREF', entryLink);
-    singleResultLink.setAttribute('CLASS', 'element-link');
+    singleResultLink.classList.add("element-link");
 
     var singleResultHed = document.createElement('H2');
     singleResultHed.classList.add("basic-header", 'basic-header-large');
@@ -337,10 +337,9 @@ buildSearchResultsToo: function(matchedEntries, sortedEntries) {
     singleResultLink.appendChild(singleResultWrapper);
     resultsWrapper.appendChild(singleResultLink);
 
-    // console.log(singleResultWrapper);
+    resultsWrapper.appendChild(singleResultLink);
 
   };
-
 },
 buildSearchResults: function (head, text, link) {
   var self=this;
@@ -384,7 +383,7 @@ quantifyResultsToo: function (length, userInput) {
   var countContainer =  document.getElementById('results-count');
 
   countContainer.innerHTML = length !== 1
-  ? "We found " + length + " entries with  \"" + userInput + "\'"
+  ? "We found " + length + " entries with  \"" + userInput + "\""
   : "We found " + length + " entry with \"" + userInput + "\"";
 
 },
