@@ -302,10 +302,10 @@ highlightSearchKeyword:  function (array, term) {
       return array.join(' ').replace(text, "<strong>" + term + '</strong>');
     }
 },
-buildSearchResultsToo: function(matchedEntries, sortedEntries) {
+buildSearchResultsToo: function(matchedEntries, sortedEntries, resultsWrapper) {
   var self=this;
-  var resultsWrapper = document.getElementById('results-wrapper');
 
+  var resultsWrapper = document.getElementById('results-wrapper')
   sortedEntries.forEach(function (el, i) {
     var entryNumber = sortedEntries[i].index;
     var entryHead = matchedEntries[entryNumber].title;
