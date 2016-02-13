@@ -85,19 +85,6 @@ var pageFunctions = {
 
     console.log(searchButton);
 
-      if (!self.searchArray) {
-        self.intializeSearch();
-      }
-      searchButton.classList.toggle('main-nav--active');
-      var body = document.getElementsByTagName('BODY');
-      body[0].classList.toggle('no-scroll');
-      searchWrapper.classList.toggle('search-wrapper--active');
-      if (searchWrapper.classList.contains('search-wrapper--active')) {
-        self.clearSearchResults();
-      }
-      navWrapper.classList.toggle('main-nav-wrapper--static');
-    },
-  handleKeyDown: function () {
     searchButton.addEventListener('click', function() {
       self.doSearchToo(searchField.value);
       return false;
