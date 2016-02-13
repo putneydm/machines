@@ -696,6 +696,10 @@
 }
 .input-wrapper {
   position: relative;
+  display: flex;
+}
+.search-field {
+  margin:0 rem(15) 0 0;
 }
 .search-field-clear {
   width:rem(20);
@@ -703,8 +707,8 @@
   border-radius: 50%;
   background-color: $med;
   position:absolute;
-  top:10px;
-  right:20px;
+  top:12px;
+  right:160px;
   opacity:0;
 }
 .search-field-clear--active {
