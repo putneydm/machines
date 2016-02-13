@@ -131,7 +131,7 @@ var pageFunctions = {
     if (userInput.length === 0 ){
       self.clearSearchResults();
     }
-    self.handleSearchClearButton(userInput);
+    self.handleSearchClearButton();
   },
   handleSearchFieldClear: function() {
     var self=this;
