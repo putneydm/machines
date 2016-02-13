@@ -143,8 +143,10 @@ var pageFunctions = {
       searchField.focus();
     });
   },
-  handleSearchClearButton: function (userInput) {
+  handleSearchClearButton: function () {
     var self=this;
+    var searchField = document.getElementById('search-field');
+    var userInput = searchField.value;
     var clear =  document.getElementById('search-field-clear');
     var active = clear.classList.contains('search-field-clear--active');
     if (userInput.length >1 && !active) {
