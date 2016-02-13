@@ -63,18 +63,19 @@ var pageFunctions = {
       self.stopwordsArray = stopwords;
      })
       self.intializeSearchField();
+      self.intializeSearchButton();
+      self.handleSearchFieldClear();
     },
     intializeSearchField: function () {
       var self=this;
       var searchField = document.getElementById('search-field');
-      var resultsContainer = document.getElementById('results-wrapper');
-      self.handleSearchFieldClear();
-
       searchField.onkeydown = function() {
-          self.handleKeyDown();
+          console.log('keypress');
+          self.handleKeyDown(searchField);
         };
       searchField.onkeyup = function () {
           self.handleKeyUp(searchField, resultsContainer);
+          self.handleKeyUp(searchField);
       };
     },
     handleSearchDisplay: function () {
