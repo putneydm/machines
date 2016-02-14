@@ -186,15 +186,25 @@ doSearchToo: function(userInput) {
     console.log('please narrow your search');
     self.handleFailMessage(true);
   } else {
+
+// begin else
+  var searchClean = userInput.replace(/\s{2,}/,' ').replace(/\s{1,}$/,'');
+  var searchTerm = new RegExp('\\b' + searchClean + '\\b','gi');
+
   var matches = []
 
   var matchedEntries = arr.filter(function(el) {
     if (searchTerm.test(el.post) || searchTerm.test(el.title)) {
       return true;
+    } else {
+      return false;
     }
   });
 
+  console.log('matchedEntries', matchedEntries);
+
   // find out how each item that matches ranks and rank them by how many matches they have
+  if (matchedEntries.length > 0) { // begin inside if
   matchedEntries.forEach(function (el, i) {
       var bar = el.post.match(searchTerm);
       var foo = el.title.match(searchTerm);
@@ -240,10 +250,17 @@ doSearchToo: function(userInput) {
       // deincrement counter
       begin --;
       };
+    } // end inside if
+    else {
+      console.log('no result');
+      self.handleFailMessage(true, 'notFound')
+    }
 
       //
       self.buildSearchResultsToo(matchedEntries, sortedEntries);
       self.quantifyResultsToo(matchedEntries.length, userInput);
+
+    } // end else
 },
 doSearch: function (userInput){
   var self=this;
