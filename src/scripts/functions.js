@@ -212,7 +212,6 @@ doSearchToo: function(userInput) {
     }
   });
 
-  console.log('matchedEntries', matchedEntries);
 
   // find out how each item that matches ranks and rank them by how many matches they have
   if (matchedEntries.length > 0) { // begin inside if
@@ -263,14 +262,12 @@ doSearchToo: function(userInput) {
       };
     } // end inside if
     else {
-      console.log('no result');
       self.handleFailMessage(true, 'notFound')
     }
 
       //
       self.buildSearchResultsToo(matchedEntries, sortedEntries);
       self.quantifyResultsToo(matchedEntries.length, userInput);
-
       self.handleSearchDisplayTransition(true);
     } // end else
 },
@@ -359,7 +356,6 @@ handleFailMessage: function(activeState, type) {
 },
 buildSearchResultsToo: function(matchedEntries, sortedEntries, resultsWrapper) {
   var self=this;
-
   var resultsWrapper = document.getElementById('results-wrapper')
   sortedEntries.forEach(function (el, i) {
     var entryNumber = sortedEntries[i].index;
@@ -459,7 +455,6 @@ quantifyResultsToo: function (length, userInput) {
   countContainer.innerHTML = length !== 1
   ? "We found " + length + " entries with  \"" + userInput + "\""
   : "We found " + length + " entry with \"" + userInput + "\"";
-
 },
 truncateText: function(text, length) {
   var self=this;
