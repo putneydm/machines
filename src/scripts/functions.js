@@ -109,6 +109,13 @@ var pageFunctions = {
     }
     navWrapper.classList.toggle('main-nav-wrapper--static');
   },
+  handleSearchDisplayTransition: function(state) {
+    var self=this;
+    var resultsWrapper = document.getElementById('results-wrapper');
+    state
+    ? resultsWrapper.classList.add('results-wrapper--active')
+    : resultsWrapper.classList.remove('results-wrapper--active');
+  },
   handleKeyDown: function (searchField) {
     var self=this;
     var userInput = searchField.value;
