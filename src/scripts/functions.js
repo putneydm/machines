@@ -167,6 +167,9 @@ testSearchInput: function (userInput) {
       return true;
     };
   }
+  if (userInput.length === 0 || spaces(userInput)) {
+    var test = true;
+  } else {
   });
   return test;
 },
