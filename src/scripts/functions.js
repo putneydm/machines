@@ -363,8 +363,6 @@ buildSearchResultsToo: function(matchedEntries, sortedEntries, resultsWrapper) {
     ? self.truncateText(post, 25)
     : false
 
-    console.log(entryBody);
-
     entryMarkup (entryHead, entryLink, entryRank, entryBody);
   });
 
