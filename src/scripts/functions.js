@@ -162,8 +162,11 @@ testSearchInput: function (userInput) {
   var exclude = self.stopwordsArray;
   var test = exclude.some(function(el) {
     if (el.match(searchTerm)) {
+  var spaces = function foo(userInput) {
+    if (userInput.match(!/\w+/) || userInput.match(/[[:punct:]]/gi)) {
       return true;
     };
+  }
   });
   return test;
 },
