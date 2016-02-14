@@ -101,6 +101,7 @@ var pageFunctions = {
     searchWrapper.classList.toggle('search-wrapper--active');
     if (searchWrapper.classList.contains('search-wrapper--active')) {
       self.clearSearchResults();
+      self.handleFailMessage(false);
     }
     navWrapper.classList.toggle('main-nav-wrapper--static');
   },
@@ -125,6 +126,7 @@ var pageFunctions = {
     // var excludeWord = self.testSearchInput(userInput);
     if (userInput.length === 0 ){
       self.clearSearchResults();
+      self.handleFailMessage(false);
     }
     self.handleSearchClearButton();
   },
@@ -134,6 +136,7 @@ var pageFunctions = {
     clear.addEventListener('click', function () {
       var searchField = document.getElementById('search-field');
       self.clearSearchResults();
+      self.handleFailMessage(false);
       searchField.value = '';
       searchField.focus();
     });
