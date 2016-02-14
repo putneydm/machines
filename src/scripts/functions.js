@@ -166,8 +166,13 @@ testSearchInput: function (userInput) {
   if (userInput.length === 0 || spaces(userInput)) {
     var test = true;
   } else {
+  var test = self.stopwordsArray.some(function(el) {
+    if (el.match('\\b' + searchClean + '\\b','gi')) {
+      return true;
+    };
   });
-  return test;
+}
+return test;
 },
 doSearchToo: function(userInput) {
   var self=this;
