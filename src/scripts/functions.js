@@ -192,12 +192,9 @@ doSearchToo: function(userInput) {
   var self=this;
   var arr = self.searchArray;
 
-  var searchInValid = self.testSearchInput(userInput);
+  var searchInvalid = self.testSearchInput(userInput);
 
-  console.log('search value', searchInValid);
-
-  if (searchInValid) {
-    console.log('please narrow your search');
+  if (searchInvalid) {
     self.handleFailMessage(true);
   } else {
 
