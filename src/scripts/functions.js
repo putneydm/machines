@@ -264,74 +264,88 @@ doSearchToo: function(userInput) {
 
     } // end else
 },
-doSearch: function (userInput){
+// doSearch: function (userInput){
+//   var self=this;
+//   var array;
+//   var array = self.searchArray;
+//   var searchTerm = new RegExp('\\b' + userInput + '\\b','gi');
+//   array.forEach(logArrayElements);
+//   function logArrayElements (element) {
+//     var toArrayHead = element.title.split(' ');
+//     var toArrayBody = element.post.split(' ');
+//     var entryTextTruncate = self.handleResultText(toArrayBody, userInput, searchTerm, element.post);
+//     if (element.post.match(searchTerm) && element.title.match(searchTerm) ) {
+//       var entryHead = self.highlightSearchKeyword(toArrayHead, userInput);
+//       var entryText = self.highlightSearchKeyword(entryTextTruncate, userInput);
+//     }
+//     else if (element.title.match(searchTerm) && !element.post.match(searchTerm)) {
+//       var entryHead = self.highlightSearchKeyword(toArrayHead, userInput);
+//       var entryText = entryTextTruncate.join(' ');
+//     }
+//     else if (element.post.match(searchTerm) && !element.title.match(searchTerm) ) {
+//       var entryText = self.highlightSearchKeyword(entryTextTruncate, userInput);
+//       var entryHead = element.title;
+//     }
+//     if (entryHead) {
+//       self.buildSearchResults(entryHead, entryText, element.link);
+//     }
+//   }
+// },
+// findLocationOfMatch: function (rx, array) {
+//   var self=this;
+//   for (var i in array) {
+//     if (array[i].toString().match(rx)) {
+//       return i;
+//     }
+//   }
+//   return -1;
+// },
+// handleResultText: function (toArray, raw, text, element) {
+//   var self=this;
+//   var space = raw.match(/\s/g);
+//   // find the locatuon of search item
+//   if (space) {
+//     var multiWord = raw.split(' ');
+//     var multiWordFirstWord = new RegExp(multiWord[0],'gi');
+//     var matchLocation = (self.findLocationOfMatch(multiWordFirstWord, toArray)) * 1;
+//   }
+//   if (!space) {
+//     var matchLocation = (self.findLocationOfMatch(text,toArray)) * 1;
+//   }
+//   if (matchLocation > 13) {
+//     arrayTrim = matchLocation - 13;
+//     var toArray = toArray.slice(arrayTrim, toArray.length);
+//   }
+//   var multiMatch = (element.match(text));
+//   if (!multiMatch || multiMatch.length === 1) {
+//       var toArray = toArray.slice(0, 25);
+//   }
+//   return toArray;
+// },
+// highlightSearchKeyword:  function (array, term) {
+//   var self=this;
+//     var text = new RegExp('\\b' + term + '\\b','gi');
+//     var matchTerm = array.join(' ').match(text);
+//     if (matchTerm && matchTerm.length === 1) {
+//       return array.join(' ').replace(text, "<strong>" + matchTerm[0] + '</strong>');
+//     }
+//     else if (matchTerm && matchTerm.length > 1) {
+//       return array.join(' ').replace(text, "<strong>" + term + '</strong>');
+//     }
+// },
+handleFailMessage: function(activeState, type) {
   var self=this;
-  var array;
-  var array = self.searchArray;
-  var searchTerm = new RegExp('\\b' + userInput + '\\b','gi');
-  array.forEach(logArrayElements);
-  function logArrayElements (element) {
-    var toArrayHead = element.title.split(' ');
-    var toArrayBody = element.post.split(' ');
-    var entryTextTruncate = self.handleResultText(toArrayBody, userInput, searchTerm, element.post);
-    if (element.post.match(searchTerm) && element.title.match(searchTerm) ) {
-      var entryHead = self.highlightSearchKeyword(toArrayHead, userInput);
-      var entryText = self.highlightSearchKeyword(entryTextTruncate, userInput);
-    }
-    else if (element.title.match(searchTerm) && !element.post.match(searchTerm)) {
-      var entryHead = self.highlightSearchKeyword(toArrayHead, userInput);
-      var entryText = entryTextTruncate.join(' ');
-    }
-    else if (element.post.match(searchTerm) && !element.title.match(searchTerm) ) {
-      var entryText = self.highlightSearchKeyword(entryTextTruncate, userInput);
-      var entryHead = element.title;
-    }
-    if (entryHead) {
-      self.buildSearchResults(entryHead, entryText, element.link);
-    }
-  }
-},
-findLocationOfMatch: function (rx, array) {
-  var self=this;
-  for (var i in array) {
-    if (array[i].toString().match(rx)) {
-      return i;
-    }
-  }
-  return -1;
-},
-handleResultText: function (toArray, raw, text, element) {
-  var self=this;
-  var space = raw.match(/\s/g);
-  // find the locatuon of search item
-  if (space) {
-    var multiWord = raw.split(' ');
-    var multiWordFirstWord = new RegExp(multiWord[0],'gi');
-    var matchLocation = (self.findLocationOfMatch(multiWordFirstWord, toArray)) * 1;
-  }
-  if (!space) {
-    var matchLocation = (self.findLocationOfMatch(text,toArray)) * 1;
-  }
-  if (matchLocation > 13) {
-    arrayTrim = matchLocation - 13;
-    var toArray = toArray.slice(arrayTrim, toArray.length);
-  }
-  var multiMatch = (element.match(text));
-  if (!multiMatch || multiMatch.length === 1) {
-      var toArray = toArray.slice(0, 25);
-  }
-  return toArray;
-},
-highlightSearchKeyword:  function (array, term) {
-  var self=this;
-    var text = new RegExp('\\b' + term + '\\b','gi');
-    var matchTerm = array.join(' ').match(text);
-    if (matchTerm && matchTerm.length === 1) {
-      return array.join(' ').replace(text, "<strong>" + matchTerm[0] + '</strong>');
-    }
-    else if (matchTerm && matchTerm.length > 1) {
-      return array.join(' ').replace(text, "<strong>" + term + '</strong>');
-    }
+  var failDisplay = document.getElementById('search-fail');
+  activeState
+  ? failDisplay.classList.add('search-fail--active')
+  : failDisplay.classList.remove('search-fail--active');
+
+  var failMessage = (type === 'notFound')
+  ? 'Didn\'t find anything!'
+  : 'Try narrowing your search';
+
+  var failMesageDisplay = document.getElementById('search-message');
+  failMesageDisplay.innerHTML = failMessage;
 },
 buildSearchResultsToo: function(matchedEntries, sortedEntries, resultsWrapper) {
   var self=this;
@@ -445,17 +459,17 @@ truncateText: function(text, length) {
 
   return textTruncate;
 },
-quantifyResults: function () {
-  var self=this;
-  var display = document.getElementById('results-count');
-  var resultCount = document.getElementsByClassName('search-result').length;
-  if (resultCount === 1) {
-    display.innerHTML = "We found " + resultCount + "  entry";
-  }
-  else {
-    display.innerHTML = "We found " + resultCount + " entries";
-  }
-},
+// quantifyResults: function () {
+//   var self=this;
+//   var display = document.getElementById('results-count');
+//   var resultCount = document.getElementsByClassName('search-result').length;
+//   if (resultCount === 1) {
+//     display.innerHTML = "We found " + resultCount + "  entry";
+//   }
+//   else {
+//     display.innerHTML = "We found " + resultCount + " entries";
+//   }
+// },
 detectScrollIndex: function (viewportSize) {
    var self=this,
        position;
