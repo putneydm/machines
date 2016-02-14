@@ -83,7 +83,10 @@ var pageFunctions = {
     var searchButton = document.getElementById('search-btn');
     var searchField = document.getElementById('search-field');
     searchButton.addEventListener('click', function() {
-      self.doSearchToo(searchField.value);
+      var userInput = searchField.value;
+      if (userInput.length > 0) {
+        self.doSearchToo(userInput);
+      }
       return false;
     });
   },
@@ -108,14 +111,14 @@ var pageFunctions = {
   },
   handleKeyDown: function (searchField) {
     var self=this;
+    var userInput = searchField.value;
     var keyPress=event.keyCode
     ? event.keyCode
     : event.charCode;
     if (keyPress === 27) {
       self.handleSearchDisplay();
     }
-    if (keyPress === 13) {
-      var userInput = searchField.value;
+    if (keyPress === 13 && userInput.length > 0) {
       self.clearSearchResults();
       self.doSearchToo(userInput);
       self.testSearchInput(userInput);
