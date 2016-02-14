@@ -69,6 +69,7 @@ var pageFunctions = {
     intializeSearchField: function () {
       var self=this;
       var searchField = document.getElementById('search-field');
+      var searchButton = document.getElementById('search-button');
       searchField.onkeydown = function() {
           console.log('keypress');
           self.handleKeyDown(searchField);
@@ -117,6 +118,7 @@ var pageFunctions = {
       var userInput = searchField.value;
       self.clearSearchResults();
       self.doSearchToo(userInput);
+      self.testSearchInput(userInput);
     }
 
   },
