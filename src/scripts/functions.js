@@ -139,6 +139,7 @@ var pageFunctions = {
     if (userInput.length === 0 ){
       self.clearSearchResults();
       self.handleFailMessage(false);
+      self.handleSearchDisplayTransition(false);
     }
     self.handleSearchClearButton();
   },
@@ -149,6 +150,7 @@ var pageFunctions = {
       var searchField = document.getElementById('search-field');
       self.clearSearchResults();
       self.handleFailMessage(false);
+      self.handleSearchDisplayTransition(false);
       searchField.value = '';
       searchField.focus();
     });
@@ -272,6 +274,7 @@ doSearchToo: function(userInput) {
       self.buildSearchResultsToo(matchedEntries, sortedEntries);
       self.quantifyResultsToo(matchedEntries.length, userInput);
 
+      self.handleSearchDisplayTransition(true);
     } // end else
 },
 // doSearch: function (userInput){
