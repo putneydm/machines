@@ -177,8 +177,8 @@ return test;
 doSearchToo: function(userInput) {
   var self=this;
   var arr = self.searchArray;
-  var searchTerm = new RegExp('\\b' + userInput + '\\b','gi');
 
+  var searchInValid = self.testSearchInput(userInput);
   var matches = []
 
   var matchedEntries = arr.filter(function(el) {
