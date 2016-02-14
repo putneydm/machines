@@ -179,6 +179,13 @@ doSearchToo: function(userInput) {
   var arr = self.searchArray;
 
   var searchInValid = self.testSearchInput(userInput);
+
+  console.log('search value', searchInValid);
+
+  if (searchInValid) {
+    console.log('please narrow your search');
+    self.handleFailMessage(true);
+  } else {
   var matches = []
 
   var matchedEntries = arr.filter(function(el) {
