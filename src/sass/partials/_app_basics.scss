@@ -734,3 +734,20 @@
     background-color:$brand-light;
   }
 }
+.search-fail {
+  margin:rem(150) auto 0;
+  text-align:center;
+  opacity: 0;
+  transition: opacity .3s;
+    p {
+      margin:0;
+    }
+}
+.search-fail--active {
+  opacity:1;
+  transition: opacity .3s;
+}
+.small-iconic-image {
+  fill:$brand;
+
+}
