@@ -158,10 +158,6 @@ testSearchInput: function (userInput) {
   var self=this;
   var searchClean= userInput.replace(/[\'.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").replace(/\s+$/g,"");
 
-  var searchTerm = new RegExp('\\b' + searchClean + '\\b','gi');
-  var exclude = self.stopwordsArray;
-  var test = exclude.some(function(el) {
-    if (el.match(searchTerm)) {
   var spaces = function foo(userInput) {
     if (userInput.match(!/\w+/) || userInput.match(/[[:punct:]]/gi)) {
       return true;
