@@ -79,16 +79,11 @@ var pageFunctions = {
     },
   intializeSearchButton: function() {
     var self=this;
-    console.log('initsearch');
     var searchButton = document.getElementById('search-btn');
     var searchField = document.getElementById('search-field');
-
-    console.log(searchButton);
-
     searchButton.addEventListener('click', function() {
       self.doSearchToo(searchField.value);
       return false;
-      console.log('click');
     });
   },
   handleSearchDisplay: function () {
