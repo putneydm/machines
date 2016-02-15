@@ -396,30 +396,18 @@ buildSearchResultsToo: function (matchedEntries, sortedEntries, resultsWrapper) 
     resultsWrapper.appendChild(singleResultLink);
   };
 },
-buildSearchResults: function (head, text, link) {
-  var self=this;
-
-  var resultsWrapper = document.getElementById('results-wrapper');
-
-  var singleResultWrapper = document.createElement("DIV");
-  singleResultWrapper.classList.add('search-result');
-
-  var singleResultHed = document.createElement('H2');
-  singleResultHed.classList.add("basic-header");
-  singleResultHed.classList.add('basic-header-large');
-  singleResultHed.innerHTML = head;
-
-  var singleResultText = document.createElement('P');
-  singleResultText.innerHTML = text;
-
-  var singleResultLink = document.createElement('A');
-  singleResultLink.setAttribute('HREF', link);
-  singleResultLink.setAttribute('CLASS', 'element-link');
-
-  singleResultWrapper.appendChild(singleResultHed);
-  singleResultWrapper.appendChild(singleResultText);
-  singleResultLink.appendChild(singleResultWrapper);
-},
+// buildSearchResults: function (head, text, link) {
+//   var self=this;
+//
+//   var resultsWrapper = document.getElementById('results-wrapper'),
+//       singleResultWrapper = document.createElement("DIV").classList.add('search-result'),
+//       singleResultHed = document.createElement('H2').classList.add("basic-header", "basic-header-large").innerHTML = head,
+//       singleResultText = document.createElement('P').innerHTML = text,
+//       singleResultLink = document.createElement('A').setAttribute('HREF', link).setAttribute('CLASS', 'element-link');
+//
+//   singleResultWrapper.appendChild(singleResultHed, singleResultText);
+//   singleResultLink.appendChild(singleResultWrapper);
+// },
 clearSearchResults: function () {
   var self=this;
   var searchField = document.getElementById('search-field');
@@ -508,7 +496,6 @@ detectScrollIndex: function (viewportSize) {
             secondaryHead = document.getElementById('secondary-head'),
             bodyText = document.getElementById('entry-wrapper'),
             header = document.getElementById('siteheader');
-
 
           if (position >= headerHeight * 0.5 && !active) {
             target.classList.add('header-image--active');
