@@ -572,60 +572,58 @@ detectScrollIndex: function (viewportSize) {
           links.classList.remove('main-nav-wrapper--active');
         }
      },
-     handleCardFlip: function () {
-      var self=this;
-      var card = document.getElementsByClassName('flip-card')[0];
-      var active = card.classList.contains('flip-card--active');
-        if (!active) {
-          self.testCopy();
-          card.classList.add('flip-card--active', 'flip-card--trans');
-        }
-        if (active) {
-          card.classList.remove('flip-card--active');
-          card.classList.add('flip-card--activeToo');
-            setTimeout(function(){
-              card.classList.remove('flip-card--trans', 'flip-card--activeToo');
-            }, 750);
-        }
-     },
-     testCopy: function () {
-       var copyTest = document.queryCommandSupported('copy');
-       if (copyTest) {
-         document.getElementById('url-copy-button').classList.remove('btn-hide');
-         document.getElementById('copy-button').classList.remove('btn-hide');
-       }
-     },
-     handleCopy: function(button, embedContainer) {
-      var embedCode = embedContainer.querySelectorAll(".embed-code")[0];
-      var inputActive = function(style) {
-        embedContainer.classList.add('form-container--active', style);
-         embedCode.blur();
-         setTimeout(function(){
-           embedContainer.classList.remove('form-container--active', style);
-         }, 2100);
-       };
-       try {
-         embedCode.select();
-          var successful = document.execCommand('copy');
-          successful ? inputActive('form-container--success') :inputActive('form-container--fail');
-        } catch (err) {
-          inputActive('form-container--fail');
-        }
-     },
-     handleFormAutoSelect: function (el) {
-       var self=pageFunctions;
-       el.select();
-     },
-     getHeaderPosition: function () {
-       var self=this;
-       var viewportSize = window.innerHeight,
-           headerHeight = document.getElementById('siteheader').offsetHeight;
-      if (headerHeight) {
-       return viewportSize - (viewportSize * 0.05) - headerHeight;
-     }
-     else {
-      return viewportSize * 0.50;
+ handleCardFlip: function () {
+  var self=this;
+  var card = document.getElementsByClassName('flip-card')[0];
+  var active = card.classList.contains('flip-card--active');
+    if (!active) {
+      self.testCopy();
+      card.classList.add('flip-card--active', 'flip-card--trans');
+    } else {
+      card.classList.remove('flip-card--active');
+      card.classList.add('flip-card--activeToo');
+        setTimeout(function(){
+          card.classList.remove('flip-card--trans', 'flip-card--activeToo');
+        }, 750);
     }
+ },
+ testCopy: function () {
+   var copyTest = document.queryCommandSupported('copy');
+   if (copyTest) {
+     document.getElementById('url-copy-button').classList.remove('btn-hide');
+     document.getElementById('copy-button').classList.remove('btn-hide');
+   }
+ },
+ handleCopy: function(button, embedContainer) {
+    var embedCode = embedContainer.querySelectorAll(".embed-code")[0];
+    var inputActive = function(style) {
+    embedContainer.classList.add('form-container--active', style);
+    embedCode.blur();
+    setTimeout(function(){
+       embedContainer.classList.remove('form-container--active', style);
+     }, 2100);
+    };
+   try {
+     embedCode.select();
+      var successful = document.execCommand('copy');
+      successful
+      ? inputActive('form-container--success') : inputActive('form-container--fail');
+    } catch (err) {
+      inputActive('form-container--fail');
+    }
+ },
+ handleFormAutoSelect: function (el) {
+   var self=pageFunctions;
+   el.select();
+ },
+ getHeaderPosition: function () {
+  var self=this;
+  var viewportSize = window.innerHeight,
+       headerHeight = document.getElementById('siteheader').offsetHeight;
+  var value = headerHeight
+  ? viewportSize - (viewportSize * 0.05) - headerHeight
+  : viewportSize * 0.50;
+  return value;
  },
  getJSON: function (url) {
    var p = new Promise(function(resolve, reject) {
