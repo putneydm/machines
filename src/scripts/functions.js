@@ -637,12 +637,9 @@ detectScrollIndex: function (viewportSize) {
    xmlhttp.open("GET", url);
    xmlhttp.send();
    xmlhttp.onload = function() {
-       if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-         var myArr = JSON.parse(xmlhttp.responseText);
-         resolve(myArr);
-       } else {
-         reject('fail');
-       }
+       xmlhttp.readyState == 4 && xmlhttp.status == 200
+       ? resolve(JSON.parse(xmlhttp.responseText))
+       : reject('fail');
      };
      })
     return p;
