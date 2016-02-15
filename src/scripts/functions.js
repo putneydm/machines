@@ -351,28 +351,24 @@ handleFailMessage: function(activeState, type) {
   var failMesageDisplay = document.getElementById('search-message');
   failMesageDisplay.innerHTML = failMessage;
 },
-buildSearchResultsToo: function(matchedEntries, sortedEntries, resultsWrapper) {
+buildSearchResultsToo: function (matchedEntries, sortedEntries, resultsWrapper) {
   var self=this;
   var resultsWrapper = document.getElementById('results-wrapper')
   sortedEntries.forEach(function (el, i) {
-    var entryNumber = sortedEntries[i].index;
-    var entryHead = matchedEntries[entryNumber].title;
-    var entryLink = matchedEntries[entryNumber].link;
-    var entryRank = sortedEntries[i].count;
-
-    var post = matchedEntries[entryNumber].post;
-
-    var entryBody = post.length >= 50
-    ? self.truncateText(post, 25)
-    : false
-
+    var entryNumber = sortedEntries[i].index,
+        entryHead = matchedEntries[entryNumber].title,
+        entryLink = matchedEntries[entryNumber].link,
+        entryRank = sortedEntries[i].count,
+        post = matchedEntries[entryNumber].post,
+        entryBody = post.length >= 50
+          ? self.truncateText(post, 25)
+          : false;
     entryMarkup (entryHead, entryLink, entryRank, entryBody);
-  });
+  })
 
-  function entryMarkup (entryHead, entryLink, entryRank, entryBody) {
+  function entryMarkup(entryHead, entryLink, entryRank, entryBody) {
 
-    var arrow = "<svg class=\"inline-icn\"><use xmlns:xlink=\"http:\/\/www.w3.org/1999/xlink\" xlink:href=\"#arrow\"></use></svg>"
-
+    var arrow = "<svg class=\"inline-icn\"><use xmlns:xlink=\"http:\/\/www.w3.org/1999/xlink\" xlink:href=\"#arrow\"></use></svg>";
 
     var singleResultWrapper = document.createElement("DIV");
     singleResultWrapper.classList.add('search-result');
