@@ -561,10 +561,9 @@ detectScrollIndex: function (viewportSize) {
      },
      handleNavAnimate: function (position, headerPosition) {
        var self=this;
-           var links =
-           document.getElementById('main-nav-wrapper');
-           var linksTest = links.classList.contains('main-nav-wrapper--animatible');
-          var linksActive = links.classList.contains('main-nav-wrapper--active');
+       var links = document.getElementById('main-nav-wrapper'),
+            linksTest = links.classList.contains('main-nav-wrapper--animatible'),
+            linksActive = links.classList.contains('main-nav-wrapper--active');
 
         if (!linksActive && linksTest && position >= headerPosition * 0.8) {
           links.classList.add('main-nav-wrapper--active');
