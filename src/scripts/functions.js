@@ -392,8 +392,7 @@ buildSearchResultsToo: function (matchedEntries, sortedEntries, resultsWrapper) 
     ? '<em>' + entryRank + ' matches in entry </em>'
     : '<em>' + entryRank + ' match in entry </em>'
 
-    singleResultWrapper.appendChild(singleResultCounter);
-    singleResultWrapper.appendChild(singleResultHed);
+    singleResultWrapper.appendChild(singleResultCounter).appendChild(singleResultHed);
     if (entryBody) {
       singleResultWrapper.appendChild(singleResultBody)
     }
