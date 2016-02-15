@@ -22,19 +22,16 @@ var pageFunctions = {
     },
     setBackground: function () {
       var self=this;
-      viewportSize = window.innerWidth;
-      var header = document.getElementById('header-image');
-      if (viewportSize && viewportSize > 800) {
-        imageURL = '/siteart/robotsone.jpg';
-      }
-      else {
-        imageURL = '/siteart/sm_robotsone.jpg';
-      }
-       var img = new Image();
-       img.src = imageURL;
-       img.onload = function(){
-       header.style.backgroundImage = 'url('+imageURL+')';
-       };
+      var viewportSize = window.innerWidth,
+          header = document.getElementById('header-image'),
+          imageURL =  viewportSize && viewportSize > 800
+          ? imageURL = '/siteart/robotsone.jpg'
+          : imageURL = '/siteart/sm_robotsone.jpg',
+          img = new Image();
+     img.src = imageURL;
+     img.onload = function(){
+     header.style.backgroundImage = 'url('+imageURL+')';
+     };
     },
     initializeSinglePage: function () {
         var self=this;
