@@ -394,9 +394,6 @@ buildSearchResultsToo: function (matchedEntries, sortedEntries, resultsWrapper) 
     }
     singleResultLink.appendChild(singleResultWrapper);
     resultsWrapper.appendChild(singleResultLink);
-
-    resultsWrapper.appendChild(singleResultLink);
-
   };
 },
 buildSearchResults: function (head, text, link) {
