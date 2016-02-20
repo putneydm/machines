@@ -422,8 +422,8 @@ quantifyResultsToo: function (length, userInput) {
   var countContainer =  document.getElementById('results-count');
 
   countContainer.innerHTML = length !== 1
-  ? "We found " + length + " entries with  \"" + userInput + "\""
-  : "We found " + length + " entry with \"" + userInput + "\"";
+  ? "We found " + length + " entries with  &#8220;" + userInput + "&#8221;"
+  : "We found " + length + " entry with &#8220;" + userInput + "&#8221;";
 },
 truncateText: function(text, length) {
   var self=this;
