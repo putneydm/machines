@@ -1,12 +1,12 @@
 dist/*
 !dist/firebase.json
 test/*
+test/_plugins/.DS_Store
 !test/_config.yml
 !test/_posts
 !test/_about
 !test/_plugins
 !test/Gemfile
-test/_plugins/.DS_Store
 source/scripts/vendor/
 src/scripts/bower_components/
 src/photos_out/
