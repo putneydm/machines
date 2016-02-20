@@ -133,31 +133,31 @@ var pageFunctions = {
     }
     self.handleSearchClearButton();
   },
-  handleSearchFieldClear: function() {
-    var self=this;
-    var clear = document.getElementById('search-field-clear');
-    clear.addEventListener('click', function () {
-      var searchField = document.getElementById('search-field');
-      self.clearSearchResults();
-      self.handleFailMessage(false);
-      self.handleSearchDisplayTransition(false);
-      searchField.value = '';
-      searchField.focus();
-    });
-  },
-  handleSearchClearButton: function () {
-    var self=this;
+handleSearchFieldClear: function() {
+  var self=this;
+  var clear = document.getElementById('search-field-clear');
+  clear.addEventListener('click', function () {
     var searchField = document.getElementById('search-field');
-    var userInput = searchField.value;
-    var clear =  document.getElementById('search-field-clear');
-    var active = clear.classList.contains('search-field-clear--active');
-    if (userInput.length >1 && !active) {
-        clear.classList.add('search-field-clear--active');
-      }
-    if (userInput.length <1 && active) {
-      clear.classList.remove('search-field-clear--active');
+    self.clearSearchResults();
+    self.handleFailMessage(false);
+    self.handleSearchDisplayTransition(false);
+    searchField.value = '';
+    searchField.focus();
+  });
+},
+handleSearchClearButton: function () {
+  var self=this;
+  var searchField = document.getElementById('search-field');
+  var userInput = searchField.value;
+  var clear =  document.getElementById('search-field-clear');
+  var active = clear.classList.contains('search-field-clear--active');
+  if (userInput.length >1 && !active) {
+      clear.classList.add('search-field-clear--active');
     }
-  },
+  if (userInput.length <1 && active) {
+    clear.classList.remove('search-field-clear--active');
+  }
+},
 testSearchInput: function (userInput) {
   var self=this;
   var searchClean= userInput.replace(/[\'.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").replace(/\s+$/g,"");
