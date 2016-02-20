@@ -323,18 +323,6 @@ buildSearchResultsToo: function (matchedEntries, sortedEntries, resultsWrapper) 
     resultsWrapper.appendChild(singleResultLink);
   };
 },
-// buildSearchResults: function (head, text, link) {
-//   var self=this;
-//
-//   var resultsWrapper = document.getElementById('results-wrapper'),
-//       singleResultWrapper = document.createElement("DIV").classList.add('search-result'),
-//       singleResultHed = document.createElement('H2').classList.add("basic-header", "basic-header-large").innerHTML = head,
-//       singleResultText = document.createElement('P').innerHTML = text,
-//       singleResultLink = document.createElement('A').setAttribute('HREF', link).setAttribute('CLASS', 'element-link');
-//
-//   singleResultWrapper.appendChild(singleResultHed, singleResultText);
-//   singleResultLink.appendChild(singleResultWrapper);
-// },
 clearSearchResults: function () {
   var self=this;
   var searchField = document.getElementById('search-field');
