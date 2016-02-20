@@ -122,12 +122,10 @@ var pageFunctions = {
       self.doSearchToo(userInput);
       self.testSearchInput(userInput);
     }
-
   },
   handleKeyUp: function(searchField, resultsContainer) {
     var self=this;
     var userInput = searchField.value;
-    // var excludeWord = self.testSearchInput(userInput);
     if (userInput.length === 0 ){
       self.clearSearchResults();
       self.handleFailMessage(false);
@@ -430,20 +428,8 @@ quantifyResultsToo: function (length, userInput) {
 truncateText: function(text, length) {
   var self=this;
   var textTruncate = text.split(' ').splice(0, length).join(' ') + ' &#8230;';
-
   return textTruncate;
 },
-// quantifyResults: function () {
-//   var self=this;
-//   var display = document.getElementById('results-count');
-//   var resultCount = document.getElementsByClassName('search-result').length;
-//   if (resultCount === 1) {
-//     display.innerHTML = "We found " + resultCount + "  entry";
-//   }
-//   else {
-//     display.innerHTML = "We found " + resultCount + " entries";
-//   }
-// },
 detectScrollIndex: function (viewportSize) {
    var self=this,
        position;
