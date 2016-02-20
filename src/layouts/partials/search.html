@@ -6,9 +6,21 @@
           <use xlink:href="#close" />
         </svg>
       </div>
-      <input id="search-field" class="embed-code embed-code-small url-code" type="text" placeholder="Search">
+      <input id="search-field" class="embed-code embed-code-small url-code search-field" type="text" placeholder="Search">
+      <input type="button" id="search-btn" class="btn btn-small" value="Search">
     </div>
-    <p id="results-count"></p>
+    <p id="results-count" class="results-count"></p>
     <div id="results-wrapper" class="results-wrapper"></div>
+  </div>
+    <div id="search-fail" class="search-fail">
+      <figure class="search-illo">
+        <svg class="small-iconic-image">
+          <use xlink:href="#robot" />
+        </svg>
+      </figure>
+      <p>Boop Beep Beep Boop</p>
+      <p>Does not compute</p>
+      <p id="search-message"></p>
+    </div>
   </div>
 </section>
