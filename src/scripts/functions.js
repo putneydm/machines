@@ -180,20 +180,30 @@ return test;
 },
 doSearchToo: function(userInput) {
   var self=this;
-  var arr = self.searchArray;
-
   var searchInvalid = self.testSearchInput(userInput);
-
-  if (searchInvalid) {
-    self.handleFailMessage(true);
-  } else {
-
-// begin else
   var searchClean = userInput.replace(/\s{2,}/,' ').replace(/\s{1,}$/,'');
   var searchTerm = new RegExp('\\b' + searchClean + '\\b','gi');
 
-  var matches = []
+  if (!searchInvalid) {
+    var matchedEntries = self.handleFindMatches(searchTerm, self.searchArray);
 
+        if (matchedEntries.length > 0) {
+          var matchesSort = self.handleSortByRelevance(searchTerm, matchedEntries);
+          var sortedEntries = self.handleSortByRecency(searchTerm, matchesSort);
+        }
+        else {
+          self.handleFailMessage(true, 'notFound')
+        }
+
+      self.buildSearchResultsToo(matchedEntries, sortedEntries);
+      self.quantifyResultsToo(matchedEntries.length, userInput);
+      self.handleSearchDisplayTransition(true);
+    } else {
+        self.handleFailMessage(true);
+    }
+},
+handleFindMatches: function(searchTerm, arr) {
+  var self=this;
   var matchedEntries = arr.filter(function(el) {
     if (searchTerm.test(el.post) || searchTerm.test(el.title)) {
       return true;
@@ -201,135 +211,55 @@ doSearchToo: function(userInput) {
       return false;
     }
   });
+  return matchedEntries;
+},
+handleSortByRelevance: function(searchTerm, matchedEntries) {
+  var matches = [];
 
-
-  // find out how each item that matches ranks and rank them by how many matches they have
-  if (matchedEntries.length > 0) { // begin inside if
   matchedEntries.forEach(function (el, i) {
-      var bar = el.post.match(searchTerm);
-      var foo = el.title.match(searchTerm);
-
-      var resultsArr = new Object();
-        resultsArr.index = i;
+    var bar = el.post.match(searchTerm);
+    var foo = el.title.match(searchTerm);
+    var resultsArr = new Object();
+      resultsArr.index = i;
 
       if (!bar && foo) {
-          resultsArr.count = foo.length;
+        resultsArr.count = foo.length;
       } else if (bar && !foo) {
-          resultsArr.count = bar.length;
+        resultsArr.count = bar.length;
       } else if (bar && foo) {
-          resultsArr.count = foo.concat(bar).length;
+        resultsArr.count = foo.concat(bar).length;
       }
       matches.push(resultsArr);
     });
-
     var matchesSort = matches.sort(function(a, b){
       return b.count-a.count
     })
-
-    // resort each subsection of the rank so that they are in proper index order
-
-    // set start
-    var counter = 0;
-    var begin = matchesSort[0].count;
-    var sortedEntries = [];
-
-    while (begin > 0) {
-      // give me an array of everything with a count that matches the current count.
-      var indexSort = matchesSort.filter(function(el) {
-        if (el.count === begin) {
-          return true;
-        }
-      })
-      // sorts subset by index -- chained to preceding function
-      .sort(function(a, b){
-        return a.index-b.index;
-      })
-      //  push to sortedEntries array
-      var sortedEntries = sortedEntries.length ?  sortedEntries.concat(indexSort) : indexSort;
-
-      // deincrement counter
-      begin --;
-      };
-    } // end inside if
-    else {
-      self.handleFailMessage(true, 'notFound')
-    }
-
-      //
-      self.buildSearchResultsToo(matchedEntries, sortedEntries);
-      self.quantifyResultsToo(matchedEntries.length, userInput);
-      self.handleSearchDisplayTransition(true);
-    } // end else
+    return matchesSort;
 },
-// doSearch: function (userInput){
-//   var self=this;
-//   var array;
-//   var array = self.searchArray;
-//   var searchTerm = new RegExp('\\b' + userInput + '\\b','gi');
-//   array.forEach(logArrayElements);
-//   function logArrayElements (element) {
-//     var toArrayHead = element.title.split(' ');
-//     var toArrayBody = element.post.split(' ');
-//     var entryTextTruncate = self.handleResultText(toArrayBody, userInput, searchTerm, element.post);
-//     if (element.post.match(searchTerm) && element.title.match(searchTerm) ) {
-//       var entryHead = self.highlightSearchKeyword(toArrayHead, userInput);
-//       var entryText = self.highlightSearchKeyword(entryTextTruncate, userInput);
-//     }
-//     else if (element.title.match(searchTerm) && !element.post.match(searchTerm)) {
-//       var entryHead = self.highlightSearchKeyword(toArrayHead, userInput);
-//       var entryText = entryTextTruncate.join(' ');
-//     }
-//     else if (element.post.match(searchTerm) && !element.title.match(searchTerm) ) {
-//       var entryText = self.highlightSearchKeyword(entryTextTruncate, userInput);
-//       var entryHead = element.title;
-//     }
-//     if (entryHead) {
-//       self.buildSearchResults(entryHead, entryText, element.link);
-//     }
-//   }
-// },
-// findLocationOfMatch: function (rx, array) {
-//   var self=this;
-//   for (var i in array) {
-//     if (array[i].toString().match(rx)) {
-//       return i;
-//     }
-//   }
-//   return -1;
-// },
-// handleResultText: function (toArray, raw, text, element) {
-//   var self=this;
-//   var space = raw.match(/\s/g);
-//   // find the locatuon of search item
-//   if (space) {
-//     var multiWord = raw.split(' ');
-//     var multiWordFirstWord = new RegExp(multiWord[0],'gi');
-//     var matchLocation = (self.findLocationOfMatch(multiWordFirstWord, toArray)) * 1;
-//   }
-//   if (!space) {
-//     var matchLocation = (self.findLocationOfMatch(text,toArray)) * 1;
-//   }
-//   if (matchLocation > 13) {
-//     arrayTrim = matchLocation - 13;
-//     var toArray = toArray.slice(arrayTrim, toArray.length);
-//   }
-//   var multiMatch = (element.match(text));
-//   if (!multiMatch || multiMatch.length === 1) {
-//       var toArray = toArray.slice(0, 25);
-//   }
-//   return toArray;
-// },
-// highlightSearchKeyword:  function (array, term) {
-//   var self=this;
-//     var text = new RegExp('\\b' + term + '\\b','gi');
-//     var matchTerm = array.join(' ').match(text);
-//     if (matchTerm && matchTerm.length === 1) {
-//       return array.join(' ').replace(text, "<strong>" + matchTerm[0] + '</strong>');
-//     }
-//     else if (matchTerm && matchTerm.length > 1) {
-//       return array.join(' ').replace(text, "<strong>" + term + '</strong>');
-//     }
-// },
+handleSortByRecency: function(searchTerm, matchesSort) {
+  var counter = 0;
+  var begin = matchesSort[0].count;
+  var sortedEntries = [];
+
+  while (begin > 0) {
+    // give me an array of everything with a count that matches the current count.
+    var indexSort = matchesSort.filter(function(el) {
+      if (el.count === begin) {
+        return true;
+      }
+    })
+    // sorts subset by index -- chained to preceding function
+    .sort(function(a, b){
+      return a.index-b.index;
+    })
+    //  push to sortedEntries array
+    var sortedEntries = sortedEntries.length ?  sortedEntries.concat(indexSort) : indexSort;
+
+    // deincrement counter
+    begin --;
+    };
+    return sortedEntries;
+},
 handleFailMessage: function(activeState, type) {
   var self=this;
   var failDisplay = document.getElementById('search-fail');
