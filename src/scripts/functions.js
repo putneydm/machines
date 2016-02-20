@@ -14,10 +14,10 @@ var pageFunctions = {
       });
     },
     initializeIndex: function () {
-        var self=this;
-        viewportSize = window.innerHeight;
-        self.detectScrollIndex(viewportSize);
-        self.setBackground();
+      var self=this;
+      viewportSize = window.innerHeight;
+      self.detectScrollIndex(viewportSize);
+      self.setBackground();
     },
     setBackground: function () {
       var self=this;
@@ -59,18 +59,17 @@ var pageFunctions = {
       self.intializeSearchButton();
       self.handleSearchFieldClear();
     },
-    intializeSearchField: function () {
-      var self=this;
-      var searchField = document.getElementById('search-field');
-      var searchButton = document.getElementById('search-button');
-      searchField.onkeydown = function() {
-          console.log('keypress');
-          self.handleKeyDown(searchField);
-        };
-      searchField.onkeyup = function () {
-          self.handleKeyUp(searchField);
-      };
-    },
+  intializeSearchField: function () {
+    var self=this;
+    var searchField = document.getElementById('search-field');
+    var searchButton = document.getElementById('search-button');
+    searchField.onkeydown = function() {
+      self.handleKeyDown(searchField);
+    };
+    searchField.onkeyup = function () {
+      self.handleKeyUp(searchField);
+    };
+  },
   intializeSearchButton: function() {
     var self=this;
     var searchButton = document.getElementById('search-btn');
@@ -462,100 +461,100 @@ detectScrollIndex: function (viewportSize) {
     };
     return position;
  },
- detectScrollBlog: function (viewportSize) {
-    var self=this,
-        position;
-     document.onscroll = function() {
-       var position = window.scrollY,
-           header = document.getElementById('siteheader'),
-           headerPosition = self.getHeaderPosition();
+detectScrollBlog: function (viewportSize) {
+  var self=this,
+      position;
+   document.onscroll = function() {
+     var position = window.scrollY,
+         header = document.getElementById('siteheader'),
+         headerPosition = self.getHeaderPosition();
 
-           self.handleReefer(position, headerPosition);
-     };
-     return position;
-  },
-     detectClick: function (event) {
-            var self=pageFunctions;
-            var element = event.target || event.srcElement;
-            if (element.classList.contains("btn-small") ) {
-                var embedCode = element.parentElement;
-                self.handleCopy(element, embedCode);
-            }
-            if (element.classList.contains("embed-code") ) {
-                self.handleFormAutoSelect(element);
-            }
-            if (element.classList.contains("btn-large")) {
-              self.handleCardFlip();
-            }
-     },
-     handleHeaderImage: function (position, headerHeight) {
-        var self=this;
-        var target = document.getElementById('header-image'),
-            active = target.classList.contains('header-image--active'),
-            targetHead = document.getElementById('main-head'),
-            secondaryHead = document.getElementById('secondary-head'),
-            bodyText = document.getElementById('entry-wrapper'),
-            header = document.getElementById('siteheader');
+         self.handleReefer(position, headerPosition);
+   };
+   return position;
+},
+ detectClick: function (event) {
+    var self=pageFunctions;
+    var element = event.target || event.srcElement;
+    if (element.classList.contains("btn-small") ) {
+        var embedCode = element.parentElement;
+        self.handleCopy(element, embedCode);
+    }
+    if (element.classList.contains("embed-code") ) {
+        self.handleFormAutoSelect(element);
+    }
+    if (element.classList.contains("btn-large")) {
+      self.handleCardFlip();
+    }
+ },
+ handleHeaderImage: function (position, headerHeight) {
+    var self=this;
+    var target = document.getElementById('header-image'),
+        active = target.classList.contains('header-image--active'),
+        targetHead = document.getElementById('main-head'),
+        secondaryHead = document.getElementById('secondary-head'),
+        bodyText = document.getElementById('entry-wrapper'),
+        header = document.getElementById('siteheader');
 
-          if (position >= headerHeight * 0.5 && !active) {
-            target.classList.add('header-image--active');
-            targetHead.classList.add('main-head--active');
-            secondaryHead.classList.add('secondary-head--active');
-            bodyText.classList.add('entry-wrapper--active');
-            header.classList.add('header-after--active');
-          }
-          if (position <= headerHeight * 0.5 && active) {
-            target.classList.remove('header-image--active');
-            targetHead.classList.remove('main-head--active');
-            secondaryHead.classList.remove('secondary-head--active');
-            bodyText.classList.remove('entry-wrapper--active');
-            header.classList.remove('header-after--active');
-          }
-     },
-     handleHeaderPinning: function (position, headerPosition, placeholderPosition) {
-        var self=this;
-        var header = document.getElementById('siteheader'),
-            placeholder = document.getElementById('siteheader-placeholder'),
-            headerActive = header.classList.contains('siteheader--active');
+    if (position >= headerHeight * 0.5 && !active) {
+      target.classList.add('header-image--active');
+      targetHead.classList.add('main-head--active');
+      secondaryHead.classList.add('secondary-head--active');
+      bodyText.classList.add('entry-wrapper--active');
+      header.classList.add('header-after--active');
+    }
+    if (position <= headerHeight * 0.5 && active) {
+      target.classList.remove('header-image--active');
+      targetHead.classList.remove('main-head--active');
+      secondaryHead.classList.remove('secondary-head--active');
+      bodyText.classList.remove('entry-wrapper--active');
+      header.classList.remove('header-after--active');
+    }
+ },
+ handleHeaderPinning: function (position, headerPosition, placeholderPosition) {
+    var self=this;
+    var header = document.getElementById('siteheader'),
+        placeholder = document.getElementById('siteheader-placeholder'),
+        headerActive = header.classList.contains('siteheader--active');
 
-       if (placeholderPosition <= headerPosition && !headerActive) {
-         header.classList.add('siteheader--active');
-         placeholder.classList.add('siteheader-placeholder--active');
-       }
-        if (placeholderPosition >= headerPosition && headerActive) {
-          header.classList.remove('siteheader--active');
-          placeholder.classList.remove('siteheader-placeholder--active');
-        }
-     },
-     handleReefer: function(position, headerPosition) {
-       var self=this;
-       var reefers = document.getElementById('reefers'),
-           activeState = reefers.classList.contains('reefers-wrapper--active');
+   if (placeholderPosition <= headerPosition && !headerActive) {
+     header.classList.add('siteheader--active');
+     placeholder.classList.add('siteheader-placeholder--active');
+   }
+    if (placeholderPosition >= headerPosition && headerActive) {
+      header.classList.remove('siteheader--active');
+      placeholder.classList.remove('siteheader-placeholder--active');
+    }
+ },
+ handleReefer: function(position, headerPosition) {
+   var self=this;
+   var reefers = document.getElementById('reefers'),
+       activeState = reefers.classList.contains('reefers-wrapper--active');
 
-        if (position >= headerPosition * 0.8 && !activeState) {
-          reefers.classList.add('reefers-wrapper--active');
-        }
-        if (position <= headerPosition * 0.8 && activeState) {
-          reefers.classList.remove('reefers-wrapper--active');
-          }
-     },
-     handleNavAnimate: function (position, headerPosition) {
-       var self=this;
-       var links = document.getElementById('main-nav-wrapper'),
-            linksTest = links.classList.contains('main-nav-wrapper--animatible'),
-            linksActive = links.classList.contains('main-nav-wrapper--active');
+    if (position >= headerPosition * 0.8 && !activeState) {
+      reefers.classList.add('reefers-wrapper--active');
+    }
+    if (position <= headerPosition * 0.8 && activeState) {
+      reefers.classList.remove('reefers-wrapper--active');
+      }
+ },
+handleNavAnimate: function (position, headerPosition) {
+     var self=this;
+     var links = document.getElementById('main-nav-wrapper'),
+          linksTest = links.classList.contains('main-nav-wrapper--animatible'),
+          linksActive = links.classList.contains('main-nav-wrapper--active');
 
-        if (!linksActive && linksTest && position >= headerPosition * 0.8) {
-          links.classList.add('main-nav-wrapper--active');
-          links.classList.add('main-nav-wrapper--trans');
-          setTimeout(function(){
-            links.classList.remove('main-nav-wrapper--trans');
-          }, 850);
-        }
-        if (linksActive && linksTest && position <= headerPosition * 0.5) {
-          links.classList.remove('main-nav-wrapper--active');
-        }
-     },
+      if (!linksActive && linksTest && position >= headerPosition * 0.8) {
+        links.classList.add('main-nav-wrapper--active');
+        links.classList.add('main-nav-wrapper--trans');
+        setTimeout(function(){
+          links.classList.remove('main-nav-wrapper--trans');
+        }, 850);
+      }
+      if (linksActive && linksTest && position <= headerPosition * 0.5) {
+        links.classList.remove('main-nav-wrapper--active');
+      }
+   },
  handleCardFlip: function () {
   var self=this;
   var card = document.getElementsByClassName('flip-card')[0];
