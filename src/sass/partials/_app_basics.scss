@@ -761,12 +761,16 @@
   }
 }
 .search-fail {
-  margin:15% auto 0;
+  margin:auto;
   text-align:center;
   opacity: 0;
   transition: opacity .3s;
-  // font-weight:700;
   font-style: italic;
+  position:absolute;
+  top:40vh;
+  left:0;
+  right:0;
+  pointer-events: none;
     p {
       margin:0;
     }
