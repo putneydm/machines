@@ -300,6 +300,7 @@ buildSearchResultsToo: function (matchedEntries, sortedEntries, resultsWrapper) 
   })
 
   function entryMarkup(entryHead, entryLink, entryRank, entryBody) {
+    var userInput = self.getUserInput();
 
     var arrow = "<svg class=\"inline-icn\"><use xmlns:xlink=\"http:\/\/www.w3.org/1999/xlink\" xlink:href=\"#arrow\"></use></svg>";
 
