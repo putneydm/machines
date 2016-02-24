@@ -345,7 +345,7 @@ clearSearchResults: function () {
   });
   searchField.focus();
 },
-quantifyResultsToo: function (length, userInput) {
+quantifyResults: function (length, userInput) {
   var self=this;
   var countContainer =  document.getElementById('results-count');
 
