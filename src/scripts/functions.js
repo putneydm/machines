@@ -348,6 +348,30 @@ truncateText: function(text, length) {
   var textTruncate = text.split(' ').splice(0, length).join(' ') + ' &#8230;';
   return textTruncate;
 },
+termHighlighter: function (searchTerm) {
+  var self=this;
+  var head = document.querySelector('.basic-header-large');
+  var text = document.querySelector('.entry-body').childNodes;
+  var nodes = Array.prototype.slice.call(text);
+
+  var searchTerm = searchTerm.replace(/%20/gi, ' ');
+  var searchTermRegEx = new RegExp(searchTerm,'gi');
+
+  highLight(head);
+  nodes.forEach(function(el) {
+    highLight(el);
+  });
+  function highLight (el) {
+    var elementText = el.textContent;
+    var termMatches = elementText.match(searchTermRegEx);
+    if (termMatches) {
+      termMatches.forEach(function (match) {
+        elementText = elementText.replace(searchTermRegEx, '<emphasis>' + match + '</emphasis>', 'gi');
+      });
+      el.innerHTML = elementText;
+    }
+  }
+},
 detectScrollIndex: function (viewportSize) {
    var self=this,
        position;
