@@ -539,6 +539,12 @@ handleNavAnimate: function (position, headerPosition) {
   : viewportSize * 0.50;
   return value;
  },
+ getURLterm: function () {
+    var self=this;
+    var url = window.location.search.substring(1).split('=')[1];
+    console.log('url', url);
+    return url
+ },
  getJSON: function (url) {
    var p = new Promise(function(resolve, reject) {
    var xmlhttp = new XMLHttpRequest();
