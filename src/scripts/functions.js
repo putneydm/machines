@@ -190,7 +190,7 @@ return test;
 },
 doSearch: function(userInput) {
   var self=this;
-  var searchInvalid = self.testSearchInput(userInput);
+  var searchInvalid = self.testSearchInput(userInput.toLowerCase());
   var searchClean = userInput.replace(/\s{2,}/,' ').replace(/\s{1,}$/,'');
   var searchTerm = new RegExp('\\b' + searchClean + '\\b','gi');
 
