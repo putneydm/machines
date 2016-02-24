@@ -76,11 +76,12 @@ var pageFunctions = {
   intializeSearchButton: function() {
     var self=this;
     var searchButton = document.getElementById('search-btn');
-    var searchField = document.getElementById('search-field');
+    // var searchField = document.getElementById('search-field');
     searchButton.addEventListener('click', function() {
-      var userInput = searchField.value;
+      var userInput = self.getUserInput();
+      console.log(userInput);
       if (userInput.length > 0) {
-        self.doSearchToo(userInput);
+        self.doSearch(userInput);
       }
       return false;
     });
