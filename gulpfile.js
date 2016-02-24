@@ -844,20 +844,16 @@ gulp.task('refresh', ['compile', 'pages', 'images'], function () {
 
 // Compile files, generate docs, and run unit tests (default)
 gulp.task('default', [
-  'css',
-  'css-inline',
-  'css-embed',
   'clean',
+  'svg',
+  'bower',
   'pages',
   'layouts',
   'includes',
   'collections',
   'concat',
   'minifyScripts',
-	'svg',
-	'bower',
-  // 'posts',
+  'css',
+  'css-inline',
   'sitemap'
-  // 'drafts',
-  // 'clean'
 ]);
