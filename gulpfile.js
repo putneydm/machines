@@ -318,8 +318,7 @@ gulp.task('collections', function() {
 
 gulp.task('clean', function () {
   return del([
-    paths.remove.input, paths.remove.exclude
-  ]);
+    paths.remove.input, paths.remove.exclude, paths.remove.jsRemove, paths.remove.distStyles, paths.remove.distJS ]);
 });
 
 // creates blog images in four sizes, minifies, moves to testing and dist
