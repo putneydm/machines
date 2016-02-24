@@ -129,7 +129,7 @@ var pageFunctions = {
     }
     if (keyPress === 13 && userInput.length > 0) {
       self.clearSearchResults();
-      self.doSearchToo(userInput);
+      self.doSearch(userInput);
       self.testSearchInput(userInput);
     }
   },
@@ -188,7 +188,7 @@ testSearchInput: function (userInput) {
 }
 return test;
 },
-doSearchToo: function(userInput) {
+doSearch: function(userInput) {
   var self=this;
   var searchInvalid = self.testSearchInput(userInput);
   var searchClean = userInput.replace(/\s{2,}/,' ').replace(/\s{1,}$/,'');
