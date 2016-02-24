@@ -4,7 +4,7 @@ pagetype: blog-entry
 title: "Anybody have any plans for 2070? The Robots do"
 tags: ['humans','The Robot Uprising','predictions','robot census', 'the date']
 ---
-A sci-fi author and computer expert does quick back-of-the envelope calculations on The Robots' population growth and concludes that by 2040, The Robots' will reach parity with humans. From that, he draws one inevitable conclusion:
+A sci-fi author and computer expert does quick back-of-the envelope calculations on The Robots' population growth and concludes that by 2040, The Robots will reach parity with humans. From that, he draws one inevitable conclusion:
 
 Sam Shead writing for [Business Insider][1]:
 
