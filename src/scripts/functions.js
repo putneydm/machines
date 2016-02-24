@@ -206,7 +206,7 @@ doSearch: function(userInput) {
         }
 
       self.buildSearchResultsToo(matchedEntries, sortedEntries);
-      self.quantifyResultsToo(matchedEntries.length, userInput);
+      self.quantifyResults(matchedEntries.length, userInput);
       self.handleSearchDisplayTransition(true);
     } else {
         self.handleFailMessage(true);
