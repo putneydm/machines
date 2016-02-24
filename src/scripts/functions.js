@@ -36,6 +36,8 @@ var pageFunctions = {
         var self=this;
         var container = document.querySelector(".flip-card");
         container.addEventListener("click", self.detectClick, false);
+
+        var searchTerm = self.getURLterm();
         if (searchTerm) {
           self.termHighlighter(searchTerm);
         }
