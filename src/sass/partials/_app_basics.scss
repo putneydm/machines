@@ -781,5 +781,11 @@
 }
 .small-iconic-image {
   fill:$brand;
+}
 
+emphasis {
+  background-color:$brand-light;
+  display:inline-block;
+  padding-left: rem(5);
+  padding-right: rem(5);
 }
