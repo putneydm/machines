@@ -91,7 +91,7 @@ var paths = {
     outputInline: 'test/_includes',
     exclude: '!src/sass/partials/*.scss',
     testing: 'test/css/',
-    dist: 'dist/css',
+    dist: 'dist/css/',
     watch: 'src/sass/**/*.scss'
   },
   stylesEmbed: {
@@ -101,7 +101,10 @@ var paths = {
   },
   remove: {
       input: 'test/css/*.css',
-      exclude: '!test/css/styles.css'
+      exclude: '!test/css/styles.css',
+      jsRemove: "test/scripts/*.js",
+      distStyles: 'dist/css/*.css',
+      distJS: 'dist/scripts/*.js'
   },
   images: {
     input: 'src/photos_in/{*.jpg,*.tiff,*.png}',
@@ -844,6 +847,7 @@ gulp.task('default', [
   'css',
   'css-inline',
   'css-embed',
+  'clean',
   'pages',
   'layouts',
   'includes',
