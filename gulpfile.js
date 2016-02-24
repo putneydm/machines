@@ -206,7 +206,6 @@ gulp.task('deployJSON', function() {
 
 // concatenates scripts, but not items in exclude folder. includes vendor folder
 gulp.task('concat', function() {
-   console.log(filename);
    gulp.src([paths.scripts.input, '!' + paths.scripts.exclude])
    .pipe(concat(scriptname)) // renames to file w/ todays date for cachebusting
    .pipe(replace(/this\.loadCSS.*/g, 'this.loadCSS(\'/css/' + filename + '\');')) // adds cachebusted name of css to css lazyload
