@@ -307,7 +307,7 @@ buildSearchResultsToo: function (matchedEntries, sortedEntries, resultsWrapper) 
     singleResultWrapper.classList.add('search-result');
 
     var singleResultLink = document.createElement('A');
-    singleResultLink.setAttribute('HREF', entryLink);
+    singleResultLink.setAttribute('HREF', entryLink + '?term=' + userInput);
     singleResultLink.classList.add("element-link");
 
     var singleResultHed = document.createElement('H2');
