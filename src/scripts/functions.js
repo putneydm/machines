@@ -85,6 +85,12 @@ var pageFunctions = {
       return false;
     });
   },
+  getUserInput: function () {
+    var self=this;
+    var searchField = document.getElementById('search-field');
+    var userInput = searchField.value;
+    return userInput;
+  },
   handleSearchDisplay: function () {
     var self=this;
     var searchButton = document.getElementById('search-button');
