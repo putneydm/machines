@@ -6,6 +6,9 @@ var concat = require('gulp-concat');
 var minifyJS = require('gulp-uglify');
 var jshint = require('gulp-jshint');
 
+//json
+var jsonminify = require('gulp-jsonminify');
+
 //css
 var sass = require('gulp-sass');
 var minifyCSS = require('gulp-minify-css'); // Add var prefix for consistency
@@ -132,6 +135,10 @@ var paths = {
     input: 'src/drafts/*.markdown',
     output: 'test/_drafts/'
   },
+  json: {
+    input: 'test/_site/site-feed.json',
+    output: 'dist/'
+  }
 };
 
 // tasks
@@ -184,6 +191,11 @@ gulp.task('sitemap', function() {
    .pipe(gulp.dest(paths.sitemap.output));
 });
 
+gulp.task('deployJSON', function() {
+  gulp.src(paths.json.input)
+   .pipe(jsonminify())
+  .pipe(gulp.dest(paths.json.output));
+});
 // gulp.task('drafts', function() {
 //    gulp.src(paths.drafts.input)
 //    .pipe(gulp.dest(paths.drafts.output));
