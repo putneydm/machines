@@ -66,19 +66,17 @@ var pageFunctions = {
     },
   intializeSearchField: function () {
     var self=this;
-    var searchField = document.getElementById('search-field');
-    var searchButton = document.getElementById('search-button');
+    var searchField= document.getElementById('search-field')
     searchField.onkeydown = function() {
-      self.handleKeyDown(searchField);
+      self.handleKeyDown();
     };
     searchField.onkeyup = function () {
-      self.handleKeyUp(searchField);
+      self.handleKeyUp();
     };
   },
   intializeSearchButton: function() {
     var self=this;
     var searchButton = document.getElementById('search-btn');
-    // var searchField = document.getElementById('search-field');
     searchButton.addEventListener('click', function() {
       var userInput = self.getUserInput();
       console.log(userInput);
