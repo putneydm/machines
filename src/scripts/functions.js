@@ -192,20 +192,19 @@ return test;
 doSearch: function(userInput) {
   var self=this;
   var searchInvalid = self.testSearchInput(userInput.toLowerCase());
-  var searchTerm = new RegExp('\\b' + searchClean + '\\b','gi');
+  var searchTerm = new RegExp('\\b' + userInput + '\\b','gi');
 
   if (!searchInvalid) {
     var matchedEntries = self.handleFindMatches(searchTerm, self.searchArray);
+      if (matchedEntries.length > 0) {
+        var matchesSort = self.handleSortByRelevance(searchTerm, matchedEntries);
+        var sortedEntries = self.handleSortByRecency(searchTerm, matchesSort);
+      }
+      else {
+        self.handleFailMessage(true, 'notFound')
+      }
 
-        if (matchedEntries.length > 0) {
-          var matchesSort = self.handleSortByRelevance(searchTerm, matchedEntries);
-          var sortedEntries = self.handleSortByRecency(searchTerm, matchesSort);
-        }
-        else {
-          self.handleFailMessage(true, 'notFound')
-        }
-
-      self.buildSearchResultsToo(matchedEntries, sortedEntries);
+      self.buildSearchResults(matchedEntries, sortedEntries);
       self.quantifyResults(matchedEntries.length, userInput);
       self.handleSearchDisplayTransition(true);
     } else {
