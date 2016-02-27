@@ -550,7 +550,6 @@ handleNavAnimate: function (position, headerPosition) {
  getURLterm: function () {
     var self=this;
     var url = window.location.search.substring(1).split('=')[1];
-    console.log('url', url);
     return url
  },
  getJSON: function (url) {
