@@ -51,7 +51,7 @@ var pageFunctions = {
       var self=this;
       var siteContentPromise = self.getJSON('/site-feed.json');
       siteContentPromise.then(function(siteContent) {
-       self.searchArray = siteContent;
+        self.searchArray = siteContent;
      })
      .catch(function(error) {
      });
