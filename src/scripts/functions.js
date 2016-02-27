@@ -89,8 +89,9 @@ var pageFunctions = {
   getUserInput: function () {
     var self=this;
     var searchField = document.getElementById('search-field');
-    var userInput = searchField.value;
-    return userInput;
+    var userInput = searchField.value
+    var searchClean = userInput.replace(/\s{2,}/,' ').replace(/\s{1,}$/,'');
+    return searchClean;
   },
   handleSearchDisplay: function () {
     var self=this;
