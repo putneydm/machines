@@ -283,20 +283,22 @@ handleFailMessage: function(activeState, type) {
   var failMesageDisplay = document.getElementById('search-message');
   failMesageDisplay.innerHTML = failMessage;
 },
-buildSearchResultsToo: function (matchedEntries, sortedEntries, resultsWrapper) {
+buildSearchResults: function (matchedEntries, sortedEntries, resultsWrapper) {
   var self=this;
-  var resultsWrapper = document.getElementById('results-wrapper')
-  sortedEntries.forEach(function (el, i) {
-    var entryNumber = sortedEntries[i].index,
-        entryHead = matchedEntries[entryNumber].title,
-        entryLink = matchedEntries[entryNumber].link,
-        entryRank = sortedEntries[i].count,
-        post = matchedEntries[entryNumber].post,
-        entryBody = post.length >= 50
-          ? self.truncateText(post, 25)
-          : false;
-    entryMarkup (entryHead, entryLink, entryRank, entryBody);
-  })
+  var resultsWrapper = document.getElementById('results-wrapper');
+  if (sortedEntries) {
+    sortedEntries.forEach(function (el, i) {
+      var entryNumber = sortedEntries[i].index,
+          entryHead = matchedEntries[entryNumber].title,
+          entryLink = matchedEntries[entryNumber].link,
+          entryRank = sortedEntries[i].count,
+          post = matchedEntries[entryNumber].post,
+          entryBody = post.length >= 50
+            ? self.truncateText(post, 25)
+            : false;
+      entryMarkup (entryHead, entryLink, entryRank, entryBody);
+    });
+  }
 
   function entryMarkup(entryHead, entryLink, entryRank, entryBody) {
     var userInput = self.getUserInput();
@@ -406,7 +408,6 @@ detectScrollBlog: function (viewportSize) {
      var position = window.scrollY,
          header = document.getElementById('siteheader'),
          headerPosition = self.getHeaderPosition();
-
          self.handleReefer(position, headerPosition);
    };
    return position;
