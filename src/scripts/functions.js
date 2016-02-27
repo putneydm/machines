@@ -134,9 +134,9 @@ var pageFunctions = {
       self.testSearchInput(userInput);
     }
   },
-  handleKeyUp: function(searchField, resultsContainer) {
+  handleKeyUp: function() {
     var self=this;
-    var userInput = searchField.value;
+    var userInput = self.getUserInput();
     if (userInput.length === 0 ){
       self.clearSearchResults();
       self.handleFailMessage(false);
