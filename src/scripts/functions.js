@@ -119,9 +119,9 @@ var pageFunctions = {
     ? resultsWrapper.classList.add('results-wrapper--active')
     : resultsWrapper.classList.remove('results-wrapper--active');
   },
-  handleKeyDown: function (searchField) {
+  handleKeyDown: function () {
     var self=this;
-    var userInput = searchField.value;
+    var userInput = self.getUserInput();
     var keyPress=event.keyCode
     ? event.keyCode
     : event.charCode;
