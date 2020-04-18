@@ -1,7 +1,7 @@
 ---
 layout: single_entry
 pagetype: blog-entry
-title: "Imagine there\'s no people. It\'s easy if you try."
+title: "Imagine there's no people. It's easy if you try."
 tags: [ 'advanced ','autonomous','weaponized','Robots' ]
 ---
 Noel Sharkey writes in the [Wall Street Journal][1] about advanced, autonomous Robots becoming more common. Did we mention that they are _weaponized_?
